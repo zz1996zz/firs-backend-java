@@ -1,4 +1,4 @@
-# Financial Instrument Recommendation Service Project
+# Financial Instruments Recommendation Service Project
 
 ## Description  
 
