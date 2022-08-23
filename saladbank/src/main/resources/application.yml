@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  config:
+    import:
+      - classpath:/application.yml
+      - classpath:/application-db.yml
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
