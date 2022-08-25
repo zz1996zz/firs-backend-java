@@ -1,7 +1,5 @@
 package fastcampus.saladbank.biz.service;
 
-public class MemberService {
-
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.web.dto.MemberForm;
