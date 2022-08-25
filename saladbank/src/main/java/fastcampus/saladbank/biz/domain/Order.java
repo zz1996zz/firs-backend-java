@@ -9,9 +9,10 @@ import java.util.List;
 @Entity
 @Table(name = "ORDERS")
 @Getter
-public class Order {
+public class Order extends BaseTime {
 
     @Id
+    @Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

@@ -3,19 +3,22 @@ package fastcampus.saladbank.biz.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity
-@Table(name = "CART")
 @Getter
-public class Cart extends BaseTime {
+@Entity
+@Table(name = "CART_ITEM")
+public class CartItem extends BaseTime {
 
     @Id
-    @Column(name = "CART_ID")
+    @Column(name = "CART_ITEM_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
+    @OneToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cart;
+
+    @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
-    private List<Product> product;
+    private Product product;
 }

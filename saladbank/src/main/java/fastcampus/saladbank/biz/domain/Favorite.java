@@ -8,9 +8,10 @@ import java.util.List;
 @Entity
 @Table(name = "FAVORITE")
 @Getter
-public class Favorite {
+public class Favorite extends BaseTime {
 
     @Id
+    @Column(name = "FAVORITE_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
