@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44780ece-1135-42ba-a44e-3a6fa1c3ded6" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/repository/CartItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/repository/CartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/repository/FavoriteItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/repository/FavoriteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/Controller/CartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/Controller/FavoritController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saladbank/src/main/resources/application-db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/resources/application-db.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +60,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2DpjMoPm8h5WRlRrNwFXwUgpqZK" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -96,11 +85,14 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "f94c299484a297aea69eb63ba279fb1d"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fastcampus.saladbank.web.Controller" />
+      <recent name="fastcampus.saladbank.biz.service" />
       <recent name="fastcampus.saladbank.biz.repository" />
     </key>
   </component>
@@ -132,7 +124,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1661402890125</updated>
-      <workItem from="1661402904565" duration="2736000" />
+      <workItem from="1661402904565" duration="3412000" />
+      <workItem from="1661415032014" duration="469000" />
     </task>
     <servers />
   </component>
