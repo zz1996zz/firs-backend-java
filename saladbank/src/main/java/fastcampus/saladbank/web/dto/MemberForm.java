@@ -12,5 +12,6 @@ public class MemberForm {
     private String phone;
     private int age;
     private String job;
+    private String hobby;
     private int creditRating;
 }
