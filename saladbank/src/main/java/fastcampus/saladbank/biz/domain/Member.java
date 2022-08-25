@@ -30,16 +30,16 @@ public class Member extends BaseTime {
     @Column(name = "PHONE", nullable = false)
     private String phone;
 
-    @Column(name = "AGE", nullable = false)
+    @Column(name = "AGE")
     private int age;
 
-    @Column(name = "JOB", nullable = false)
+    @Column(name = "JOB")
     private String job;
 
-    @Column(name = "HOBBY", nullable = false)
+    @Column(name = "HOBBY")
     private String hobby;
 
-    @Column(name = "CREDIT_RATING", nullable = false)
+    @Column(name = "CREDIT_RATING")
     private int creditRating;
 
     @OneToOne
