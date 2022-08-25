@@ -15,10 +15,10 @@ public class MemberController {
 
     @PostMapping("/detail")
     public void registerMemberInfo() {
-
+        
     }
 
-    @GetMapping("/mypage")
+    @GetMapping("/my-page")
     public void myPage() {
 
     }

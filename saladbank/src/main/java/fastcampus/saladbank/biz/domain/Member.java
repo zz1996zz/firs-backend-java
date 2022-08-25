@@ -1,13 +1,17 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "MEMBER")
-@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTime {
 
     @Id
@@ -52,4 +56,17 @@ public class Member extends BaseTime {
     @OneToMany
     @JoinColumn(name = "FAVORITE_ID")
     private List<Favorite> favorites;
+
+    @Builder
+    public Member(String username, String password, String name, String mobileCarrier, String phone, int age, String job, String hobby, int creditRating) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.mobileCarrier = mobileCarrier;
+        this.phone = phone;
+        this.age = age;
+        this.job = job;
+        this.hobby = hobby;
+        this.creditRating = creditRating;
+    }
 }
