@@ -1,12 +1,15 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
 @Table(name = "FAVORITE_ITEM")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FavoriteItem extends BaseTime {
 
     @Id
