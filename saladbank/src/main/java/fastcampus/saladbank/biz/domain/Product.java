@@ -7,9 +7,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PRODUCT")
 @Getter
-public class Product {
+public class Product extends BaseTime {
 
     @Id
+    @Column(name = "PRODUCT_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
