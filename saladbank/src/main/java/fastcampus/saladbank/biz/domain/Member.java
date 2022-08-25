@@ -1,5 +1,6 @@
 package fastcampus.saladbank.biz.domain;
 
+import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -68,5 +69,34 @@ public class Member extends BaseTime {
         this.job = job;
         this.hobby = hobby;
         this.creditRating = creditRating;
+    }
+
+    public void registerMemberInfo(MemberForm memberForm, String money, boolean houseYN) {
+        this.age = memberForm.getAge();
+        this.job = memberForm.getJob();
+        this.hobby = memberForm.getHobby();
+        inquireCreditInfo(money, houseYN);
+    }
+
+    private void inquireCreditInfo(String money, boolean houseYN) {
+        if (houseYN) {
+            setGrade(money);
+        } else {
+            setGrade(money);
+        }
+    }
+
+    private void setGrade(String money) {
+        switch (money) {
+            case "5000~":
+                this.creditRating = 1;
+                break;
+            case "1000~5000":
+                this.creditRating = 2;
+                break;
+            default:
+                this.creditRating = 3;
+                break;
+        }
     }
 }

@@ -26,4 +26,8 @@ public class MemberService {
                 .build();
         memberRepository.save(member);
     }
+
+    public void registerMemberInfo(MemberForm memberForm) {
+        // username으로 사용자를 찾고 사용자의 정보를 추가한다.
+    }
 }
