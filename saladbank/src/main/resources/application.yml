@@ -15,6 +15,9 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
     generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
   config:
     import:
       - classpath:/application.yml

@@ -33,20 +33,9 @@ public class Product extends BaseTime{
     @Column(name = "RATE", nullable = false)
     private double rate;
 
-    @Column(name = "PERIOD", nullable = false) // nullable = true
+    @Column(name = "PERIOD", nullable = true)
     private Integer period;
 
     @Column(name = "TAG", nullable = false)
     private String tag;
-
-    @Builder
-    public Product(String productName, String bank, String jobType, Integer loan, double rate, Integer period, String tag) {
-        this.productName = productName;
-        this.bank = bank;
-        this.jobType = jobType;
-        this.loan = loan;
-        this.rate = rate;
-        this.period = period;
-        this.tag = tag;
-    }
 }
