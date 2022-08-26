@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@Entity
-@Table(name = "CART_ITEM")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "CART_ITEM")
+@Entity
 public class CartItem extends BaseTime {
 
     @Id
@@ -18,7 +18,6 @@ public class CartItem extends BaseTime {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "CART_ID")
     private Cart cart;
 
     @ManyToOne

@@ -10,9 +10,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter
-@Entity
-@Table(name = "MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "MEMBER")
+@Entity
 public class Member extends BaseTime {
 
     @Id
@@ -38,7 +38,7 @@ public class Member extends BaseTime {
     @Column(name = "JOB")
     private String job;
 
-    @Column(name = "income")
+    @Column(name = "INCOME")
     private int income;
 
     @Column(name = "HOBBY")

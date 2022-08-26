@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "LOAN")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "LOAN")
+@Entity
 public class Loan extends BaseTime {
 
     @Id
@@ -35,7 +35,7 @@ public class Loan extends BaseTime {
     @Column(name = "RATE", nullable = false)
     private double rate; // 금리
 
-    @Column(name = "PERIOD", nullable = true)
+    @Column(name = "PERIOD")
     private int period; // 대출기간
 
     @Column(name = "TAG", nullable = false)
