@@ -38,7 +38,7 @@ public class Member extends BaseTime {
     @Column(name = "JOB")
     private String job;
 
-    @Column(name = "income")
+    @Column(name = "INCOME")
     private int income;
 
     @Column(name = "HOBBY")

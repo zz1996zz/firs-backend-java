@@ -18,7 +18,6 @@ public class CartItem extends BaseTime {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "CART_ID")
     private Cart cart;
 
     @ManyToOne

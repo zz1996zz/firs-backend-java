@@ -19,7 +19,7 @@ public class Order extends BaseTime {
     @Column(name = "APPLY_DATE", nullable = false)
     private LocalDate applyDate;
 
-    @Column(name = "EXPIRY_DATE", nullable = true)
+    @Column(name = "EXPIRY_DATE")
     private LocalDate expiryDate;
 
     @Column(name = "STATUS", nullable = false)

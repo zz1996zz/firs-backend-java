@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @Table(name = "CARD")
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Card {
 
@@ -32,7 +32,7 @@ public class Card {
     @Column(name = "SUBJECT_TO_JOIN", nullable = false)
     private String subjectToJoin; //가입 대상
 
-    @Column(name = "DESC", nullable = false)
-    private String desc; // 요약설명
+    @Column(name = "EXPLANATION", nullable = false)
+    private String explanation; // 요약설명
 }
 // 카드상품 : 연회비, 카드 종류(체크인지 신용인지), 가입대상, 카드 이름, 요약설명

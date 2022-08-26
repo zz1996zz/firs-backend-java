@@ -18,7 +18,6 @@ public class FavoriteItem extends BaseTime {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "FAVORITE_ID")
     private Favorite favorite;
 
     @ManyToOne

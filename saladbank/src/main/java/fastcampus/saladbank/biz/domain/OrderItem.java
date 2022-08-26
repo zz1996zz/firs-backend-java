@@ -15,7 +15,6 @@ public class OrderItem extends BaseTime {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "ORDERS_ID")
     private Order order;
 
     @ManyToOne
