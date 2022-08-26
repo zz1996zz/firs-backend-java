@@ -1,16 +1,17 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "PRODUCT")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Product extends BaseTime {
+@NoArgsConstructor (access = AccessLevel.PROTECTED)
+@Table(name = "PRODUCT")
+@Entity
+public class Product extends BaseTime{
 
     @Id
     @Column(name = "PRODUCT_ID")
@@ -27,14 +28,25 @@ public class Product extends BaseTime {
     private String jobType;
 
     @Column(name = "LOAN", nullable = false)
-    private int loan;
+    private Integer loan;
 
     @Column(name = "RATE", nullable = false)
     private double rate;
 
-    @Column(name = "PERIOD", nullable = true)
-    private int period;
+    @Column(name = "PERIOD", nullable = false) // nullable = true
+    private Integer period;
 
     @Column(name = "TAG", nullable = false)
     private String tag;
+
+    @Builder
+    public Product(String productName, String bank, String jobType, Integer loan, double rate, Integer period, String tag) {
+        this.productName = productName;
+        this.bank = bank;
+        this.jobType = jobType;
+        this.loan = loan;
+        this.rate = rate;
+        this.period = period;
+        this.tag = tag;
+    }
 }
