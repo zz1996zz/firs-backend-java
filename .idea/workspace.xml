@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30fcb4d7-9dca-4d21-ba94-7da7daa16e7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saladbank/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/CardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="saladbank" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -47,6 +54,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2DtCnRscyioFEXECoWJLOEaa68h" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,14 +70,16 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "f94c299484a297aea69eb63ba279fb1d"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.CardRepositoryTest">
+  <component name="RunManager" selected="JUnit.CardControllerTest">
     <configuration name="CardRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -91,28 +103,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MemberServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/saladbank" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;fastcampus.saladbank.biz.service.MemberServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="CardControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.CardControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardControllerTest.Card_등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.CardControllerTest" />
+      <option name="METHOD_NAME" value="Card_등록" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="CardRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
@@ -153,10 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CardControllerTest" />
+        <item itemvalue="JUnit.CardControllerTest.Card_등록" />
         <item itemvalue="JUnit.CardRepositoryTest" />
         <item itemvalue="Gradle.CardRepositoryTest" />
         <item itemvalue="JUnit.MemberServiceTest" />
-        <item itemvalue="Gradle.MemberServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -169,6 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661509161343</updated>
       <workItem from="1661509164151" duration="5188000" />
+      <workItem from="1661517185206" duration="249000" />
     </task>
     <servers />
   </component>
