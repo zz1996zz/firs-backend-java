@@ -16,8 +16,8 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public void getCarts( ){
-        cartService.getCarts();
+    public void getCarts(Member member ){
+        cartService.getCarts(member);
     }
 
     //장바구니 추가
