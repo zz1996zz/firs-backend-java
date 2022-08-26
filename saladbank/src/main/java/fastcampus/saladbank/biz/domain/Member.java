@@ -29,8 +29,8 @@ public class Member extends BaseTime {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "sex")
-    private String sex;
+    @Column(name = "GENDER")
+    private String gender;
 
     @Column(name = "AGE")
     private int age;
@@ -56,11 +56,11 @@ public class Member extends BaseTime {
     private List<Favorite> favorites;
 
     @Builder
-    public Member(String username, String password, String name, String sex, int age, String job, int income, String hobby, int creditRating) {
+    public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, int creditRating) {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.sex = sex;
+        this.gender = gender;
         this.age = age;
         this.job = job;
         this.income = income;
@@ -74,7 +74,7 @@ public class Member extends BaseTime {
         this.hobby = memberForm.getHobby();
         inquireCreditInfo(memberForm.getIncome(), houseYN);
     }
-
+// 자가 유무 없이 만들자
     private void inquireCreditInfo(int income, boolean houseYN) {
         if (houseYN) {
             setGrade(income);

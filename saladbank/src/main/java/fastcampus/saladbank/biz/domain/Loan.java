@@ -17,6 +17,9 @@ public class Loan extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "PRODUCT_TYPE")
+    private String productType;
+
     @Column(name = "LOAN_NAME", nullable = false)
     private String loanName; // 상품명
 
@@ -27,7 +30,7 @@ public class Loan extends BaseTime {
     private String creditLine; // 대출한도
 
     @Column(name = "SBSCRQST", nullable = false)
-    private int sbscRqst; // 가입요건
+    private String sbscRqst; // 가입요건
 
     @Column(name = "RATE", nullable = false)
     private double rate; // 금리

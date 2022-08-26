@@ -17,6 +17,9 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "PRODUCT_TYPE")
+    private String productType;
+
     @Column(name = "CARD_NAME", nullable = false)
     private String cardName; //카드이름
 
