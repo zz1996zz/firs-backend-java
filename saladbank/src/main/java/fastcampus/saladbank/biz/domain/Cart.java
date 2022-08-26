@@ -1,13 +1,16 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "CART")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "CART")
+@Entity
 public class Cart extends BaseTime {
 
     @Id
@@ -15,7 +18,6 @@ public class Cart extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
-    @JoinColumn(name = "PRODUCT_ID")
-    private List<Product> product;
+    @OneToOne
+    private Member member;
 }

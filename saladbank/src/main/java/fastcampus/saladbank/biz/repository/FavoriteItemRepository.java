@@ -5,4 +5,5 @@ import fastcampus.saladbank.biz.domain.FavoriteItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FavoriteItemRepository extends JpaRepository<FavoriteItem,Long> {
+    void deleteAllByFavoriteId(long id);
 }
