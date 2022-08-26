@@ -1,6 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +21,10 @@ public class Cart extends BaseTime {
 
     @OneToOne
     private Member member;
+
+    @Builder
+    public Cart(Member member){
+        this.member=member;
+    }
+
 }
