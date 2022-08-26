@@ -1,6 +1,8 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "FAVORITE")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Favorite extends BaseTime {
 
     @Id

@@ -1,12 +1,15 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
 @Table(name = "CART_ITEM")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CartItem extends BaseTime {
 
     @Id

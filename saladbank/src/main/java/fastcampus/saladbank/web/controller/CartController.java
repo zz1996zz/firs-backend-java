@@ -1,7 +1,34 @@
 package fastcampus.saladbank.web.controller;
 
-import org.springframework.stereotype.Controller;
+import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.CartItemRepository;
+import fastcampus.saladbank.biz.service.CartService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/carts")
 public class CartController {
+
+
+    private final CartService cartService;
+
+    //장바구니 조회
+    @GetMapping("/carts")
+    public void getCarts( ){
+        cartService.getCarts();
+    }
+
+    //장바구니 추가
+    @PostMapping("/carts")
+    public void insertCart(){
+        cartService.insertCart();
+    }
+
+    //장바구니 취소
+    @DeleteMapping("/carts/{id}")
+    public void deleteCart(@PathVariable long id){
+        cartService.deleteCart(id);
+    }
 }
