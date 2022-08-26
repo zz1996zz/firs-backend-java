@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .httpBasic().disable()
                 .authorizeRequests()
+//                .antMatchers("/members/register", "/products/**").permitAll()
+//                .anyRequest().authenticated()
                 .anyRequest().permitAll();
     }
 }
