@@ -1,14 +1,17 @@
 package fastcampus.saladbank.biz.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-@Table(name = "ORDERS")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "ORDERS")
+@Entity
 public class Order extends BaseTime {
 
     @Id

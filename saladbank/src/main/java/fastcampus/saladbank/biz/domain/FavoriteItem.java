@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@Entity
-@Table(name = "FAVORITE_ITEM")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "FAVORITE_ITEM")
+@Entity
 public class FavoriteItem extends BaseTime {
 
     @Id

@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@Entity
-@Table(name = "CARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Card {
+@Table(name = "CARD")
+@Entity
+public class Card extends BaseTime {
 
     @Id
     @Column(name = "CARD_ID")
