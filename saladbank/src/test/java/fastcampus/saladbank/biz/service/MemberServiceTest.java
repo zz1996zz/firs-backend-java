@@ -25,8 +25,6 @@ class MemberServiceTest {
                 .username("test")
                 .password(bCryptPasswordEncoder.encode("test1234"))
                 .name("테스터")
-                .mobileCarrier("SK")
-                .phone("01011112222")
                 .build();
 
         //when

@@ -18,10 +18,14 @@ public class FavoriteItem extends BaseTime {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "ORDERS_ID")
+    @JoinColumn(name = "FAVORITE_ID")
     private Favorite favorite;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @JoinColumn(name = "LOAN_ID")
+    private Loan loan;
+
+    @ManyToOne
+    @JoinColumn(name = "card_ID")
+    private Card card;
 }

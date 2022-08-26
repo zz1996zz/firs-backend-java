@@ -24,8 +24,6 @@ public class MemberService {
                 .username(memberForm.getUsername())
                 .password(bCryptPasswordEncoder.encode(memberForm.getPassword()))
                 .name(memberForm.getName())
-                .mobileCarrier(memberForm.getMobileCarrier())
-                .phone(memberForm.getPhone())
                 .build();
         Member result = memberRepository.save(member);
         log.info("result = {}", result.toString());
