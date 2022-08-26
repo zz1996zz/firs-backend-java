@@ -1,6 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -34,5 +35,15 @@ public class Card {
 
     @Column(name = "EXPLANATION", nullable = false)
     private String explanation; // 요약설명
+
+    @Builder
+    public Card(String productType, String cardName, String annualFee, String cardType, String subjectToJoin, String explanation) {
+        this.productType = productType;
+        this.cardName = cardName;
+        this.annualFee = annualFee;
+        this.cardType = cardType;
+        this.subjectToJoin = subjectToJoin;
+        this.explanation = explanation;
+    }
 }
 // 카드상품 : 연회비, 카드 종류(체크인지 신용인지), 가입대상, 카드 이름, 요약설명
