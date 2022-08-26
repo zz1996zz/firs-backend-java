@@ -16,13 +16,6 @@ public class Order extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
-    @JoinColumn(name = "PRODUCT_ID")
-    private List<Product> product;
-
-//    @OneToOne
-//    private Cart cart;
-
     @Column(name = "APPLY_DATE", nullable = false)
     private LocalDate applyDate;
 

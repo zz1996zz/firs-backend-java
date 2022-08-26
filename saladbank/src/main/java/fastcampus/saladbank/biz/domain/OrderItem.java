@@ -19,6 +19,10 @@ public class OrderItem extends BaseTime {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @JoinColumn(name = "LOAN_ID")
+    private Loan loan;
+
+    @ManyToOne
+    @JoinColumn(name = "CARD_ID")
+    private Card card;
 }

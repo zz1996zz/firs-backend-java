@@ -22,6 +22,10 @@ public class CartItem extends BaseTime {
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @JoinColumn(name = "LOAN_ID")
+    private Loan loan;
+
+    @ManyToOne
+    @JoinColumn(name = "CARD_ID")
+    private Card card;
 }

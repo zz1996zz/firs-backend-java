@@ -29,11 +29,8 @@ public class Member extends BaseTime {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "MOBILE_CARRIER", nullable = false)
-    private String mobileCarrier;
-
-    @Column(name = "PHONE", nullable = false)
-    private String phone;
+    @Column(name = "sex")
+    private String sex;
 
     @Column(name = "AGE")
     private int age;
@@ -41,14 +38,14 @@ public class Member extends BaseTime {
     @Column(name = "JOB")
     private String job;
 
+    @Column(name = "income")
+    private int income;
+
     @Column(name = "HOBBY")
     private String hobby;
 
     @Column(name = "CREDIT_RATING")
     private int creditRating;
-
-    @OneToOne
-    private Cart cart;
 
     @OneToMany
     @JoinColumn(name = "ORDERS_ID")
@@ -59,35 +56,35 @@ public class Member extends BaseTime {
     private List<Favorite> favorites;
 
     @Builder
-    public Member(String username, String password, String name, String mobileCarrier, String phone, int age, String job, String hobby, int creditRating) {
+    public Member(String username, String password, String name, String sex, int age, String job, int income, String hobby, int creditRating) {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.mobileCarrier = mobileCarrier;
-        this.phone = phone;
+        this.sex = sex;
         this.age = age;
         this.job = job;
+        this.income = income;
         this.hobby = hobby;
         this.creditRating = creditRating;
     }
 
-    public void registerMemberInfo(MemberForm memberForm, String money, boolean houseYN) {
+    public void registerMemberInfo(MemberForm memberForm, boolean houseYN) {
         this.age = memberForm.getAge();
         this.job = memberForm.getJob();
         this.hobby = memberForm.getHobby();
-        inquireCreditInfo(money, houseYN);
+        inquireCreditInfo(memberForm.getIncome(), houseYN);
     }
 
-    private void inquireCreditInfo(String money, boolean houseYN) {
+    private void inquireCreditInfo(int income, boolean houseYN) {
         if (houseYN) {
-            setGrade(money);
+            setGrade(income);
         } else {
-            setGrade(money);
+            setGrade(income);
         }
     }
 
-    private void setGrade(String money) {
-        switch (money) {
+    private void setGrade(int income) {
+        /*switch (money) {
             case "5000~":
                 this.creditRating = 1;
                 break;
@@ -97,6 +94,7 @@ public class Member extends BaseTime {
             default:
                 this.creditRating = 3;
                 break;
-        }
+        }*/
+        //if로 다시 짜기
     }
 }
