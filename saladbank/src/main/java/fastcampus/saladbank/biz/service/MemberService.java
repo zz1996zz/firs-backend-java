@@ -23,15 +23,12 @@ public class MemberService {
 
     @Transactional
     public void registerMember(MemberForm memberForm) {
-        Member member = Member.builder()
-                .username(memberForm.getUsername())
-                .password(bCryptPasswordEncoder.encode(memberForm.getPassword()))
-                .name(memberForm.getName())
-                .build();
-        Member result = memberRepository.save(member);
-        Cart cart = new Cart(result);
+        String encodePS = bCryptPasswordEncoder.encode(memberForm.getPassword());
+        memberForm.setPassword(encodePS);
+        Member member = memberForm.toEntity();
+        memberRepository.save(member);
+        Cart cart = new Cart(member);
         cartRepository.save(cart);
-        log.info("result = {}", result.toString());
     }
 
     public void registerMemberInfo(MemberForm memberForm) {

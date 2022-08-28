@@ -1,7 +1,7 @@
 package fastcampus.saladbank.config.auth;
 
-import fastcampus.saladbank.biz.domain.User;
-import fastcampus.saladbank.biz.repository.UserRepository;
+import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,17 +14,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User findUser = userRepository.findByUsername(username);
-        if (findUser != null) {
-            PrincipalDetails principalDetails = new PrincipalDetails(findUser);
-            log.info("username={}", principalDetails.getUsername());
-            log.info("password={}", principalDetails.getPassword());
-//            return new PrincipalDetails(findMember);
-            return principalDetails;
+        Member findMember = memberRepository.findByUsername(username);
+        if (findMember != null) {
+            return new PrincipalDetails(findMember);
         }
         return null;
     }
