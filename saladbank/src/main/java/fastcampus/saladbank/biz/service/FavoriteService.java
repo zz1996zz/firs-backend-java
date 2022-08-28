@@ -1,13 +1,15 @@
 package fastcampus.saladbank.biz.service;
 
 import fastcampus.saladbank.biz.domain.Favorite;
+import fastcampus.saladbank.biz.domain.FavoriteItem;
+import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.repository.FavoriteItemRepository;
 import fastcampus.saladbank.biz.repository.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +23,6 @@ public class FavoriteService {
     @Transactional
     public void deleteFavorite(long id) {
         favoriteItemRepository.deleteAllByFavoriteId(id);
-        favoriteRepository.deleteById(id);
     }
 
     //관심상품 추가
@@ -29,6 +30,9 @@ public class FavoriteService {
     public void insertFavorite() {
     }
     //관심상품 조회
-    public void getFavorites() {
+    public List<FavoriteItem> getFavorites(Member member) {
+        Favorite favorite = favoriteRepository.findByMember(member);
+        List<FavoriteItem> favoriteItemList = favoriteItemRepository.findByFavorite(favorite);
+        return favoriteItemList;
     }
 }
