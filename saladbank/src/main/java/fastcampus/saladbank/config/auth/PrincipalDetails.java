@@ -1,6 +1,6 @@
 package fastcampus.saladbank.config.auth;
 
-import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.domain.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,10 +10,10 @@ import java.util.Collection;
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    private Member member;
+    private User user;
 
-    public PrincipalDetails(Member member) {
-        this.member = member;
+    public PrincipalDetails(User user) {
+        this.user = user;
     }
 
     @Override
@@ -23,12 +23,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return member.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return member.getUsername();
+        return user.getUsername();
     }
 
     @Override
