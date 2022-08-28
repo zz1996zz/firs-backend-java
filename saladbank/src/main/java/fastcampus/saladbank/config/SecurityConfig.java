@@ -1,5 +1,6 @@
 package fastcampus.saladbank.config;
 
+import fastcampus.saladbank.config.jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
 //                .antMatchers("/members/register", "/products/**").permitAll()
 //                .anyRequest().authenticated()
