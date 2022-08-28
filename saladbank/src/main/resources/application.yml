@@ -10,7 +10,7 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
@@ -19,6 +19,8 @@ spring:
     import:
       - classpath:/application.yml
       - classpath:/application-db.yml
+      - classpath:/application-auth.yml
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+

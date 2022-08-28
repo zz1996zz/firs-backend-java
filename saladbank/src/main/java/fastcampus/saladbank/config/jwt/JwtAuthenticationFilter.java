@@ -4,10 +4,11 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
-import fastcampus.saladbank.web.dto.UserForm;
+import fastcampus.saladbank.web.dto.MemberForm;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,20 +28,23 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
 
-    @Value("${secretKey}")
-    private String secretKey;
+    private String secret;
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         ObjectMapper om = new ObjectMapper();
-        UserForm userForm = null;
+        MemberForm memberForm = null;
 
         try {
-            userForm = om.readValue(request.getInputStream(), UserForm.class);
+            memberForm = om.readValue(request.getInputStream(), MemberForm.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userForm.getUsername(), userForm.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberForm.getUsername(), memberForm.getPassword());
 
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
 
@@ -58,9 +62,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = JWT.create()
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
-                .withClaim("id", principal.getUser().getId())
-                .withClaim("username", principal.getUser().getUsername())
-                .sign(Algorithm.HMAC512(secretKey));
+                .withClaim("id", principal.getMember().getId())
+                .withClaim("username", principal.getMember().getUsername())
+                .sign(Algorithm.HMAC512(secret));
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
     }

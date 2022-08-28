@@ -1,12 +1,12 @@
 package fastcampus.saladbank.biz.domain;
 
-import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,6 +25,9 @@ public class Member extends BaseTime {
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
+
+    @Column(name = "ROLE")
+    private String role = "ROLE_USER";
 
     @Column(name = "NAME", nullable = false)
     private String name;
@@ -49,11 +52,11 @@ public class Member extends BaseTime {
 
     @OneToMany
     @JoinColumn(name = "ORDERS_ID")
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "FAVORITE_ID")
-    private List<Favorite> favorites;
+    private List<Favorite> favorites = new ArrayList<>();
 
     @Builder
     public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, int creditRating) {
@@ -66,35 +69,5 @@ public class Member extends BaseTime {
         this.income = income;
         this.hobby = hobby;
         this.creditRating = creditRating;
-    }
-
-    public void registerMemberInfo(MemberForm memberForm, boolean houseYN) {
-        this.age = memberForm.getAge();
-        this.job = memberForm.getJob();
-        this.hobby = memberForm.getHobby();
-        inquireCreditInfo(memberForm.getIncome(), houseYN);
-    }
-// 자가 유무 없이 만들자
-    private void inquireCreditInfo(int income, boolean houseYN) {
-        if (houseYN) {
-            setGrade(income);
-        } else {
-            setGrade(income);
-        }
-    }
-
-    private void setGrade(int income) {
-        /*switch (money) {
-            case "5000~":
-                this.creditRating = 1;
-                break;
-            case "1000~5000":
-                this.creditRating = 2;
-                break;
-            default:
-                this.creditRating = 3;
-                break;
-        }*/
-        //if로 다시 짜기
     }
 }

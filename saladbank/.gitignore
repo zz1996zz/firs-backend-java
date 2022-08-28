@@ -318,3 +318,6 @@ Temporary Items
 
 # db properties
 application-db.yml
+
+# secret Key
+application-auth.yml

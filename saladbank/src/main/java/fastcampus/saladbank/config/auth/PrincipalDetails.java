@@ -1,34 +1,42 @@
 package fastcampus.saladbank.config.auth;
 
-import fastcampus.saladbank.biz.domain.User;
+import fastcampus.saladbank.biz.domain.Member;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    private User user;
+    private Member member;
 
-    public PrincipalDetails(User user) {
-        this.user = user;
+    public PrincipalDetails(Member user) {
+        this.member = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> collection = new ArrayList<>();
+        collection.add(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+                return member.getRole();
+            }
+        });
+        return collection;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return member.getUsername();
     }
 
     @Override
@@ -48,6 +56,6 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
