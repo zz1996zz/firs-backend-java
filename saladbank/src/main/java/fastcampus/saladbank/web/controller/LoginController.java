@@ -25,10 +25,12 @@ public class LoginController {
     }
 
     @GetMapping("/duplicate")
-    public String duplicateMemberId(@RequestBody String username) {
+    public ResponseEntity<String> duplicateMemberId(@RequestBody String username) {
         if (memberService.isRegisterMember(username)) {
-            return "true";
+            String status = "true";
+            return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
         }
-        return "false";
+        String status = "flase";
+        return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
     }
 }

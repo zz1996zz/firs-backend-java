@@ -51,7 +51,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         log.info("username={}", username);
 
         if (username != null) {
-            Member findMember = memberRepository.findByUsername(username);
+            Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 username의 사용자를 못 찾았습니다."));
             log.info("findMember ={}", findMember);
 
             PrincipalDetails principalDetails = new PrincipalDetails(findMember);
