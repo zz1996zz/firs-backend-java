@@ -15,19 +15,19 @@ public class CartController {
     private final CartService cartService;
 
     //장바구니 조회
-    @GetMapping("/carts")
-    public void getCarts( ){
-        cartService.getCarts();
+    @GetMapping
+    public void getCarts(Member member ){
+        cartService.getCarts(member);
     }
 
     //장바구니 추가
-    @PostMapping("/carts")
+    @PostMapping
     public void insertCart(){
         cartService.insertCart();
     }
 
     //장바구니 취소
-    @DeleteMapping("/carts/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCart(@PathVariable long id){
         cartService.deleteCart(id);
     }

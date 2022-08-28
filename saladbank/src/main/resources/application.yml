@@ -19,6 +19,8 @@ spring:
     import:
       - classpath:/application.yml
       - classpath:/application-db.yml
+      - classpath:/application-auth.yml
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+

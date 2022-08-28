@@ -1,6 +1,8 @@
 package fastcampus.saladbank.biz.service;
 
+import fastcampus.saladbank.biz.domain.Cart;
 import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.CartRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
@@ -17,16 +19,25 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final CartRepository cartRepository;
 
     @Transactional
     public void registerMember(MemberForm memberForm) {
-        Member member = Member.builder()
-                .username(memberForm.getUsername())
-                .password(bCryptPasswordEncoder.encode(memberForm.getPassword()))
-                .name(memberForm.getName())
-                .build();
-        Member result = memberRepository.save(member);
-        log.info("result = {}", result.toString());
+        String encodePS = bCryptPasswordEncoder.encode(memberForm.getPassword());
+        memberForm.setPassword(encodePS);
+        Member member = memberForm.toEntity();
+        memberRepository.save(member);
+
+        Cart cart = new Cart(member);
+        cartRepository.save(cart);
+    }
+
+    public boolean isRegisterMember(String username) {
+        boolean isMember = memberRepository.existsByUsername(username);
+        if (isMember) {
+            return true;
+        }
+        return false;
     }
 
     public void registerMemberInfo(MemberForm memberForm) {
