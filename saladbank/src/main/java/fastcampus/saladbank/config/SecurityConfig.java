@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(jwtAuthenticationFilter)
                 .addFilter(jwtAuthorizationFilter)
                 .authorizeRequests()
-                .antMatchers("/register", "/products/**", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
-                .anyRequest().access("hasRole('ROLE_USER')");
+//                .antMatchers("/register", "/products/**", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
+//                .anyRequest().access("hasRole('ROLE_USER')");
+                .anyRequest().permitAll();
     }
 }
