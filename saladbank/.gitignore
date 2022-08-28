@@ -320,4 +320,4 @@ Temporary Items
 application-db.yml
 
 # secret Key
-application-auth.yml
+#application-auth.yml

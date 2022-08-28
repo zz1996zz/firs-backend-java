@@ -27,8 +27,17 @@ public class MemberService {
         memberForm.setPassword(encodePS);
         Member member = memberForm.toEntity();
         memberRepository.save(member);
+
         Cart cart = new Cart(member);
         cartRepository.save(cart);
+    }
+
+    public boolean isRegisterMember(String username) {
+        boolean isMember = memberRepository.existsByUsername(username);
+        if (isMember) {
+            return true;
+        }
+        return false;
     }
 
     public void registerMemberInfo(MemberForm memberForm) {
