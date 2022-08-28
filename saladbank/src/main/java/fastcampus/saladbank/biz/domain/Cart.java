@@ -25,5 +25,4 @@ public class Cart extends BaseTime {
     public Cart(Member member){
         this.member=member;
     }
-
 }

@@ -13,8 +13,8 @@ public class PrincipalDetails implements UserDetails {
 
     private Member member;
 
-    public PrincipalDetails(Member user) {
-        this.member = user;
+    public PrincipalDetails(Member member) {
+        this.member = member;
     }
 
     @Override
