@@ -5,9 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.web.dto.MemberForm;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -48,16 +46,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
 
-        PrincipalDetails principal = (PrincipalDetails) authenticate.getPrincipal();
-        log.info("principal={}", principal.getUsername());
-
         return authenticate;
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         PrincipalDetails principal = (PrincipalDetails) authResult.getPrincipal();
-        log.info("principal={}", principal.getUsername());
 
         String jwtToken = JWT.create()
                 .withSubject(principal.getUsername())

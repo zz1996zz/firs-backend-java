@@ -29,8 +29,6 @@ public class MemberService {
         memberRepository.save(member);
         Cart cart = new Cart(member);
         cartRepository.save(cart);
-        log.info("result = {}", member.getUsername());
-        log.info("result = {}", member.getPassword());
     }
 
     public void registerMemberInfo(MemberForm memberForm) {
