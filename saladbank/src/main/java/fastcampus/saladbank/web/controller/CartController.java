@@ -3,10 +3,12 @@ package fastcampus.saladbank.web.controller;
 import fastcampus.saladbank.biz.domain.CartItem;
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.service.CartService;
+import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +29,11 @@ public class CartController {
     
     //장바구니 추가
     @PostMapping("/card")
-    public void insertCard(@Login MemberForm reqMember,
+    public void insertCard(Authentication authentication,
                            @RequestBody CardForm reqCard){
-        cartService.insertCard(reqMember, reqCard);
+//        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+//        String username = principal.getMember().getUsername();
+        cartService.insertCard("wnsdn4875", reqCard);
     }
 
     @PostMapping("/loan")

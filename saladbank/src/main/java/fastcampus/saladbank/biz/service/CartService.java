@@ -50,10 +50,10 @@ public class CartService {
     }
 
     @Transactional
-    public CartItem insertCard(MemberForm reqMember, CardForm reqCard) {
-        //member 찾기
-        String username = reqMember.getUsername();
-        log.info("username: {}", reqMember.getUsername());
+    public CartItem insertCard(String username, CardForm reqCard) {
+//        //member 찾기
+//        String username = reqMember.getUsername();
+//        log.info("username: {}", reqMember.getUsername());
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,22 +27,22 @@ public class CartItem extends BaseTime {
 
     @OneToMany
     @JoinColumn(name = "LOAN_ID")
-    private List<Loan> loan;
+    private List<Loan> loanList= new LinkedList<>();
 
     @OneToMany
     @JoinColumn(name = "CARD_ID")
-    private List<Card> card;
+    private List<Card> cardList = new LinkedList<>();
 
     @Builder
     public CartItem(Cart cart,Loan loan){
         this.cart=cart;
-        this.loan.add(loan);
+        this.loanList.add(loan);
     }
 
     @Builder
     public CartItem(Cart cart,Card card){
         this.cart=cart;
-        this.card.add(card);
+        this.cardList.add(card);
     }
 
 }
