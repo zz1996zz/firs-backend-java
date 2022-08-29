@@ -1,8 +1,6 @@
 package fastcampus.saladbank.biz.service;
 
-import fastcampus.saladbank.biz.domain.Favorite;
-import fastcampus.saladbank.biz.domain.FavoriteItem;
-import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.domain.*;
 import fastcampus.saladbank.biz.repository.FavoriteItemRepository;
 import fastcampus.saladbank.biz.repository.FavoriteRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
@@ -26,13 +24,14 @@ public class FavoriteService {
     //관심상품 삭제
     @Transactional
     public void deleteFavorite(long id) {
-        favoriteItemRepository.deleteAllByFavoriteId(id);
-        favoriteRepository.deleteById(id);
+        Optional<Favorite> favorite = favoriteRepository.findById(id);
+        favoriteItemRepository.deleteAllByFavorite(favorite);
     }
 
     //관심상품 추가
     @Transactional
-    public void insertFavorite() {
+    public void insertFavorite(Card card, Loan loan) {
+
     }
     //관심상품 조회
     public List<FavoriteItem> getFavorites(MemberForm reqMember) {
@@ -42,4 +41,5 @@ public class FavoriteService {
         List<FavoriteItem> favoriteItem = favoriteItemRepository.findAllByFavorite(favorite);
         return favoriteItem;
     }
+
 }
