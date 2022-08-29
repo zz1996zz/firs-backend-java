@@ -28,7 +28,7 @@ public class CardService {
         Card card = cardRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
-        card.update(cardForm.getProductType(), cardForm.getCardName(), cardForm.getAnnualFee(), cardForm.getCardType(), cardForm.getSubjectToJoin(), cardForm.getExplanation());
+        card.update(cardForm.getProductType(), cardForm.getCardName(), cardForm.getCardCompany(), cardForm.getAnnualFee(), cardForm.getCardType(), cardForm.getCardDescription(), cardForm.getFranchisee(), cardForm.getShopping(), cardForm.getOiling(), cardForm.getInsurance(), cardForm.getCafe(), cardForm.getTag());
 
         return id;
     }

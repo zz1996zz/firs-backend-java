@@ -30,18 +30,30 @@ public class CardRepositoryTest {
         //given
         String productType = "가";
         String cardName = "나";
-        String annualFee = "다";
-        String cardType = "라";
-        String subjectToJoin = "마";
-        String explanation = "바";
+        String cardCompany = "다";
+        String annualFee = "라";
+        String cardType = "마";
+        String cardDescription = "바";
+        String franchisee = "사";
+        String shopping = "아";
+        String oiling = "자";
+        String insurance = "차";
+        String cafe = "카";
+        String tag = "타";
 
         cardRepository.save(Card.builder()
                 .productType(productType)
                 .cardName(cardName)
+                .cardCompany(cardCompany)
                 .annualFee(annualFee)
                 .cardType(cardType)
-                .subjectToJoin(subjectToJoin)
-                .explanation(explanation)
+                .cardDescription(cardDescription)
+                .franchisee(franchisee)
+                .shopping(shopping)
+                .oiling(oiling)
+                .insurance(insurance)
+                .cafe(cafe)
+                .tag(tag)
                 .build());
 
         //when
@@ -51,9 +63,15 @@ public class CardRepositoryTest {
         Card cards = cardList.get(0);
         assertThat(cards.getProductType()).isEqualTo(productType);
         assertThat(cards.getCardName()).isEqualTo(cardName);
+        assertThat(cards.getCardCompany()).isEqualTo(cardCompany);
         assertThat(cards.getAnnualFee()).isEqualTo(annualFee);
         assertThat(cards.getCardType()).isEqualTo(cardType);
-        assertThat(cards.getSubjectToJoin()).isEqualTo(subjectToJoin);
-        assertThat(cards.getExplanation()).isEqualTo(explanation);
+        assertThat(cards.getCardDescription()).isEqualTo(cardDescription);
+        assertThat(cards.getFranchisee()).isEqualTo(franchisee);
+        assertThat(cards.getShopping()).isEqualTo(shopping);
+        assertThat(cards.getOiling()).isEqualTo(oiling);
+        assertThat(cards.getInsurance()).isEqualTo(insurance);
+        assertThat(cards.getCafe()).isEqualTo(cafe);
+        assertThat(cards.getTag()).isEqualTo(tag);
     }
 }
