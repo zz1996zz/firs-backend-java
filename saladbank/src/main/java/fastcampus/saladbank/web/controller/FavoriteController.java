@@ -3,6 +3,7 @@ package fastcampus.saladbank.web.controller;
 import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.service.FavoriteService;
+import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,9 @@ public class FavoriteController {
 
     //관심상품 등록
     @PostMapping("/favorites")
-    public void insertFavorite(){
-        favoriteService.insertFavorite();
+    public void insertFavoriteCard(@RequestBody MemberForm reqMember,
+                               @RequestBody CardForm reqCard){
+        favoriteService.insertFavoriteCard(reqMember,reqCard);
     }
 
 
