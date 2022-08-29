@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="30fcb4d7-9dca-4d21-ba94-7da7daa16e7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/OrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/OrderControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,25 +64,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;f94c299484a297aea69eb63ba279fb1d&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "spring.configuration.checksum": "f94c299484a297aea69eb63ba279fb1d"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.OrderControllerTest.Order_등록">
+}]]></component>
+  <component name="RunManager" selected="JUnit.OrderControllerTest.Order_수정">
     <configuration name="CardControllerTest.Card_등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -190,6 +195,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderControllerTest.Order_수정" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.OrderControllerTest" />
+      <option name="METHOD_NAME" value="Order_수정" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderRepositoryTest.order_불러오기" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -215,6 +236,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderControllerTest.Order_수정" />
         <item itemvalue="JUnit.OrderControllerTest.Order_등록" />
         <item itemvalue="JUnit.OrderRepositoryTest.order_불러오기" />
         <item itemvalue="JUnit.CardControllerTest.Card_등록" />
@@ -232,6 +254,7 @@
       <updated>1661509161343</updated>
       <workItem from="1661509164151" duration="5188000" />
       <workItem from="1661517185206" duration="249000" />
+      <workItem from="1661758713313" duration="1900000" />
     </task>
     <servers />
   </component>

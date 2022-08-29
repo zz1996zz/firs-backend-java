@@ -34,4 +34,10 @@ public class Order extends BaseTime {
         this.expiryDate = expiryDate;
         this.status = status;
     }
+
+    public void update(LocalDate applyDate, LocalDate expiryDate, String status) {
+        this.applyDate = applyDate;
+        this.expiryDate = expiryDate;
+        this.status = status;
+    }
 }
