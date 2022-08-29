@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -43,8 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(jwtAuthenticationFilter)
                 .addFilter(jwtAuthorizationFilter)
                 .authorizeRequests()
-//                .antMatchers("/register", "/products/**", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
-//                .anyRequest().access("hasRole('ROLE_USER')");
-                .anyRequest().permitAll();
+                .antMatchers("/register", "/products/**", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
+                .anyRequest().access("hasRole('ROLE_USER')")
+//                .anyRequest().permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/do-logout")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"));
     }
 }
