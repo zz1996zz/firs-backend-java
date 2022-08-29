@@ -77,7 +77,9 @@
     &quot;spring.configuration.checksum&quot;: &quot;f94c299484a297aea69eb63ba279fb1d&quot;
   }
 }</component>
+
   <component name="RunManager" selected="JUnit.OrderControllerTest.Order_등록">
+
     <configuration name="CardControllerTest.Card_등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -174,6 +176,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="OrderControllerTest.Order_등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -190,6 +193,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="OrderRepositoryTest.order_불러오기" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -215,7 +219,9 @@
     </configuration>
     <recent_temporary>
       <list>
+
         <item itemvalue="JUnit.OrderControllerTest.Order_등록" />
+
         <item itemvalue="JUnit.OrderRepositoryTest.order_불러오기" />
         <item itemvalue="JUnit.CardControllerTest.Card_등록" />
         <item itemvalue="JUnit.CardRepositoryTest.Card_불러오기" />
