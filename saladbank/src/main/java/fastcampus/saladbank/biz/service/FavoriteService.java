@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +31,7 @@ public class FavoriteService {
 
     //관심상품 추가
     @Transactional
-    public void insertFavorite(Card card, Loan loan) {
-
+    public void insertFavorite() {
     }
     //관심상품 조회
     public List<FavoriteItem> getFavorites(MemberForm reqMember) {
