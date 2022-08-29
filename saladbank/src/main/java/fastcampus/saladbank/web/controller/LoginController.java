@@ -49,10 +49,9 @@ public class LoginController {
     }
 
     @GetMapping("/test")
-    public void test(@Login MemberForm memberForm) throws IOException {
-        ImageToBase64Encoder encoder = new ImageToBase64Encoder("국민");
-        String encodeString = encoder.imageToBase64();
-        log.info("encodeString={}", encodeString);
-        log.info("memberForm={}", memberForm.getUsername());
+    public void test() throws IOException {
+        ImageToBase64Encoder encoder = new ImageToBase64Encoder();
+        String encodedString = encoder.imageToBase64("국민");
+        log.info("encodedString={}", encodedString);
     }
 }
