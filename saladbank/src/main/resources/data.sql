@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG)
 VALUES ("카드", "신한카드", "신한", "10000", "신용", "매일매일 할인 좋아", "0.3 1.0", "10만원 당 5천 머니", "5만원 당 3천원", "7만원 당 2천 머니", "100", "주부 그림/운동 30대");
 
