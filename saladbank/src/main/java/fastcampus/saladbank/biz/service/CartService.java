@@ -21,6 +21,8 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final MemberRepository memberRepository;
     private final LoanRepository loanRepository;
+
+
     //장바구니 조회
     public List<CartItem> getCarts(MemberForm reqMember) {
         String username = reqMember.getUsername();
@@ -39,7 +41,6 @@ public class CartService {
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
         //loan 찾기
-
         Loan loan = loanRepository.findById(loanId).orElse(null);
         CartItem cartItem = new CartItem(cart,loan);
         cartItemRepository.save(cartItem);
