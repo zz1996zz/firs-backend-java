@@ -14,6 +14,8 @@ public class OrderForm {
     private LocalDate applyDate;
     private LocalDate expiryDate;
     private String status;
+
+    // 주문 등록시 사용
     @Builder
     public OrderForm(LocalDate applyDate, LocalDate expiryDate, String status) {
         this.applyDate = applyDate;
@@ -27,6 +29,13 @@ public class OrderForm {
                 .expiryDate(expiryDate)
                 .status(status)
                 .build();
+    }
+
+    // 주문 조회시 사용
+    public OrderForm(Order entity) {
+        this.applyDate = entity.getApplyDate();
+        this.expiryDate = entity.getExpiryDate();
+        this.status = entity.getStatus();
     }
 
 }
