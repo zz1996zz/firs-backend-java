@@ -1,6 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,11 @@ public class Order extends BaseTime {
 
     @Column(name = "STATUS", nullable = false)
     private String status;
+
+    @Builder
+    public Order(LocalDate applyDate, LocalDate expiryDate, String status) {
+        this.applyDate = applyDate;
+        this.expiryDate = expiryDate;
+        this.status = status;
+    }
 }
