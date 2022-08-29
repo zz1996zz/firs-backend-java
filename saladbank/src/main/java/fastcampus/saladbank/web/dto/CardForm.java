@@ -44,7 +44,5 @@ public class CardForm {
         this.cardName = entity.getCardName();
         this.annualFee = entity.getAnnualFee();
         this.cardType = entity.getCardType();
-        this.subjectToJoin = entity.getSubjectToJoin();
-        this.explanation = entity.getExplanation();
     }
 }

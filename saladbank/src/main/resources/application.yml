@@ -10,11 +10,12 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
     generate-ddl: true
+    defer-datasource-initialization: true
   config:
     import:
       - classpath:/application.yml
