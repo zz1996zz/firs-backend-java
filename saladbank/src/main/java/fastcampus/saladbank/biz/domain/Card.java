@@ -24,17 +24,35 @@ public class Card extends BaseTime {
     @Column(name = "CARD_NAME", nullable = false)
     private String cardName; //카드이름
 
+    @Column(name = "CARD_COMPANY", nullable = false)
+    private String cardCompany; //카드회사 이름
+
     @Column(name = "ANNUAL_FEE", nullable = false)
     private String annualFee; //연회비
 
     @Column(name = "CARD_TYPE", nullable = false)
     private String cardType; // 카드 종류 (체크 or 신용)
 
-    @Column(name = "SUBJECT_TO_JOIN", nullable = false)
-    private String subjectToJoin; //가입 대상
+    @Column(name = "CARD_DESCRIPTION", nullable = false)
+    private String cardDescription; //카드 간단한 설명
 
-    @Column(name = "EXPLANATION", nullable = false)
-    private String explanation; // 요약설명
+    @Column(name = "FRANCHISEE", nullable = false)
+    private String franchisee; // 가맹점 적립률 "0.3 1.0"
+
+    @Column(name = "SHOPPING", nullable = false)
+    private String shopping; // "10만원 당 5천 머니" 적립
+
+    @Column(name = "OILING", nullable = false)
+    private String oiling; // "5만원당 3천원"
+
+    @Column(name = "INSURANCE", nullable = false)
+    private String insurance; // "10만원 당 5천 머니"
+
+    @Column(name = "CAFE", nullable = false)
+    private String cafe; // "1000"
+
+    @Column(name = "TAG", nullable = false)
+    private String tag; // "주부 그림/운동 30대" 나이/직업/취미 하나씩 들가는 곳
 
     @Builder
     public Card(String productType, String cardName, String annualFee, String cardType, String subjectToJoin, String explanation) {
