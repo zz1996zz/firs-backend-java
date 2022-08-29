@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Entity;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,13 +46,13 @@ public class FavoriteService {
 
     //관심상품 추가 (카드)
     @Transactional
-    public void insertFavoriteCard(MemberForm reqMember, CardForm reqCard) {
+    public FavoriteItem insertFavoriteCard(MemberForm reqMember, CardForm reqCard) {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
         Card card = cardRepository.findByCardName(reqCard.getCardName());
         FavoriteItem favoriteItem = new FavoriteItem(favorite,card);
-        favoriteItemRepository.save(favoriteItem);
+        return favoriteItemRepository.save(favoriteItem);
 
     }
 }

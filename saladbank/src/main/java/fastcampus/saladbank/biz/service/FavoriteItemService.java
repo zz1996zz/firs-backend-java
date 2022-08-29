@@ -1,5 +1,6 @@
 package fastcampus.saladbank.biz.service;
 
+import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.domain.FavoriteItem;
 import fastcampus.saladbank.biz.repository.FavoriteItemRepository;
 import fastcampus.saladbank.biz.repository.FavoriteRepository;
@@ -11,5 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly=true)
 public class FavoriteItemService {
+
+    private final FavoriteItemRepository favoriteItemRepository;
+
 
 }

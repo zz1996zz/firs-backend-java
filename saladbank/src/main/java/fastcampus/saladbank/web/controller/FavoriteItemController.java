@@ -1,10 +1,12 @@
 package fastcampus.saladbank.web.controller;
 
+import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.domain.FavoriteItem;
 import fastcampus.saladbank.biz.service.FavoriteItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 

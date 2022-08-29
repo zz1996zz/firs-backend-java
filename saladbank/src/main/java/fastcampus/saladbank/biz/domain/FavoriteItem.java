@@ -1,10 +1,12 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,11 +22,17 @@ public class FavoriteItem extends BaseTime {
     @OneToOne
     private Favorite favorite;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "LOAN_ID")
-    private Loan loan;
+    private List<Loan> loan;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "card_ID")
-    private Card card;
+    private List<Card> card;
+
+    @Builder
+    public FavoriteItem(Favorite favorite, Card card){
+        this.favorite=favorite;
+        this.card.add(card);
+    }
 }
