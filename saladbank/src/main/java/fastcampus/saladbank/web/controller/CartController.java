@@ -3,6 +3,7 @@ package fastcampus.saladbank.web.controller;
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.repository.CartItemRepository;
 import fastcampus.saladbank.biz.service.CartService;
+import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,8 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public void getCarts(Member member ){
-        cartService.getCarts(member);
+    public void getCarts(MemberForm reqMember ){
+        cartService.getCarts(reqMember);
     }
 
     //장바구니 추가
