@@ -7,6 +7,7 @@
     <list default="true" id="30fcb4d7-9dca-4d21-ba94-7da7daa16e7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/resources/application.yml" afterDir="false" />
@@ -46,6 +47,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -82,7 +84,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;f94c299484a297aea69eb63ba279fb1d&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.CardControllerTest.Card_수정">
+  <component name="RunManager" selected="JUnit.OrderRepositoryTest.order_불러오기">
     <configuration name="CardControllerTest.Card_등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -179,6 +181,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderRepositoryTest.order_불러오기" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.OrderRepositoryTest" />
+      <option name="METHOD_NAME" value="order_불러오기" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SaladbankApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="saladbank.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="fastcampus.saladbank.SaladbankApplication" />
@@ -188,11 +206,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CardControllerTest.Card_수정" />
+        <item itemvalue="JUnit.OrderRepositoryTest.order_불러오기" />
         <item itemvalue="JUnit.CardControllerTest.Card_등록" />
         <item itemvalue="JUnit.CardRepositoryTest.Card_불러오기" />
-        <item itemvalue="JUnit.CardControllerTest.Card_수정된다" />
-        <item itemvalue="JUnit.CardControllerTest.Card_조회된다" />
       </list>
     </recent_temporary>
   </component>
