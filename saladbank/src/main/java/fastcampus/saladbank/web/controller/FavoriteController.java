@@ -1,12 +1,16 @@
 package fastcampus.saladbank.web.controller;
 
+import fastcampus.saladbank.biz.domain.Card;
+import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.service.FavoriteService;
+import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Entity;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/favorites")
 public class FavoriteController {
 
     private final FavoriteService favoriteService;
@@ -17,6 +21,7 @@ public class FavoriteController {
         favoriteService.insertFavorite();
     }
 
+
     //관심상품 해지
     @DeleteMapping("/favorites/{id}")
     public void deleteFavorite(@PathVariable long id){
@@ -25,8 +30,8 @@ public class FavoriteController {
 
     //관심상품 조회
     @GetMapping("/favorites")
-    public void getFavorites(){
-        favoriteService.getFavorites();
+    public void getFavorites(MemberForm reqMember){
+        favoriteService.getFavorites(reqMember);
     }
 
 }
