@@ -53,5 +53,6 @@ public class LoginController {
         ImageToBase64Encoder encoder = new ImageToBase64Encoder();
         String encodedString = encoder.imageToBase64("국민");
         log.info("encodedString={}", encodedString);
+
     }
 }
