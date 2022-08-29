@@ -122,5 +122,4 @@ public class CardControllerTest {
         assertThat(all.get(0).getSubjectToJoin()).isEqualTo(expectedSubjectToJoin);
         assertThat(all.get(0).getExplanation()).isEqualTo(expectedExplanation);
     }
-
 }

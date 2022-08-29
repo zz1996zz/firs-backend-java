@@ -22,4 +22,11 @@ public class CardController {
     public Long update(@PathVariable Long id, @RequestBody CardForm cardForm) {
         return cardService.update(id, cardForm);
     }
+
+    // 카드 조회
+    @GetMapping("/card/view/{id}")
+    public CardForm findById(@PathVariable Long id) {
+        return cardService.findById(id);
+    }
+
 }

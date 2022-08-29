@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="30fcb4d7-9dca-4d21-ba94-7da7daa16e7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/domain/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/MemberForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/MemberForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/CardControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/CardControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,29 +81,6 @@
   }
 }</component>
   <component name="RunManager" selected="JUnit.CardControllerTest.Card_수정된다">
-    <configuration name="CardRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/saladbank" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;fastcampus.saladbank.biz.service.CardRepositoryTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="CardControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -131,6 +107,38 @@
       <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
       <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.CardControllerTest" />
       <option name="METHOD_NAME" value="Card_등록" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardControllerTest.Card_조회된다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.CardControllerTest" />
+      <option name="METHOD_NAME" value="Card_조회된다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardControllerTest.Card_수정된다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saladbank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fastcampus.saladbank.biz.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fastcampus.saladbank.biz.service" />
+      <option name="MAIN_CLASS_NAME" value="fastcampus.saladbank.biz.service.CardControllerTest" />
+      <option name="METHOD_NAME" value="Card_수정된다" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,10 +185,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CardControllerTest.Card_수정된다" />
+        <item itemvalue="JUnit.CardControllerTest.Card_조회된다" />
         <item itemvalue="JUnit.CardControllerTest" />
         <item itemvalue="JUnit.CardControllerTest.Card_등록" />
         <item itemvalue="JUnit.CardRepositoryTest" />
-        <item itemvalue="Gradle.CardRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
