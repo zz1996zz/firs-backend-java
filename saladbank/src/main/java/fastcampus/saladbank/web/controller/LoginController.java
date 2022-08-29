@@ -3,6 +3,7 @@ package fastcampus.saladbank.web.controller;
 import fastcampus.saladbank.biz.service.MemberService;
 import fastcampus.saladbank.config.jwt.JwtProperties;
 import fastcampus.saladbank.web.ImageToBase64Encoder;
+import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,9 +49,10 @@ public class LoginController {
     }
 
     @GetMapping("/test")
-    public void test() throws IOException {
+    public void test(@Login MemberForm memberForm) throws IOException {
         ImageToBase64Encoder encoder = new ImageToBase64Encoder("국민");
         String encodeString = encoder.imageToBase64();
         log.info("encodeString={}", encodeString);
+        log.info("memberForm={}", memberForm.getUsername());
     }
 }
