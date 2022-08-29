@@ -2,6 +2,7 @@ package fastcampus.saladbank.biz.service;
 
 import fastcampus.saladbank.biz.domain.*;
 import fastcampus.saladbank.biz.repository.*;
+import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,14 +47,16 @@ public class CartService {
     }
 
     @Transactional
-    public CartItem insertCard(MemberForm reqMember, long cardId) {
+    public CartItem insertCard(MemberForm reqMember, CardForm reqCard) {
         //member 찾기
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
         //card 찾기
-        Card card = cardRepository.findById(cardId).orElse(null);
+        String cardName = reqCard.getCardName();
+        Card card = cardRepository.findByCardName(cardName);
+        //카트에 추가
         CartItem cartItem = new CartItem(cart,card);
         cartItemRepository.save(cartItem);
         return cartItem;
