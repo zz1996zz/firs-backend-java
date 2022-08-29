@@ -30,7 +30,7 @@ public class LoginController {
             String status = "true";
             return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
         }
-        String status = "flase";
+        String status = "false";
         return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
     }
 }
