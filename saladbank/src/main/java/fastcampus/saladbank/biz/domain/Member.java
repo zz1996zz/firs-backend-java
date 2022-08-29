@@ -54,10 +54,6 @@ public class Member extends BaseTime {
     @JoinColumn(name = "ORDERS_ID")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "FAVORITE_ID")
-    private List<Favorite> favorites = new ArrayList<>();
-
     @Builder
     public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, int creditRating) {
         this.username = username;
