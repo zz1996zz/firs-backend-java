@@ -84,5 +84,6 @@ public class Card extends BaseTime {
         this.cafe = cafe;
         this.tag = tag;
     }
+
 }
 // 카드상품 : 연회비, 카드 종류(체크인지 신용인지), 가입대상, 카드 이름, 요약설명

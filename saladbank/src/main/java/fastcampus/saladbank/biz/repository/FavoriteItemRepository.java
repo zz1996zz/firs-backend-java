@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FavoriteItemRepository extends JpaRepository<FavoriteItem,Long> {
-    void deleteAllByFavoriteId(long id);
 
     List<FavoriteItem> findAllByFavorite(Favorite favorite);
 
