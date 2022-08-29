@@ -5,6 +5,7 @@ import fastcampus.saladbank.biz.repository.*;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly=true)
+@Slf4j
 public class CartService {
 
     private final CartRepository cartRepository;
@@ -51,6 +53,7 @@ public class CartService {
     public CartItem insertCard(MemberForm reqMember, CardForm reqCard) {
         //member 찾기
         String username = reqMember.getUsername();
+        log.info("username: {}", reqMember.getUsername());
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);

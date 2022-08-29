@@ -1,7 +1,9 @@
 package fastcampus.saladbank.web.controller;
 
 import fastcampus.saladbank.biz.domain.CartItem;
+import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.service.CartService;
+import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +27,9 @@ public class CartController {
     
     //장바구니 추가
     @PostMapping("/card")
-    public CartItem insertCard(@RequestBody MemberForm reqMember,
-                               @RequestBody CardForm reqCard){
-        CartItem cartItem = cartService.insertCard(reqMember, reqCard);
-        return cartItem;
+    public void insertCard(@Login MemberForm reqMember,
+                           @RequestBody CardForm reqCard){
+        cartService.insertCard(reqMember, reqCard);
     }
 
     @PostMapping("/loan")
