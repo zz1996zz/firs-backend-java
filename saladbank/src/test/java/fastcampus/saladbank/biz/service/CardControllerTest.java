@@ -5,6 +5,7 @@ import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.web.dto.CardForm;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.Tag;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,17 +44,30 @@ public class CardControllerTest {
         //given
         String productType = "가";
         String cardName = "나";
-        String annualFee = "다";
-        String cardType = "라";
-        String subjectToJoin = "마";
-        String explanation = "바";
+        String cardCompany = "다";
+        String annualFee = "라";
+        String cardType = "마";
+        String cardDescription = "바";
+        String franchisee = "사";
+        String shopping = "아";
+        String oiling = "자";
+        String insurance = "차";
+        String cafe = "카";
+        String tag = "타";
+
         CardForm cardForm = CardForm.builder()
                 .productType(productType)
                 .cardName(cardName)
+                .cardCompany(cardCompany)
                 .annualFee(annualFee)
                 .cardType(cardType)
-                .subjectToJoin(subjectToJoin)
-                .explanation(explanation)
+                .cardDescription(cardDescription)
+                .franchisee(franchisee)
+                .shopping(shopping)
+                .oiling(oiling)
+                .insurance(insurance)
+                .cafe(cafe)
+                .tag(tag)
                 .build();
 
         String url = "http://localhost:" + port + "/card/register";
@@ -68,39 +82,63 @@ public class CardControllerTest {
         List<Card> all = cardRepository.findAll();
         assertThat(all.get(0).getProductType()).isEqualTo(productType);
         assertThat(all.get(0).getCardName()).isEqualTo(cardName);
+        assertThat(all.get(0).getCardCompany()).isEqualTo(cardCompany);
         assertThat(all.get(0).getAnnualFee()).isEqualTo(annualFee);
         assertThat(all.get(0).getCardType()).isEqualTo(cardType);
-        assertThat(all.get(0).getSubjectToJoin()).isEqualTo(subjectToJoin);
-        assertThat(all.get(0).getExplanation()).isEqualTo(explanation);
+        assertThat(all.get(0).getCardDescription()).isEqualTo(cardDescription);
+        assertThat(all.get(0).getFranchisee()).isEqualTo(franchisee);
+        assertThat(all.get(0).getShopping()).isEqualTo(shopping);
+        assertThat(all.get(0).getOiling()).isEqualTo(oiling);
+        assertThat(all.get(0).getInsurance()).isEqualTo(insurance);
+        assertThat(all.get(0).getCafe()).isEqualTo(cafe);
+        assertThat(all.get(0).getTag()).isEqualTo(tag);
     }
 
     @Test
-    public void Card_수정된다() throws Exception {
+    public void Card_수정() throws Exception {
         //given
         Card saveCard = cardRepository.save(Card.builder()
                 .productType("가")
                 .cardName("나")
-                .annualFee("다")
-                .cardType("라")
-                .subjectToJoin("마")
-                .explanation("바")
+                .cardCompany("다")
+                .annualFee("라")
+                .cardType("마")
+                .cardDescription("바")
+                .franchisee("사")
+                .shopping("아")
+                .oiling("자")
+                .insurance("차")
+                .cafe("카")
+                .tag("타")
                 .build());
 
         Long updateId = saveCard.getId();
         String expectedProductType = "A";
         String expectedCardName = "B";
-        String expectedAnnualFee = "C";
-        String expectedCardType = "D";
-        String expectedSubjectToJoin = "E";
-        String expectedExplanation = "F";
+        String expectedCardCompany = "C";
+        String expectedAnnualFee = "D";
+        String expectedCardType = "E";
+        String expectedCardDescription = "F";
+        String expectedFranchisee = "G";
+        String expectedShopping = "H";
+        String expectedOiling = "I";
+        String expectedInsurance = "J";
+        String expectedCafe = "K";
+        String expectedTag = "L";
 
         CardForm cardForm = CardForm.builder()
                 .productType(expectedProductType)
                 .cardName(expectedCardName)
+                .cardCompany(expectedCardCompany)
                 .annualFee(expectedAnnualFee)
                 .cardType(expectedCardType)
-                .subjectToJoin(expectedSubjectToJoin)
-                .explanation(expectedExplanation)
+                .cardDescription(expectedCardDescription)
+                .franchisee(expectedFranchisee)
+                .shopping(expectedShopping)
+                .oiling(expectedOiling)
+                .insurance(expectedInsurance)
+                .cafe(expectedCafe)
+                .tag(expectedTag)
                 .build();
 
         String url = "http://localhost:" + port + "/card/update/" + updateId;
@@ -117,9 +155,16 @@ public class CardControllerTest {
         List<Card> all = cardRepository.findAll();
         assertThat(all.get(0).getProductType()).isEqualTo(expectedProductType);
         assertThat(all.get(0).getCardName()).isEqualTo(expectedCardName);
+        assertThat(all.get(0).getCardCompany()).isEqualTo(expectedCardCompany);
         assertThat(all.get(0).getAnnualFee()).isEqualTo(expectedAnnualFee);
         assertThat(all.get(0).getCardType()).isEqualTo(expectedCardType);
-        assertThat(all.get(0).getSubjectToJoin()).isEqualTo(expectedSubjectToJoin);
-        assertThat(all.get(0).getExplanation()).isEqualTo(expectedExplanation);
+        assertThat(all.get(0).getCardDescription()).isEqualTo(expectedCardDescription);
+        assertThat(all.get(0).getFranchisee()).isEqualTo(expectedFranchisee);
+        assertThat(all.get(0).getShopping()).isEqualTo(expectedShopping);
+        assertThat(all.get(0).getOiling()).isEqualTo(expectedOiling);
+        assertThat(all.get(0).getInsurance()).isEqualTo(expectedInsurance);
+        assertThat(all.get(0).getCafe()).isEqualTo(expectedCafe);
+        assertThat(all.get(0).getTag()).isEqualTo(expectedTag);
+
     }
 }
