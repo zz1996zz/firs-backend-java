@@ -42,9 +42,15 @@ public class CartController {
         return cartItem;
     }
 
-    //장바구니 취소
-    @DeleteMapping("/{id}")
-    public void deleteCart(@PathVariable long id){
-        cartService.deleteCart(id);
+    //장바구니 비우기(전체삭제)
+    @DeleteMapping
+    public void deleteCart(){
+        cartService.deleteAllCart("wnsdn4875");
+    }
+
+    //장바구니 삭제(카드)
+    @DeleteMapping("/card/{id}")
+    public void deleteCartCard(@PathVariable long id){
+        cartService.deleteCartCard("wnsdn4875",id);
     }
 }

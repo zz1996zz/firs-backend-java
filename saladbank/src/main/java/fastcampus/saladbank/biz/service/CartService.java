@@ -66,9 +66,28 @@ public class CartService {
         return cartItem;
     }
 
-    //장바구니 삭제
+    //장바구니 비우기(전체)
     @Transactional
-    public void deleteCart(long id) {
-        cartItemRepository.deleteAllByCartId(id);
+    public void deleteAllCart(String username) {
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Cart cart = cartRepository.findByMember(member);
+        cartItemRepository.deleteAllByCart(cart);
+    }
+
+    //장바구니 단건삭제(카드)
+    @Transactional
+    public void deleteCartCard(String username, long id) {
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Cart cart = cartRepository.findByMember(member);
+        List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
+        Optional<Card> card = cardRepository.findById(id);
+        for(CartItem cartItem : cartItemList){
+            if(cartItem.getCardList().contains(card.get())){
+                cartItemRepository.deleteById(cartItem.getId());
+                log.info(card.get().getCardName() + "가 삭제되었습니다.");
+            } else {
+                log.info(card.get().getCardName() + "이 없습니다.");
+            }
+        }
     }
 }
