@@ -16,6 +16,9 @@ spring:
     show-sql: true
     generate-ddl: true
     defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
   config:
     import:
       - classpath:/application.yml

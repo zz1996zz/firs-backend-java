@@ -55,18 +55,34 @@ public class Card extends BaseTime {
     private String tag; // "주부 그림/운동 30대" 나이/직업/취미 하나씩 들가는 곳
 
     @Builder
-    public Card(String productType, String cardName, String annualFee, String cardType, String subjectToJoin, String explanation) {
+    public Card(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
         this.productType = productType;
         this.cardName = cardName;
+        this.cardCompany = cardCompany;
         this.annualFee = annualFee;
         this.cardType = cardType;
+        this.cardDescription = cardDescription;
+        this.franchisee = franchisee;
+        this.shopping = shopping;
+        this.oiling = oiling;
+        this.insurance = insurance;
+        this.cafe = cafe;
+        this.tag = tag;
     }
 
-    public void update(String productType, String cardName, String annualFee, String cardType, String subjectToJoin, String explanation) {
+    public void update(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
         this.productType = productType;
         this.cardName = cardName;
+        this.cardCompany = cardCompany;
         this.annualFee = annualFee;
         this.cardType = cardType;
+        this.cardDescription = cardDescription;
+        this.franchisee = franchisee;
+        this.shopping = shopping;
+        this.oiling = oiling;
+        this.insurance = insurance;
+        this.cafe = cafe;
+        this.tag = tag;
     }
 }
 // 카드상품 : 연회비, 카드 종류(체크인지 신용인지), 가입대상, 카드 이름, 요약설명
