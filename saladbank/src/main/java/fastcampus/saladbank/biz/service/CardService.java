@@ -40,4 +40,13 @@ public class CardService {
 
         return new CardForm(entity);
     }
+
+    // 카드 삭제
+    @Transactional
+    public void delete(Long id) {
+        Card card = cardRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        cardRepository.delete(card);
+    }
 }

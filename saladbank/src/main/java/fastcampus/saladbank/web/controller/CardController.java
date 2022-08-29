@@ -29,4 +29,10 @@ public class CardController {
         return cardService.findById(id);
     }
 
+    // 카드 삭제
+    @DeleteMapping("/card/delete/{id}")
+    public Long delete(@PathVariable Long id) {
+        cardService.delete(id);
+        return id;
+    }
 }
