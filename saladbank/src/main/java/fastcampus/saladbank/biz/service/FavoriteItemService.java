@@ -12,8 +12,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly=true)
 public class FavoriteItemService {
 
-    @Transactional
-    public void insertFavoriteItem() {
-
-    }
 }

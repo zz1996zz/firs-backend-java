@@ -16,4 +16,7 @@ public class Favorite extends BaseTime {
     @Column(name = "FAVORITE_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToOne
+    private Member member;
 }
