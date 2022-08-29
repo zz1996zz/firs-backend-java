@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/biz/service/CardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/CardForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/CardControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/CardControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
