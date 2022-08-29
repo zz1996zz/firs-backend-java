@@ -26,7 +26,7 @@ public class CardService {
     @Transactional
     public Long update(Long id, CardForm cardForm) {
         Card card = cardRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+                new IllegalArgumentException("해당 카드가 없습니다. id=" + id));
 
         card.update(cardForm.getProductType(), cardForm.getCardName(), cardForm.getCardCompany(), cardForm.getAnnualFee(), cardForm.getCardType(), cardForm.getCardDescription(), cardForm.getFranchisee(), cardForm.getShopping(), cardForm.getOiling(), cardForm.getInsurance(), cardForm.getCafe(), cardForm.getTag());
 
@@ -36,7 +36,7 @@ public class CardService {
     // 카드 조회
     public CardForm findById(Long id) {
         Card entity = cardRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+                new IllegalArgumentException("해당 카드가 없습니다. id=" + id));
 
         return new CardForm(entity);
     }
@@ -45,7 +45,7 @@ public class CardService {
     @Transactional
     public void delete(Long id) {
         Card card = cardRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+                new IllegalArgumentException("해당 카드가 없습니다. id=" + id));
 
         cardRepository.delete(card);
     }
