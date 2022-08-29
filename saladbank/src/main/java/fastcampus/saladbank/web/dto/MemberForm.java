@@ -1,6 +1,7 @@
 package fastcampus.saladbank.web.dto;
 
 import fastcampus.saladbank.biz.domain.Member;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
