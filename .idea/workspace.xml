@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/main/java/fastcampus/saladbank/web/dto/OrderForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/saladbank/src/test/java/fastcampus/saladbank/biz/service/OrderControllerTest.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +196,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="OrderControllerTest.Order_수정" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -236,8 +238,10 @@
     </configuration>
     <recent_temporary>
       <list>
+
         <item itemvalue="JUnit.OrderControllerTest.Order_수정" />
         <item itemvalue="JUnit.OrderControllerTest.Order_등록" />
+
         <item itemvalue="JUnit.OrderRepositoryTest.order_불러오기" />
         <item itemvalue="JUnit.CardControllerTest.Card_등록" />
         <item itemvalue="JUnit.CardRepositoryTest.Card_불러오기" />
