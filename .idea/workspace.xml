@@ -190,6 +190,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="OrderControllerTest.Order_수정" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saladbank.test" />
       <extension name="coverage">
@@ -250,6 +251,7 @@
       <workItem from="1661509164151" duration="5188000" />
       <workItem from="1661517185206" duration="249000" />
       <workItem from="1661758713313" duration="2238000" />
+
     </task>
     <servers />
   </component>
