@@ -21,37 +21,37 @@ public class Card extends BaseTime {
     @Column(name = "PRODUCT_TYPE")
     private String productType;
 
-    @Column(name = "CARD_NAME", nullable = false)
+    @Column(name = "CARD_NAME")
     private String cardName; //카드이름
 
-    @Column(name = "CARD_COMPANY", nullable = false)
+    @Column(name = "CARD_COMPANY")
     private String cardCompany; //카드회사 이름
 
-    @Column(name = "ANNUAL_FEE", nullable = false)
+    @Column(name = "ANNUAL_FEE")
     private String annualFee; //연회비
 
-    @Column(name = "CARD_TYPE", nullable = false)
+    @Column(name = "CARD_TYPE")
     private String cardType; // 카드 종류 (체크 or 신용)
 
-    @Column(name = "CARD_DESCRIPTION", nullable = false)
+    @Column(name = "CARD_DESCRIPTION")
     private String cardDescription; //카드 간단한 설명
 
-    @Column(name = "FRANCHISEE", nullable = false)
+    @Column(name = "FRANCHISEE")
     private String franchisee; // 가맹점 적립률 "0.3 1.0"
 
-    @Column(name = "SHOPPING", nullable = false)
+    @Column(name = "SHOPPING")
     private String shopping; // "10만원 당 5천 머니" 적립
 
-    @Column(name = "OILING", nullable = false)
+    @Column(name = "OILING")
     private String oiling; // "5만원당 3천원"
 
-    @Column(name = "INSURANCE", nullable = false)
+    @Column(name = "INSURANCE")
     private String insurance; // "10만원 당 5천 머니"
 
-    @Column(name = "CAFE", nullable = false)
+    @Column(name = "CAFE")
     private String cafe; // "1000"
 
-    @Column(name = "TAG", nullable = false)
+    @Column(name = "TAG")
     private String tag; // "주부 그림/운동 30대" 나이/직업/취미 하나씩 들가는 곳
 
     @Builder
