@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class FavoriteItemService {
 
     @Transactional
-    public FavoriteItem insertFavoriteItem() {
+    public void insertFavoriteItem() {
 
     }
 }
