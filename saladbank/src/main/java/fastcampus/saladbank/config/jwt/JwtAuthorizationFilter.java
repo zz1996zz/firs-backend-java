@@ -48,16 +48,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         String username = JWT.require(Algorithm.HMAC512(secret)).build().verify(token).getClaim("username").asString();
 
-        log.info("username={}", username);
-
         if (username != null) {
             Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 username의 사용자를 못 찾았습니다."));
-            log.info("findMember ={}", findMember);
 
             PrincipalDetails principalDetails = new PrincipalDetails(findMember);
             Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
 
-            log.info("authentication={}", authentication.toString());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
