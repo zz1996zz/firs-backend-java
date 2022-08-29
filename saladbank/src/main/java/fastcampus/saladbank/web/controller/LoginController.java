@@ -2,6 +2,7 @@ package fastcampus.saladbank.web.controller;
 
 import fastcampus.saladbank.biz.service.MemberService;
 import fastcampus.saladbank.config.jwt.JwtProperties;
+import fastcampus.saladbank.web.ImageToBase64Encoder;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 @Slf4j
 @RestController
@@ -42,5 +45,12 @@ public class LoginController {
         }
         String status = "false";
         return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/test")
+    public void test() throws IOException {
+        ImageToBase64Encoder encoder = new ImageToBase64Encoder("국민");
+        String encodeString = encoder.imageToBase64();
+        log.info("encodeString={}", encodeString);
     }
 }
