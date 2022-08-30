@@ -12,4 +12,6 @@ public interface FavoriteItemRepository extends JpaRepository<FavoriteItem,Long>
     List<FavoriteItem> findAllByFavorite(Favorite favorite);
 
     void deleteAllByFavorite(Optional<Favorite> favorite);
+
+    FavoriteItem findByFavorite(Favorite favorite);
 }

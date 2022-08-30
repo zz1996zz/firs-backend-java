@@ -30,13 +30,15 @@ public class FavoriteItem extends BaseTime {
     private List<Card> cardList= new LinkedList<>();
 
     @Builder
-    public FavoriteItem(Favorite favorite, Card card){
+    public FavoriteItem(Favorite favorite){
         this.favorite=favorite;
+    }
+
+    public void addCard(Card card){
         this.cardList.add(card);
     }
-    @Builder
-    public FavoriteItem(Favorite favorite, Loan loan){
-        this.favorite=favorite;
+
+    public void addLoan(Loan loan){
         this.loanList.add(loan);
     }
 

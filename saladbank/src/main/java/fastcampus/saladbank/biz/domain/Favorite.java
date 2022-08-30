@@ -1,6 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,9 @@ public class Favorite extends BaseTime {
 
     @OneToOne
     private Member member;
+
+    @Builder
+    public Favorite(Member member){
+        this.member=member;
+    }
 }

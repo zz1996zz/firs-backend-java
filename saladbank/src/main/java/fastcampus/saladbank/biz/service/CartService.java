@@ -35,34 +35,34 @@ public class CartService {
     }
 
     //장바구니 추가(대출)
-    @Transactional
-    public CartItem insertLoan(MemberForm memberForm, long loanId) {
-        //member 찾기
-        String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
-        //cart 찾기
-        Cart cart = cartRepository.findByMember(member);
-        //loan 찾기
-        Loan loan = loanRepository.findById(loanId).orElse(null);
-        CartItem cartItem = new CartItem(cart,loan);
-        cartItemRepository.save(cartItem);
-        return cartItem;
-    }
+//    @Transactional
+//    public CartItem insertLoan(MemberForm memberForm, long loanId) {
+//        //member 찾기
+//        String username = memberForm.getUsername();
+//        Optional<Member> member = memberRepository.findByUsername(username);
+//        //cart 찾기
+//        Cart cart = cartRepository.findByMember(member);
+//        //loan 찾기
+//        Loan loan = loanRepository.findById(loanId).orElse(null);
+//        CartItem cartItem = new CartItem(cart,loan);
+//        cartItemRepository.save(cartItem);
+//        return cartItem;
+//    }
 
     //장바구니 추가(카드)
-    @Transactional
-    public void insertCard(MemberForm memberForm, long cardId) {
-        //member 찾기
-        String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
-        //cart 찾기
-        Cart cart = cartRepository.findByMember(member);
-        //card 찾기
-        Card card = cardRepository.findById(cardId).orElse(null);
-        //카트에 추가
-        CartItem cartItem = new CartItem(cart,card);
-        cartItemRepository.save(cartItem);
-    }
+//    @Transactional
+//    public void insertCard(MemberForm memberForm, long cardId) {
+//        //member 찾기
+//        String username = memberForm.getUsername();
+//        Optional<Member> member = memberRepository.findByUsername(username);
+//        //cart 찾기
+//        Cart cart = cartRepository.findByMember(member);
+//        //card 찾기
+//        Card card = cardRepository.findById(cardId).orElse(null);
+//        //카트에 추가
+//        CartItem cartItem = new CartItem(cart,card);
+//        cartItemRepository.save(cartItem);
+//    }
 
     //장바구니 비우기(전체)
     @Transactional
