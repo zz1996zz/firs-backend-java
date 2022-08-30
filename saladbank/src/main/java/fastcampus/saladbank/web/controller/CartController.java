@@ -1,6 +1,6 @@
 package fastcampus.saladbank.web.controller;
 
-import fastcampus.saladbank.biz.domain.CartItem;
+import fastcampus.saladbank.biz.domain.Cart;
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.service.CartService;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
@@ -25,7 +25,7 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public List<CartItem> getCarts(@Login MemberForm memberForm ){
+    public Cart getCarts(@Login MemberForm memberForm ){
         return cartService.getCarts(memberForm);
     }
     
@@ -33,15 +33,15 @@ public class CartController {
     @PostMapping("/card")
     public void insertCard(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
-        cartService.insertCard(memberForm, map.get("cardId"));
+        cartService.insertCard(memberForm, map.get("card_id"));
     }
 
     //장바구니 추가(대출)
     @PostMapping("/loan")
-    public CartItem insertLoan(@Login MemberForm memberForm,
-                               @RequestBody Map<String,Long> map){
-        CartItem cartItem = cartService.insertLoan(memberForm, map.get("cardId"));
-        return cartItem;
+    public Cart insertLoan(@Login MemberForm memberForm,
+                           @RequestBody Map<String,Long> map){
+        Cart cart = cartService.insertLoan(memberForm, map.get("loan_id"));
+        return cart;
     }
 
     //장바구니 비우기(전체삭제)

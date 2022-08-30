@@ -33,7 +33,13 @@ public class MemberService {
         memberRepository.save(member);
 
         Cart cart = new Cart(member);
+
+        Favorite favorite = new Favorite(member);
+
         cartRepository.save(cart);
+        favoriteRepository.save(favorite);
+
+
     }
 
     public MemberForm getMemberInfo(String username) {
