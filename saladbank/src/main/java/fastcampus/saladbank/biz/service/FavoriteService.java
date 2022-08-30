@@ -71,7 +71,7 @@ public class FavoriteService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        List<FavoriteItem> FavoriteItemList = favoriteRepository.findAllByFavorite(favorite);
+        List<FavoriteItem> FavoriteItemList = favoriteItemRepository.findAllByFavorite(favorite);
         Optional<Card> card = cardRepository.findById(id);
         for(FavoriteItem favoriteItem : FavoriteItemList){
             if(favoriteItem.getCardList().contains(card.get())){
@@ -86,7 +86,7 @@ public class FavoriteService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        List<FavoriteItem> FavoriteItemList = favoriteRepository.findAllByFavorite(favorite);
+        List<FavoriteItem> FavoriteItemList = favoriteItemRepository.findAllByFavorite(favorite);
         Optional<Loan> loan = loanRepository.findById(id);
         for(FavoriteItem favoriteItem : FavoriteItemList){
             if(favoriteItem.getLoanList().contains(loan.get())){

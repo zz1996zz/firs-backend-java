@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Getter
@@ -22,13 +23,11 @@ public class FavoriteItem extends BaseTime {
     @OneToOne
     private Favorite favorite;
 
-    @OneToMany
-    @JoinColumn(name = "LOAN_ID")
-    private List<Loan> loanList;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Loan> loanList = new LinkedList<>();
 
-    @OneToMany
-    @JoinColumn(name = "card_ID")
-    private List<Card> cardList;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Card> cardList= new LinkedList<>();
 
     @Builder
     public FavoriteItem(Favorite favorite, Card card){
