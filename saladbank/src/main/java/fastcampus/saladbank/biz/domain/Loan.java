@@ -43,5 +43,9 @@ public class Loan extends BaseTime {
 
     @Column(name = "TAG")
     private String tag; // ex) 주부, 프리랜서, 모바일, 1금융권
+
+    @ManyToOne
+    @JoinColumn(name = "CART_ITEM_ID")
+    private CartItem cartItem;
 }
 // 대출상품 : 대출한도, 금리, 대출 기간, 상품명, 상품유형, 가입요건
