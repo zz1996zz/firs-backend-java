@@ -24,15 +24,21 @@ public class FavoriteItem extends BaseTime {
 
     @OneToMany
     @JoinColumn(name = "LOAN_ID")
-    private List<Loan> loan;
+    private List<Loan> loanList;
 
     @OneToMany
     @JoinColumn(name = "card_ID")
-    private List<Card> card;
+    private List<Card> cardList;
 
     @Builder
     public FavoriteItem(Favorite favorite, Card card){
         this.favorite=favorite;
-        this.card.add(card);
+        this.cardList.add(card);
     }
+    @Builder
+    public FavoriteItem(Favorite favorite, Loan loan){
+        this.favorite=favorite;
+        this.loanList.add(loan);
+    }
+
 }
