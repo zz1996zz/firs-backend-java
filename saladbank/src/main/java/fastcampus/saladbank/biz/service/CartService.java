@@ -6,6 +6,7 @@ import fastcampus.saladbank.biz.repository.*;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly=true)
+@Slf4j
 public class CartService {
 
     private final CartRepository cartRepository;
@@ -50,9 +52,10 @@ public class CartService {
     }
 
     @Transactional
-    public CartItem insertCard(MemberForm reqMember, CardForm reqCard) {
-        //member 찾기
-        String username = reqMember.getUsername();
+    public CartItem insertCard(String username, CardForm reqCard) {
+//        //member 찾기
+//        String username = reqMember.getUsername();
+//        log.info("username: {}", reqMember.getUsername());
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
@@ -65,9 +68,28 @@ public class CartService {
         return cartItem;
     }
 
-    //장바구니 삭제
+    //장바구니 비우기(전체)
     @Transactional
-    public void deleteCart(long id) {
-        cartItemRepository.deleteAllByCartId(id);
+    public void deleteAllCart(String username) {
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Cart cart = cartRepository.findByMember(member);
+        cartItemRepository.deleteAllByCart(cart);
+    }
+
+    //장바구니 단건삭제(카드)
+    @Transactional
+    public void deleteCartCard(String username, long id) {
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Cart cart = cartRepository.findByMember(member);
+        List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
+        Optional<Card> card = cardRepository.findById(id);
+        for(CartItem cartItem : cartItemList){
+            if(cartItem.getCardList().contains(card.get())){
+                cartItemRepository.deleteById(cartItem.getId());
+                log.info(card.get().getCardName() + "가 삭제되었습니다.");
+            } else {
+                log.info(card.get().getCardName() + "이 없습니다.");
+            }
+        }
     }
 }

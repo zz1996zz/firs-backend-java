@@ -54,7 +54,13 @@ public class LoginController {
     }
 
     @GetMapping("/test")
-    public void test(@Login MemberForm memberForm) throws IOException {
+    public void test(Authentication authentication) throws IOException {
+        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+        String username = principal.getMember().getUsername();
+
+        ImageToBase64Encoder encoder = new ImageToBase64Encoder();
+        String encodedString = encoder.imageToBase64("국민");
+        log.info("encodedString={}", encodedString);
 
         Member member = memberRepository.findByUsername(memberForm.getUsername()).orElseThrow(() -> new RuntimeException("오류발생"));
         log.info("member={}", member.getUsername());

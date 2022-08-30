@@ -1,10 +1,14 @@
 package fastcampus.saladbank.web.controller;
 
 import fastcampus.saladbank.biz.domain.CartItem;
+import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.service.CartService;
+import fastcampus.saladbank.config.auth.PrincipalDetails;
+import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,10 +29,11 @@ public class CartController {
     
     //장바구니 추가
     @PostMapping("/card")
-    public CartItem insertCard(@RequestBody MemberForm reqMember,
-                               @RequestBody CardForm reqCard){
-        CartItem cartItem = cartService.insertCard(reqMember, reqCard);
-        return cartItem;
+    public void insertCard(Authentication authentication,
+                           @RequestBody CardForm reqCard){
+//        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+//        String username = principal.getMember().getUsername();
+        cartService.insertCard("wnsdn4875", reqCard);
     }
 
     @PostMapping("/loan")
@@ -37,9 +42,15 @@ public class CartController {
         return cartItem;
     }
 
-    //장바구니 취소
-    @DeleteMapping("/{id}")
-    public void deleteCart(@PathVariable long id){
-        cartService.deleteCart(id);
+    //장바구니 비우기(전체삭제)
+    @DeleteMapping
+    public void deleteCart(){
+        cartService.deleteAllCart("wnsdn4875");
+    }
+
+    //장바구니 삭제(카드)
+    @DeleteMapping("/card/{id}")
+    public void deleteCartCard(@PathVariable long id){
+        cartService.deleteCartCard("wnsdn4875",id);
     }
 }
