@@ -4,7 +4,6 @@ import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.web.dto.CardForm;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.pool.TypePool;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,7 +18,7 @@ public class CardService {
     // 카드 등록
     @Transactional
     public Long save(CardForm cardForm) {
-        return cardRepository.save(cardForm.toEntity()).getId();
+        return cardRepository.save(cardForm.toEntity()).getCardId();
     }
 
     // 카드 수정
