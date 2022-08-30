@@ -52,8 +52,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             username = JWT.require(Algorithm.HMAC512(secret)).build().verify(token).getClaim("username").asString();
         } catch (TokenExpiredException e) {
             username = null;
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.getWriter().write("TokenExpired");
         }
 
         if (username != null) {
