@@ -30,10 +30,10 @@ public class CartController {
     //장바구니 추가
     @PostMapping("/card")
     public void insertCard(Authentication authentication,
-                           @RequestBody CardForm reqCard){
+                           @RequestBody long cardId){
 //        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 //        String username = principal.getMember().getUsername();
-        cartService.insertCard("wnsdn4875", reqCard);
+        cartService.insertCard("wnsdn4875", cardId);
     }
 
     @PostMapping("/loan")

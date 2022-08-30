@@ -52,7 +52,7 @@ public class CartService {
     }
 
     @Transactional
-    public CartItem insertCard(String username, CardForm reqCard) {
+    public CartItem insertCard(String username, long cardId) {
 //        //member 찾기
 //        String username = reqMember.getUsername();
 //        log.info("username: {}", reqMember.getUsername());
@@ -60,8 +60,7 @@ public class CartService {
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
         //card 찾기
-        String cardName = reqCard.getCardName();
-        Card card = cardRepository.findByCardName(cardName);
+        Card card = cardRepository.findById(cardId).orElse(null);
         //카트에 추가
         CartItem cartItem = new CartItem(cart,card);
         cartItemRepository.save(cartItem);
