@@ -79,9 +79,8 @@ public class CartService {
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
         Optional<Card> card = cardRepository.findById(id);
+
         card.ifPresent(value -> cart.getCardList().remove(value));
-
-
     }
 
     //장바구니 단건삭제(대출)

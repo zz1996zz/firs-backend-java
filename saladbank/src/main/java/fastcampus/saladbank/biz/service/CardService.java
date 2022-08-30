@@ -4,7 +4,6 @@ import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.web.dto.CardForm;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.pool.TypePool;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
