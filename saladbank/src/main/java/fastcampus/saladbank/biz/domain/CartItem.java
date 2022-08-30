@@ -26,10 +26,10 @@ public class CartItem extends BaseTime {
     @OneToOne
     private Cart cart;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Loan> loanList= new LinkedList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Card> cardList = new LinkedList<>();
 
     @Builder

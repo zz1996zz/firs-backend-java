@@ -8,10 +8,12 @@ import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,34 +25,42 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public List<CartItem> getCarts(@RequestBody MemberForm reqMember ){
-        return cartService.getCarts(reqMember);
+    public List<CartItem> getCarts(@Login MemberForm memberForm ){
+        return cartService.getCarts(memberForm);
     }
     
-    //장바구니 추가
+    //장바구니 추가(카드)
     @PostMapping("/card")
-    public void insertCard(Authentication authentication,
-                           @RequestBody CardForm reqCard){
-//        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-//        String username = principal.getMember().getUsername();
-        cartService.insertCard("wnsdn4875", reqCard);
+    public void insertCard(@Login MemberForm memberForm,
+                           @RequestBody Map<String,Long> map){
+        cartService.insertCard(memberForm, map.get("cardId"));
     }
 
+    //장바구니 추가(대출)
     @PostMapping("/loan")
-    public CartItem insertLoan(@RequestBody MemberForm reqMember, long loanId){
-        CartItem cartItem = cartService.insertLoan(reqMember, loanId);
+    public CartItem insertLoan(@Login MemberForm memberForm,
+                               @RequestBody Map<String,Long> map){
+        CartItem cartItem = cartService.insertLoan(memberForm, map.get("cardId"));
         return cartItem;
     }
 
     //장바구니 비우기(전체삭제)
     @DeleteMapping
-    public void deleteCart(){
-        cartService.deleteAllCart("wnsdn4875");
+    public void deleteCart(@Login MemberForm memberForm){
+        cartService.deleteAllCart(memberForm);
     }
 
     //장바구니 삭제(카드)
     @DeleteMapping("/card/{id}")
-    public void deleteCartCard(@PathVariable long id){
-        cartService.deleteCartCard("wnsdn4875",id);
+    public void deleteCartCard(@Login MemberForm memberForm,
+                               @PathVariable long id){
+        cartService.deleteCartCard(memberForm,id);
+    }
+
+    //장바구니 삭제(카드)
+    @DeleteMapping("/loan/{id}")
+    public void deleteCartLoan(@Login MemberForm memberForm,
+                               @PathVariable long id){
+        cartService.deleteCartLoan(memberForm,id);
     }
 }

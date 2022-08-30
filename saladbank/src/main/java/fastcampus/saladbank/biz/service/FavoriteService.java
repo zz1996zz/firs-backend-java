@@ -40,8 +40,7 @@ public class FavoriteService {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        List<FavoriteItem> favoriteItem = favoriteItemRepository.findAllByFavorite(favorite);
-        return favoriteItem;
+        return favoriteItemRepository.findAllByFavorite(favorite);
     }
 
     //관심상품 추가 (카드)
