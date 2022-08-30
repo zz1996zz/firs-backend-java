@@ -38,8 +38,9 @@ public class CartService {
 
     //장바구니 추가
     @Transactional
-    public CartItem insertLoan(String username, long loanId) {
+    public CartItem insertLoan(MemberForm memberForm, long loanId) {
         //member 찾기
+        String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
@@ -51,10 +52,9 @@ public class CartService {
     }
 
     @Transactional
-    public CartItem insertCard(String username, long cardId) {
-//        //member 찾기
-//        String username = reqMember.getUsername();
-//        log.info("username: {}", reqMember.getUsername());
+    public CartItem insertCard(MemberForm memberForm, long cardId) {
+        //member 찾기
+        String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
@@ -68,7 +68,8 @@ public class CartService {
 
     //장바구니 비우기(전체)
     @Transactional
-    public void deleteAllCart(String username) {
+    public void deleteAllCart(MemberForm memberForm) {
+        String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
         cartItemRepository.deleteAllByCart(cart);
@@ -76,7 +77,8 @@ public class CartService {
 
     //장바구니 단건삭제(카드)
     @Transactional
-    public void deleteCartCard(String username, long id) {
+    public void deleteCartCard(MemberForm memberForm, long id) {
+        String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
         List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
@@ -84,16 +86,14 @@ public class CartService {
         for(CartItem cartItem : cartItemList){
             if(cartItem.getCardList().contains(card.get())){
                 cartItemRepository.deleteById(cartItem.getId());
-                log.info(card.get().getCardName() + "가 삭제되었습니다.");
-            } else {
-                log.info(card.get().getCardName() + "이 없습니다.");
             }
         }
     }
 
     //장바구니 단건삭제(카드)
     @Transactional
-    public void deleteCartLoan(String username, long id) {
+    public void deleteCartLoan(MemberForm memberForm, long id) {
+        String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
         List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
