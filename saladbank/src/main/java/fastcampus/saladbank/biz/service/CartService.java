@@ -38,9 +38,8 @@ public class CartService {
 
     //장바구니 추가
     @Transactional
-    public CartItem insertLoan(MemberForm reqMember, long loanId) {
+    public CartItem insertLoan(String username, long loanId) {
         //member 찾기
-        String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
@@ -88,6 +87,23 @@ public class CartService {
                 log.info(card.get().getCardName() + "가 삭제되었습니다.");
             } else {
                 log.info(card.get().getCardName() + "이 없습니다.");
+            }
+        }
+    }
+
+    //장바구니 단건삭제(카드)
+    @Transactional
+    public void deleteCartLoan(String username, long id) {
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Cart cart = cartRepository.findByMember(member);
+        List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
+        Optional<Loan> loan = loanRepository.findById(id);
+        for (CartItem cartItem : cartItemList) {
+            if (cartItem.getLoanList().contains(loan.get())) {
+                cartItemRepository.deleteById(cartItem.getId());
+                log.info(loan.get().getLoanName() + "가 삭제되었습니다.");
+            } else {
+                log.info(loan.get().getLoanName() + "이 없습니다.");
             }
         }
     }

@@ -28,19 +28,20 @@ public class CartController {
         return cartService.getCarts(reqMember);
     }
     
-    //장바구니 추가
+    //장바구니 추가(카드)
     @PostMapping("/card")
     public void insertCard(Authentication authentication,
                            @RequestBody Map<String,Long> map){
 //        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 //        String username = principal.getMember().getUsername();
-        map.get("cardId");
+
         cartService.insertCard("wnsdn4875", map.get("cardId"));
     }
 
+    //장바구니 추가(대출)
     @PostMapping("/loan")
-    public CartItem insertLoan(@RequestBody MemberForm reqMember, long loanId){
-        CartItem cartItem = cartService.insertLoan(reqMember, loanId);
+    public CartItem insertLoan(@RequestBody Map<String,Long> map){
+        CartItem cartItem = cartService.insertLoan("wnsdn4875", map.get("cardId"));
         return cartItem;
     }
 
@@ -54,5 +55,11 @@ public class CartController {
     @DeleteMapping("/card/{id}")
     public void deleteCartCard(@PathVariable long id){
         cartService.deleteCartCard("wnsdn4875",id);
+    }
+
+    //장바구니 삭제(카드)
+    @DeleteMapping("/loan/{id}")
+    public void deleteCartLoan(@PathVariable long id){
+        cartService.deleteCartLoan("wnsdn4875",id);
     }
 }
