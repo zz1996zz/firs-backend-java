@@ -47,15 +47,15 @@ public class Member extends BaseTime {
     @Column(name = "HOBBY")
     private String hobby;
 
-    @Column(name = "CREDIT_RATING")
-    private int creditRating;
+    @Column(name = "house")
+    private Boolean house;
 
     @OneToMany
     @JoinColumn(name = "ORDERS_ID")
     private List<Order> orders = new ArrayList<>();
 
     @Builder
-    public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, int creditRating) {
+    public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, Boolean house) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -64,6 +64,6 @@ public class Member extends BaseTime {
         this.job = job;
         this.income = income;
         this.hobby = hobby;
-        this.creditRating = creditRating;
+        this.house = house;
     }
 }

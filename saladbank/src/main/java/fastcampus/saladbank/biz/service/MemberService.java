@@ -33,8 +33,8 @@ public class MemberService {
     }
 
     public boolean isRegisterMember(String username) {
-        boolean isMember = memberRepository.existsByUsername(username);
-        if (isMember) {
+        Member findMember = memberRepository.findByUsername(username).orElse(null);
+        if (findMember != null) {
             return true;
         }
         return false;
