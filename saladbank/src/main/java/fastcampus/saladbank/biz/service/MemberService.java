@@ -1,9 +1,7 @@
 package fastcampus.saladbank.biz.service;
 
-import fastcampus.saladbank.biz.domain.Cart;
-import fastcampus.saladbank.biz.domain.Member;
-import fastcampus.saladbank.biz.repository.CartRepository;
-import fastcampus.saladbank.biz.repository.MemberRepository;
+import fastcampus.saladbank.biz.domain.*;
+import fastcampus.saladbank.biz.repository.*;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +18,9 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+    private final FavoriteRepository favoriteRepository;
+    private final FavoriteItemRepository favoriteItemRepository;
 
     @Transactional
     public void registerMember(MemberForm memberForm) {
@@ -29,7 +30,17 @@ public class MemberService {
         memberRepository.save(member);
 
         Cart cart = new Cart(member);
+        CartItem cartItem = new CartItem(cart);
+
+        Favorite favorite = new Favorite(member);
+        FavoriteItem favoriteItem = new FavoriteItem(favorite);
+
         cartRepository.save(cart);
+        cartItemRepository.save(cartItem);
+        favoriteRepository.save(favorite);
+        favoriteItemRepository.save(favoriteItem);
+
+
     }
 
     public MemberForm getMemberInfo(String username) {
