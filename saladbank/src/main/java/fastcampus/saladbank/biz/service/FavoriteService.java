@@ -79,12 +79,7 @@ public class FavoriteService {
         Favorite favorite = favoriteRepository.findByMember(member);
         FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
         Optional<Card> card = cardRepository.findById(id);
-        if(card.isPresent()){
-            favoriteItem.getCardList().remove(card.get());
-            log.info(card.get().getCardName()+"이(가) 삭제되었습니다.");
-        } else {
-            log.info("카드가 존재하지않습니다");
-        }
+        card.ifPresent(value -> favoriteItem.getCardList().remove(value));
 
     }
 
