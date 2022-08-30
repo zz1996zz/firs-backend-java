@@ -18,9 +18,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final CartRepository cartRepository;
-    private final CartItemRepository cartItemRepository;
     private final FavoriteRepository favoriteRepository;
-    private final FavoriteItemRepository favoriteItemRepository;
 
     @Transactional
     public void registerMember(MemberForm memberForm) {
@@ -30,15 +28,11 @@ public class MemberService {
         memberRepository.save(member);
 
         Cart cart = new Cart(member);
-        CartItem cartItem = new CartItem(cart);
 
         Favorite favorite = new Favorite(member);
-        FavoriteItem favoriteItem = new FavoriteItem(favorite);
 
         cartRepository.save(cart);
-        cartItemRepository.save(cartItem);
         favoriteRepository.save(favorite);
-        favoriteItemRepository.save(favoriteItem);
 
 
     }

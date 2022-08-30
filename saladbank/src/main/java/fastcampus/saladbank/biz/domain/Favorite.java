@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -21,8 +23,23 @@ public class Favorite extends BaseTime {
     @OneToOne
     private Member member;
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Loan> loanList = new LinkedList<>();
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Card> cardList= new LinkedList<>();
+
     @Builder
     public Favorite(Member member){
         this.member=member;
     }
+
+    public void addCard(Card card){
+        this.cardList.add(card);
+    }
+
+    public void addLoan(Loan loan){
+        this.loanList.add(loan);
+    }
+
 }
