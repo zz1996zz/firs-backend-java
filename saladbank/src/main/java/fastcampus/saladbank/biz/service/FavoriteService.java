@@ -5,6 +5,7 @@ import fastcampus.saladbank.biz.repository.*;
 import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly=true)
 public class FavoriteService {
@@ -30,16 +32,18 @@ public class FavoriteService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        favoriteItemRepository.deleteAllByFavorite(Optional.ofNullable(favorite));
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
+        favoriteItem.getCardList().removeAll(cardRepository.findAll());
+        favoriteItem.getLoanList().removeAll(loanRepository.findAll());
     }
 
 
     //관심상품 조회
-    public List<FavoriteItem> getFavorites(MemberForm reqMember) {
+    public FavoriteItem getFavorites(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        return favoriteItemRepository.findAllByFavorite(favorite);
+        return favoriteItemRepository.findByFavorite(favorite);
     }
 
     //관심상품 추가 (카드)
@@ -49,19 +53,21 @@ public class FavoriteService {
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
         Card card = cardRepository.findById(cardId).orElse(null);
-        FavoriteItem favoriteItem = new FavoriteItem(favorite,card);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
+        favoriteItem.addCard(card);
         return favoriteItemRepository.save(favoriteItem);
 
     }
 
-    //관심상품 추가 (카드)
+    //관심상품 추가 (대출)
     @Transactional
     public FavoriteItem insertFavoriteLoan(MemberForm reqMember, long loanId) {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
         Loan loan = loanRepository.findById(loanId).orElse(null);
-        FavoriteItem favoriteItem = new FavoriteItem(favorite,loan);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
+        favoriteItem.addLoan(loan);
         return favoriteItemRepository.save(favoriteItem);
 
     }
@@ -71,13 +77,15 @@ public class FavoriteService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        List<FavoriteItem> FavoriteItemList = favoriteItemRepository.findAllByFavorite(favorite);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
         Optional<Card> card = cardRepository.findById(id);
-        for(FavoriteItem favoriteItem : FavoriteItemList){
-            if(favoriteItem.getCardList().contains(card.get())){
-                favoriteRepository.deleteById(favoriteItem.getFavoriteItemId());
-            }
+        if(card.isPresent()){
+            favoriteItem.getCardList().remove(card.get());
+            log.info(card.get().getCardName()+"이(가) 삭제되었습니다.");
+        } else {
+            log.info("카드가 존재하지않습니다");
         }
+
     }
 
     //관심상품 삭제(대출)
@@ -86,12 +94,9 @@ public class FavoriteService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
-        List<FavoriteItem> FavoriteItemList = favoriteItemRepository.findAllByFavorite(favorite);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
         Optional<Loan> loan = loanRepository.findById(id);
-        for(FavoriteItem favoriteItem : FavoriteItemList){
-            if(favoriteItem.getLoanList().contains(loan.get())){
-                favoriteRepository.deleteById(favoriteItem.getFavoriteItemId());
-            }
-        }
+        loan.ifPresent(value -> favoriteItem.getLoanList().remove(value));
+
     }
 }

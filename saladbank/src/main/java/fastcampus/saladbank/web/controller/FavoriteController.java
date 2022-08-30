@@ -53,7 +53,7 @@ public class FavoriteController {
     }
     //관심상품 조회
     @GetMapping
-    public List<FavoriteItem> getFavorites(MemberForm reqMember){
+    public FavoriteItem getFavorites(@Login MemberForm reqMember){
         return favoriteService.getFavorites(reqMember);
     }
 
