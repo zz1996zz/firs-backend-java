@@ -83,7 +83,7 @@ public class CartService {
         Optional<Card> card = cardRepository.findById(id);
         for(CartItem cartItem : cartItemList){
             if(cartItem.getCardList().contains(card.get())){
-                cartItemRepository.deleteById(cartItem.getCardItemId());
+                cartItemRepository.deleteById(cartItem.getCartItemId());
             }
         }
     }
@@ -98,7 +98,7 @@ public class CartService {
         Optional<Loan> loan = loanRepository.findById(id);
         for (CartItem cartItem : cartItemList) {
             if (cartItem.getLoanList().contains(loan.get())) {
-                cartItemRepository.deleteById(cartItem.getCardItemId());
+                cartItemRepository.deleteById(cartItem.getCartItemId());
             }
         }
     }
