@@ -2,6 +2,7 @@ package fastcampus.saladbank.config.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
@@ -46,14 +47,20 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         String token = request.getHeader(JwtProperties.HEADER_STRING).replace(JwtProperties.TOKEN_PREFIX, "");
 
-        String username = JWT.require(Algorithm.HMAC512(secret)).build().verify(token).getClaim("username").asString();
+        String username;
+        try {
+            username = JWT.require(Algorithm.HMAC512(secret)).build().verify(token).getClaim("username").asString();
+        } catch (TokenExpiredException e) {
+            username = null;
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.getWriter().write("TokenExpired");
+        }
 
         if (username != null) {
             Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 username의 사용자를 못 찾았습니다."));
 
             PrincipalDetails principalDetails = new PrincipalDetails(findMember);
             Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
-
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }

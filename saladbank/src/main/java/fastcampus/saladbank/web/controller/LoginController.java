@@ -1,5 +1,7 @@
 package fastcampus.saladbank.web.controller;
 
+import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.biz.service.MemberService;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.config.jwt.JwtProperties;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.io.IOException;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -26,6 +28,7 @@ import java.io.IOException;
 public class LoginController {
 
     private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/do-logout")
     public ResponseEntity logoutMember() {
@@ -59,5 +62,7 @@ public class LoginController {
         String encodedString = encoder.imageToBase64("국민");
         log.info("encodedString={}", encodedString);
 
+        Member member = memberRepository.findByUsername(memberForm.getUsername()).orElseThrow(() -> new RuntimeException("오류발생"));
+        log.info("member={}", member.getUsername());
     }
 }

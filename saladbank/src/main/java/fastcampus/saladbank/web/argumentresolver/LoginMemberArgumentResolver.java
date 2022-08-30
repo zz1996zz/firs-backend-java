@@ -1,6 +1,5 @@
 package fastcampus.saladbank.web.argumentresolver;
 
-import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.extern.slf4j.Slf4j;
@@ -25,13 +24,12 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-        String username = principal.getMember().getUsername();
-        if (username == null) {
-            return null;
+        if (authentication != null) {
+            PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+            MemberForm memberForm = new MemberForm();
+            memberForm.setUsername(principal.getUsername());
+            return memberForm;
         }
-        MemberForm memberForm = new MemberForm();
-        memberForm.setUsername(username);
-        return memberForm;
+        return null;
     }
 }
