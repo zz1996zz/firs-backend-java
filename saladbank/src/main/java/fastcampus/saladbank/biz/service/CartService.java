@@ -3,7 +3,6 @@ package fastcampus.saladbank.biz.service;
 
 import fastcampus.saladbank.biz.domain.*;
 import fastcampus.saladbank.biz.repository.*;
-import fastcampus.saladbank.web.dto.CardForm;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +35,7 @@ public class CartService {
         return cartItem;
     }
 
-    //장바구니 추가
+    //장바구니 추가(대출)
     @Transactional
     public CartItem insertLoan(MemberForm memberForm, long loanId) {
         //member 찾기
@@ -51,8 +50,9 @@ public class CartService {
         return cartItem;
     }
 
+    //장바구니 추가(카드)
     @Transactional
-    public CartItem insertCard(MemberForm memberForm, long cardId) {
+    public void insertCard(MemberForm memberForm, long cardId) {
         //member 찾기
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
@@ -63,7 +63,6 @@ public class CartService {
         //카트에 추가
         CartItem cartItem = new CartItem(cart,card);
         cartItemRepository.save(cartItem);
-        return cartItem;
     }
 
     //장바구니 비우기(전체)
@@ -90,7 +89,7 @@ public class CartService {
         }
     }
 
-    //장바구니 단건삭제(카드)
+    //장바구니 단건삭제(대출)
     @Transactional
     public void deleteCartLoan(MemberForm memberForm, long id) {
         String username = memberForm.getUsername();
