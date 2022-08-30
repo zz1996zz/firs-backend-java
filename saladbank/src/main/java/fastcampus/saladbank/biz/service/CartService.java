@@ -27,42 +27,44 @@ public class CartService {
 
 
     //장바구니 조회
-    public List<CartItem> getCarts(MemberForm reqMember) {
+    public CartItem getCarts(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
-        return cartItemRepository.findAllByCart(cart);
+        return cartItemRepository.findByCart(cart);
     }
 
     //장바구니 추가(대출)
-//    @Transactional
-//    public CartItem insertLoan(MemberForm memberForm, long loanId) {
-//        //member 찾기
-//        String username = memberForm.getUsername();
-//        Optional<Member> member = memberRepository.findByUsername(username);
-//        //cart 찾기
-//        Cart cart = cartRepository.findByMember(member);
-//        //loan 찾기
-//        Loan loan = loanRepository.findById(loanId).orElse(null);
-//        CartItem cartItem = new CartItem(cart,loan);
-//        cartItemRepository.save(cartItem);
-//        return cartItem;
-//    }
+    @Transactional
+    public CartItem insertLoan(MemberForm memberForm, long loanId) {
+        //member 찾기
+        String username = memberForm.getUsername();
+        Optional<Member> member = memberRepository.findByUsername(username);
+        //cart 찾기
+        Cart cart = cartRepository.findByMember(member);
+        //loan 찾기
+        Loan loan = loanRepository.findById(loanId).orElse(null);
+        CartItem cartItem = cartItemRepository.findByCart(cart);
+        //cartItem에 loan 추가
+        cartItem.addCartLoan(loan);
+        return cartItemRepository.save(cartItem);
+    }
 
     //장바구니 추가(카드)
-//    @Transactional
-//    public void insertCard(MemberForm memberForm, long cardId) {
-//        //member 찾기
-//        String username = memberForm.getUsername();
-//        Optional<Member> member = memberRepository.findByUsername(username);
-//        //cart 찾기
-//        Cart cart = cartRepository.findByMember(member);
-//        //card 찾기
-//        Card card = cardRepository.findById(cardId).orElse(null);
-//        //카트에 추가
-//        CartItem cartItem = new CartItem(cart,card);
-//        cartItemRepository.save(cartItem);
-//    }
+    @Transactional
+    public void insertCard(MemberForm memberForm, long cardId) {
+        //member 찾기
+        String username = memberForm.getUsername();
+        Optional<Member> member = memberRepository.findByUsername(username);
+        //cart 찾기
+        Cart cart = cartRepository.findByMember(member);
+        //card 찾기
+        Card card = cardRepository.findById(cardId).orElse(null);
+        //카트에 추가
+        CartItem cartItem = cartItemRepository.findByCart(cart);
+        cartItem.addCartCard(card);
+        cartItemRepository.save(cartItem);
+    }
 
     //장바구니 비우기(전체)
     @Transactional
@@ -70,7 +72,9 @@ public class CartService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
-        cartItemRepository.deleteAllByCart(cart);
+        CartItem cartItem = cartItemRepository.findByCart(cart);
+        cartItem.getCardList().removeAll(cardRepository.findAll());
+        cartItem.getLoanList().removeAll(loanRepository.findAll());
     }
 
     //장바구니 단건삭제(카드)
@@ -79,13 +83,11 @@ public class CartService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
-        List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
+        CartItem cartItem = cartItemRepository.findByCart(cart);
         Optional<Card> card = cardRepository.findById(id);
-        for(CartItem cartItem : cartItemList){
-            if(cartItem.getCardList().contains(card.get())){
-                cartItemRepository.deleteById(cartItem.getCartItemId());
-            }
-        }
+        card.ifPresent(value -> cartItem.getCardList().remove(value));
+
+
     }
 
     //장바구니 단건삭제(대출)
@@ -94,12 +96,8 @@ public class CartService {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
-        List<CartItem> cartItemList = cartItemRepository.findAllByCart(cart);
+        CartItem cartItem = cartItemRepository.findByCart(cart);
         Optional<Loan> loan = loanRepository.findById(id);
-        for (CartItem cartItem : cartItemList) {
-            if (cartItem.getLoanList().contains(loan.get())) {
-                cartItemRepository.deleteById(cartItem.getCartItemId());
-            }
-        }
+        loan.ifPresent(value -> cartItem.getLoanList().remove(value));
     }
 }

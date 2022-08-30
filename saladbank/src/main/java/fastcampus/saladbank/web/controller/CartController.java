@@ -25,24 +25,24 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public List<CartItem> getCarts(@Login MemberForm memberForm ){
+    public CartItem getCarts(@Login MemberForm memberForm ){
         return cartService.getCarts(memberForm);
     }
     
-//    //장바구니 추가(카드)
-//    @PostMapping("/card")
-//    public void insertCard(@Login MemberForm memberForm,
-//                           @RequestBody Map<String,Long> map){
-//        cartService.insertCard(memberForm, map.get("card_id"));
-//    }
+    //장바구니 추가(카드)
+    @PostMapping("/card")
+    public void insertCard(@Login MemberForm memberForm,
+                           @RequestBody Map<String,Long> map){
+        cartService.insertCard(memberForm, map.get("card_id"));
+    }
 
     //장바구니 추가(대출)
-//    @PostMapping("/loan")
-//    public CartItem insertLoan(@Login MemberForm memberForm,
-//                               @RequestBody Map<String,Long> map){
-//        CartItem cartItem = cartService.insertLoan(memberForm, map.get("loan_id"));
-//        return cartItem;
-//    }
+    @PostMapping("/loan")
+    public CartItem insertLoan(@Login MemberForm memberForm,
+                               @RequestBody Map<String,Long> map){
+        CartItem cartItem = cartService.insertLoan(memberForm, map.get("loan_id"));
+        return cartItem;
+    }
 
     //장바구니 비우기(전체삭제)
     @DeleteMapping

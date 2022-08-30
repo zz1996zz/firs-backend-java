@@ -4,13 +4,10 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -32,16 +29,16 @@ public class CartItem extends BaseTime {
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Card> cardList = new LinkedList<>();
 
-    @Builder
-    public CartItem(Cart cart,Loan loan){
-        this.cart=cart;
+    public void addCartLoan(Loan loan){
         this.loanList.add(loan);
     }
 
-    @Builder
-    public CartItem(Cart cart,Card card){
-        this.cart=cart;
+    public void addCartCard(Card card){
         this.cardList.add(card);
     }
 
+    @Builder
+    public CartItem(Cart cart) {
+        this.cart=cart;
+    }
 }
