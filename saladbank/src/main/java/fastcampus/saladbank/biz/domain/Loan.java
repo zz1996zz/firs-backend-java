@@ -15,7 +15,7 @@ public class Loan extends BaseTime {
     @Id
     @Column(name = "LOAN_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long loanId;
 
     @Column(name = "PRODUCT_TYPE")
     private String productType; // 대출 or 카드

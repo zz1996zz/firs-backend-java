@@ -27,7 +27,8 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         if (authentication != null) {
             PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
             MemberForm memberForm = new MemberForm();
-            memberForm.setUsername(principal.getUsername());
+            String username = String.valueOf(principal.getUsername());
+            memberForm.setUsername(username);
             return memberForm;
         }
         return null;

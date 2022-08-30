@@ -1,12 +1,16 @@
 package fastcampus.saladbank.web.controller;
 
 import fastcampus.saladbank.biz.service.MemberService;
+import fastcampus.saladbank.web.argumentresolver.Login;
+import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/members")
 @RequiredArgsConstructor
@@ -20,12 +24,14 @@ public class MemberController {
     }
 
     @GetMapping("/edit")
-    public void editMemberForm() {
-        // 회원정보 수정화면 보여주기 프론트에 회원의 정보를 보내준다.
+    public MemberForm getMemberForm(@Login MemberForm memberForm) {
+        String username = memberForm.getUsername();
+        MemberForm memberInfo = memberService.getMemberInfo(username);
+        return memberInfo;
     }
 
-    @PostMapping("/edit")
-    public void editMember() {
+    @PutMapping ("/edit")
+    public void editMember(@Login MemberForm memberForm) {
         // 수정된 회원 정보를 업데이트
     }
 

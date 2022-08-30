@@ -16,7 +16,7 @@ public class Card extends BaseTime {
     @Id
     @Column(name = "CARD_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long cardId;
 
     @Column(name = "PRODUCT_TYPE")
     private String productType;
