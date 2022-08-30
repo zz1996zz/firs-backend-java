@@ -17,7 +17,7 @@ public class Order extends BaseTime {
     @Id
     @Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long orderId;
 
     @Column(name = "APPLY_DATE", nullable = false)
     private LocalDate applyDate;
