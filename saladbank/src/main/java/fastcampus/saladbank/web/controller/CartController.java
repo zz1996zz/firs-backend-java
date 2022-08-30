@@ -33,14 +33,14 @@ public class CartController {
     @PostMapping("/card")
     public void insertCard(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
-        cartService.insertCard(memberForm, map.get("cardId"));
+        cartService.insertCard(memberForm, map.get("card_id"));
     }
 
     //장바구니 추가(대출)
     @PostMapping("/loan")
     public CartItem insertLoan(@Login MemberForm memberForm,
                                @RequestBody Map<String,Long> map){
-        CartItem cartItem = cartService.insertLoan(memberForm, map.get("cardId"));
+        CartItem cartItem = cartService.insertLoan(memberForm, map.get("loan_id"));
         return cartItem;
     }
 
