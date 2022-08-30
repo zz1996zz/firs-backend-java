@@ -1,14 +1,15 @@
 package fastcampus.saladbank.biz.service;
 
+import com.google.gson.Gson;
 import fastcampus.saladbank.biz.domain.Cart;
 import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.biz.repository.CartRepository;
+import fastcampus.saladbank.biz.repository.LoanRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class MemberService {
 
-    private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final MemberRepository memberRepository;
     private final CartRepository cartRepository;
+    private final RecommendationProduct recommendationProduct;
 
     @Transactional
     public void registerMember(MemberForm memberForm) {
@@ -51,15 +53,24 @@ public class MemberService {
         log.info("findMember={}", findMember.getIncome());
     }
 
+    public String makeJson(String username) {
+        StringBuilder sb = new StringBuilder();
+        String rateAndLimit = recommendationProduct.setInterestRateAndLimit(username);
+        String jsonCard = recommendationProduct.getRecommendationCard(username);
+        String jsonLoan = recommendationProduct.getRecommendationLoan(username);
+
+        sb.append("{\n\"userInfo\" : " + "\"" + rateAndLimit + "\"" + ",\n");
+        sb.append("\"cardList\" : " + jsonCard + ",\n");
+        sb.append("\"loanList\" : " + jsonLoan + "\n}");
+
+        return sb.toString();
+    }
+
     public boolean isRegisterMember(String username) {
         Member findMember = memberRepository.findByUsername(username).orElse(null);
         if (findMember != null) {
             return true;
         }
         return false;
-    }
-
-    public void registerMemberInfo(MemberForm memberForm) {
-        // username으로 사용자를 찾고 사용자의 정보를 추가한다.
     }
 }

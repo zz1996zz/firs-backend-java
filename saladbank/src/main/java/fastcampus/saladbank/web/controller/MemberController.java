@@ -5,6 +5,8 @@ import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -33,8 +35,8 @@ public class MemberController {
     }
 
     @GetMapping("/recommendation")
-    public void recommendProduct() {
-        // 추천 상품 보여주기
-        
+    public ResponseEntity recommendProduct(@Login MemberForm memberForm) {
+        String json = memberService.makeJson(memberForm.getUsername());
+        return new ResponseEntity(json, HttpStatus.OK);
     }
 }
