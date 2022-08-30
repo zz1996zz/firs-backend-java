@@ -5,10 +5,7 @@ import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -24,19 +21,20 @@ public class MemberController {
     }
 
     @GetMapping("/edit")
-    public MemberForm getMemberForm(@Login MemberForm memberForm) {
+    public MemberForm getMember(@Login MemberForm memberForm) {
         String username = memberForm.getUsername();
         MemberForm memberInfo = memberService.getMemberInfo(username);
         return memberInfo;
     }
 
     @PutMapping ("/edit")
-    public void editMember(@Login MemberForm memberForm) {
-        // 수정된 회원 정보를 업데이트
+    public void editMember(@RequestBody MemberForm reqMemberForm) {
+        memberService.editMemberInfo(reqMemberForm);
     }
 
     @GetMapping("/recommendation")
     public void recommendProduct() {
         // 추천 상품 보여주기
+        
     }
 }

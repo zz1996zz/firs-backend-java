@@ -7,6 +7,8 @@ import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,10 +35,20 @@ public class MemberService {
     }
 
     public MemberForm getMemberInfo(String username) {
-        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
+        Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
         MemberForm memberForm = new MemberForm();
-        memberForm.toMemberForm(member);
+        memberForm.toMemberForm(findMember);
         return memberForm;
+    }
+
+    @Transactional
+    public void editMemberInfo(MemberForm memberForm) {
+        Member findMember = memberRepository.findByUsername(memberForm.getUsername()).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
+        findMember.updateMember(memberForm);
+        log.info("findMember={}", findMember.getAge());
+        log.info("findMember={}", findMember.getGender());
+        log.info("findMember={}", findMember.getHobby());
+        log.info("findMember={}", findMember.getIncome());
     }
 
     public boolean isRegisterMember(String username) {
