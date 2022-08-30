@@ -26,16 +26,6 @@ public class FavoriteService {
     private final CardRepository cardRepository;
     private final LoanRepository loanRepository;
 
-    //관심상품 전체삭제
-    @Transactional
-    public void deleteFavorite(MemberForm memberForm) {
-        String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
-        Favorite favorite = favoriteRepository.findByMember(member);
-        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
-        favoriteItem.getCardList().removeAll(cardRepository.findAll());
-        favoriteItem.getLoanList().removeAll(loanRepository.findAll());
-    }
 
 
     //관심상품 조회
@@ -94,4 +84,16 @@ public class FavoriteService {
         loan.ifPresent(value -> favoriteItem.getLoanList().remove(value));
 
     }
+
+    //관심상품 전체삭제
+    @Transactional
+    public void deleteFavorite(MemberForm memberForm) {
+        String username = memberForm.getUsername();
+        Optional<Member> member = memberRepository.findByUsername(username);
+        Favorite favorite = favoriteRepository.findByMember(member);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByFavorite(favorite);
+        favoriteItem.getCardList().removeAll(cardRepository.findAll());
+        favoriteItem.getLoanList().removeAll(loanRepository.findAll());
+    }
+
 }
