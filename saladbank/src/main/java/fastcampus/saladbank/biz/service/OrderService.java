@@ -16,7 +16,7 @@ public class OrderService {
     // 주문 등록
     @Transactional
     public Long save(OrderForm orderForm) {
-        return orderRepository.save(orderForm.toEntity()).getId();
+        return orderRepository.save(orderForm.toEntity()).getOrderId();
     }
 
     // 주문 수정

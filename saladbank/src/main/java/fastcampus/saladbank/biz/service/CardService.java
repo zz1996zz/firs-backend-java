@@ -19,7 +19,7 @@ public class CardService {
     // 카드 등록
     @Transactional
     public Long save(CardForm cardForm) {
-        return cardRepository.save(cardForm.toEntity()).getId();
+        return cardRepository.save(cardForm.toEntity()).getCardId();
     }
 
     // 카드 수정

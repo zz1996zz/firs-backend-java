@@ -31,8 +31,7 @@ public class CartService {
         String username = reqMember.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
         Cart cart = cartRepository.findByMember(member);
-        List<CartItem> cartItem = cartItemRepository.findAllByCart(cart);
-        return cartItem;
+        return cartItemRepository.findAllByCart(cart);
     }
 
     //장바구니 추가(대출)
@@ -84,7 +83,7 @@ public class CartService {
         Optional<Card> card = cardRepository.findById(id);
         for(CartItem cartItem : cartItemList){
             if(cartItem.getCardList().contains(card.get())){
-                cartItemRepository.deleteById(cartItem.getId());
+                cartItemRepository.deleteById(cartItem.getCardItemId());
             }
         }
     }
@@ -99,10 +98,7 @@ public class CartService {
         Optional<Loan> loan = loanRepository.findById(id);
         for (CartItem cartItem : cartItemList) {
             if (cartItem.getLoanList().contains(loan.get())) {
-                cartItemRepository.deleteById(cartItem.getId());
-                log.info(loan.get().getLoanName() + "가 삭제되었습니다.");
-            } else {
-                log.info(loan.get().getLoanName() + "이 없습니다.");
+                cartItemRepository.deleteById(cartItem.getCardItemId());
             }
         }
     }
