@@ -32,6 +32,13 @@ public class MemberService {
         cartRepository.save(cart);
     }
 
+    public MemberForm getMemberInfo(String username) {
+        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
+        MemberForm memberForm = new MemberForm();
+        memberForm.toMemberForm(member);
+        return memberForm;
+    }
+
     public boolean isRegisterMember(String username) {
         Member findMember = memberRepository.findByUsername(username).orElse(null);
         if (findMember != null) {
