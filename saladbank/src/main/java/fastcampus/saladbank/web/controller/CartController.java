@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,10 +31,11 @@ public class CartController {
     //장바구니 추가
     @PostMapping("/card")
     public void insertCard(Authentication authentication,
-                           @RequestBody long cardId){
+                           @RequestBody Map<String,Long> map){
 //        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 //        String username = principal.getMember().getUsername();
-        cartService.insertCard("wnsdn4875", cardId);
+        map.get("cardId");
+        cartService.insertCard("wnsdn4875", map.get("cardId"));
     }
 
     @PostMapping("/loan")
