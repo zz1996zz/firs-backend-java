@@ -21,7 +21,7 @@ public class CartItem extends BaseTime {
     @Id
     @Column(name = "CART_ITEM_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long cardItemId;
 
     @OneToOne
     private Cart cart;
