@@ -67,7 +67,6 @@ public class FavoriteService {
     }
     //관심상품 삭제(카드)
     @Transactional
-
     public void deleteCartCard(MemberForm memberForm, long id) {
         String username = memberForm.getUsername();
         Optional<Member> member = memberRepository.findByUsername(username);
