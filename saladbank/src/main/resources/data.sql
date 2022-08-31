@@ -22,13 +22,13 @@ INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, 
 VALUES ("카드", "LOCA LIKIT 1.2", "롯데카드", "10000", "체크", "모든 가맹점 1.2% 할인", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "주부 음악 감상 50대", "https://cdn.banksalad.com/resources/images/cards/lotte_loca_12.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
-VALUES ("카드", "누리체크카드", "KB국민카드", "0", "체크", "집중된 할인보다 폭넓은 할인을 원하는 당신께. 모든 가맹점에서 할인되는 체크카드", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "무직 음악감상 70대이상", "https://cdn.banksalad.com/cards/509.png");
+VALUES ("카드", "누리체크카드", "KB국민카드", "5000", "체크", "모든 가맹점에서 할인되는 체크카드", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "무직 음악감상 70대이상", "https://cdn.banksalad.com/cards/509.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
-VALUES ("카드", "프렌즈 체크카드", "카카오뱅크", "0", "체크", "귀여운 프렌즈와 좋은 혜택!", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "직장인 등산 20대", "https://cdn.banksalad.com/cards/3596.png");
+VALUES ("카드", "프렌즈 체크카드", "카카오뱅크", "3000", "체크", "귀여운 프렌즈와 좋은 혜택!", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "직장인 등산 20대", "https://cdn.banksalad.com/cards/3596.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
-VALUES ("카드", "K bank 체크카드 포인트적립형", "케이뱅크", "0", "체크", "1포인트 당 1원으로 적립!", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "직장인 게임 30대", "https://cdn.banksalad.com/cards/kbank_3424.png");
+VALUES ("카드", "K bank 체크카드 포인트적립형", "케이뱅크", "1000", "체크", "1포인트 당 1원으로 적립!", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "직장인 게임 30대", "https://cdn.banksalad.com/cards/kbank_3424.png");
 
 
 
