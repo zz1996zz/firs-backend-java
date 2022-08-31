@@ -1,4 +1,4 @@
-package fastcampus.saladbank.biz.service;
+package fastcampus.saladbank.web;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
