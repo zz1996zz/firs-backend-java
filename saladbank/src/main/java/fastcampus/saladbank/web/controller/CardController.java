@@ -18,10 +18,4 @@ public class CardController {
     public List getCardList() {
         return cardService.getCardList();
     }
-
-    // 카드 조회
-    @GetMapping("/card/view/{id}")
-    public CardForm findById(@PathVariable Long id) {
-        return cardService.findById(id);
-    }
 }

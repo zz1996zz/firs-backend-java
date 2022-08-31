@@ -1,5 +1,6 @@
 package fastcampus.saladbank.biz.service;
 
+import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.repository.LoanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,9 @@ public class LoanService {
 
     public List getLoanList() {
         return loanRepository.findAll();
+    }
+
+    public Loan getLoan(long loanId) {
+        return loanRepository.findById(loanId).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다."));
     }
 }

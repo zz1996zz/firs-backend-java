@@ -21,11 +21,7 @@ public class CardService {
         return cardRepository.findAll();
     }
 
-    // 카드 조회
-    public CardForm findById(Long id) {
-        Card entity = cardRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("해당 카드가 없습니다. id=" + id));
-
-        return new CardForm(entity);
+    public Card getCard(long cardId) {
+        return cardRepository.findById(cardId).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다."));
     }
 }
