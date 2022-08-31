@@ -38,6 +38,5 @@ public class LoginController {
         }
         String status = "false";
         return new ResponseEntity<>(status, HttpStatus.OK);
-
     }
 }
