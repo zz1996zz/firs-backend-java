@@ -5,15 +5,21 @@ import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.web.dto.CardForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CardService {
 
     private final CardRepository cardRepository;
+
+    public List getCardList() {
+        return cardRepository.findAll();
+    }
 
     // 카드 조회
     public CardForm findById(Long id) {
