@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CardService {
 
     private final CardRepository cardRepository;
