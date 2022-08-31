@@ -1,6 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -50,5 +51,18 @@ public class Loan extends BaseTime {
     @ManyToOne
     @JoinColumn(name = "CART_ID")
     private Cart cart;
+
+    @Builder
+    public Loan(String productType, String loanName, String loanCompany, String creditLine, String rate, boolean primeRate, int period, String loanLine, String tag) {
+        this.productType = productType;
+        this.loanName = loanName;
+        this.loanCompany = loanCompany;
+        this.creditLine = creditLine;
+        this.rate = rate;
+        this.primeRate = primeRate;
+        this.period = period;
+        this.loanLine = loanLine;
+        this.tag = tag;
+    }
 }
 // 대출상품 : 대출한도, 금리, 대출 기간, 상품명, 상품유형, 가입요건
