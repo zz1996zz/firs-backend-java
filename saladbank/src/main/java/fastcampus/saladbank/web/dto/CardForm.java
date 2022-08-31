@@ -2,68 +2,28 @@ package fastcampus.saladbank.web.dto;
 
 import fastcampus.saladbank.biz.domain.Card;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
+@Data
 public class CardForm {
     private String productType;
     private String cardName;
-
     private String cardCompany;
-
     private String annualFee;
-
     private String cardType;
-
     private String cardDescription;
-
     private String franchisee;
-
     private String shopping;
-
     private String oiling;
-
     private String insurance;
-
     private String cafe;
-
     private String tag;
-
-    //카드 등록시 사용
-    @Builder
-    public CardForm(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
-        this.productType = productType;
-        this.cardName = cardName;
-        this.cardCompany = cardCompany;
-        this.annualFee = annualFee;
-        this.cardType = cardType;
-        this.cardDescription = cardDescription;
-        this.franchisee = franchisee;
-        this.shopping = shopping;
-        this.oiling = oiling;
-        this.insurance = insurance;
-        this.cafe = cafe;
-        this.tag = tag;
-    }
 
     //카드 수정시 사용
     public Card toEntity() {
-        return Card.builder()
-                .productType(productType)
-                .cardName(cardName)
-                .cardCompany(cardCompany)
-                .annualFee(annualFee)
-                .cardType(cardType)
-                .cardDescription(cardDescription)
-                .franchisee(franchisee)
-                .shopping(shopping)
-                .oiling(oiling)
-                .insurance(insurance)
-                .cafe(cafe)
-                .tag(tag)
-                .build();
+        return new Card(productType, cardName, cardCompany, annualFee, cardType, cardDescription, franchisee, shopping, oiling, insurance, cafe, tag);
     }
 
     //카드 조회시 사용
