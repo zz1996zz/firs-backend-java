@@ -2,11 +2,9 @@ package fastcampus.saladbank.biz.service;
 
 import com.google.gson.Gson;
 import fastcampus.saladbank.biz.domain.Cart;
+import fastcampus.saladbank.biz.domain.Favorite;
 import fastcampus.saladbank.biz.domain.Member;
-import fastcampus.saladbank.biz.repository.CardRepository;
-import fastcampus.saladbank.biz.repository.CartRepository;
-import fastcampus.saladbank.biz.repository.LoanRepository;
-import fastcampus.saladbank.biz.repository.MemberRepository;
+import fastcampus.saladbank.biz.repository.*;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +21,7 @@ public class MemberService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final MemberRepository memberRepository;
     private final CartRepository cartRepository;
+    private final FavoriteRepository favoriteRepository;
     private final RecommendationProduct recommendationProduct;
 
     @Transactional
