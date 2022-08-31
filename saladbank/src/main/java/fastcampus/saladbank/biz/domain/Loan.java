@@ -44,6 +44,9 @@ public class Loan extends BaseTime {
     @Column(name = "TAG")
     private String tag; // ex) 주부, 프리랜서, 모바일, 1금융권
 
+    @Column(name = "IMG")
+    private String img; // 이미지 주소 저장하는 곳
+
     @ManyToOne
     @JoinColumn(name = "CART_ID")
     private Cart cart;

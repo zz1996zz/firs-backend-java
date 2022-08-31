@@ -24,9 +24,11 @@ public class Cart extends BaseTime {
     private Member member;
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "LOAN_ID")
     private List<Loan> loanList= new LinkedList<>();
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "CARD_ID")
     private List<Card> cardList = new LinkedList<>();
 
     public void addCartLoan(Loan loan){

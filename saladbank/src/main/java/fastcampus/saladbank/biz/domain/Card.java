@@ -54,6 +54,9 @@ public class Card extends BaseTime {
     @Column(name = "TAG")
     private String tag; // "주부 그림/운동 30대" 나이/직업/취미 하나씩 들가는 곳
 
+    @Column(name = "IMG")
+    private String img; // 이미지 주소 저장하는 곳
+
     @Builder
     public Card(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
         this.productType = productType;
