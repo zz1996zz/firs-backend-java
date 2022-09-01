@@ -37,4 +37,9 @@ public class ProductController {
             return new ResponseEntity<Card>(card, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/search")
+    public void searchProduct() {
+
+    }
 }
