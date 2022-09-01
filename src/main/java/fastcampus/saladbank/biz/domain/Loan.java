@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -17,6 +19,13 @@ public class Loan extends BaseTime {
     @Column(name = "LOAN_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long loanId;
+
+    @OneToMany(mappedBy = "loan",cascade = CascadeType.ALL)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
+    private List<FavoriteItem> favoriteItems = new ArrayList<>();
+
 
     @Column(name = "PRODUCT_TYPE")
     private String productType; // 대출 or 카드
@@ -34,7 +43,7 @@ public class Loan extends BaseTime {
     private String rate; // 최저금리 ~ 최대 금리 "2.8 10.2"
 
     @Column(name = "PRIME_RATE")
-    private boolean primeRate; // 우대 금리가 있냐 없냐
+    private Boolean primeRate; // 우대 금리가 있냐 없냐
 
     @Column(name = "PERIOD")
     private int period; // 대출기간
@@ -48,16 +57,30 @@ public class Loan extends BaseTime {
     @Column(name = "IMG")
     private String img; // 이미지 주소 저장하는 곳
 
-    @Builder
-    public Loan(String productType, String loanName, String loanCompany, String creditLine, String rate, boolean primeRate, int period, String loanLine, String tag) {
-        this.productType = productType;
-        this.loanName = loanName;
-        this.loanCompany = loanCompany;
-        this.creditLine = creditLine;
-        this.rate = rate;
-        this.primeRate = primeRate;
-        this.period = period;
-        this.loanLine = loanLine;
-        this.tag = tag;
+//    @Builder
+//    public Loan(String productType, String loanName, String loanCompany, String creditLine, String rate, boolean primeRate, int period, String loanLine, String tag) {
+//        this.productType = productType;
+//        this.loanName = loanName;
+//        this.loanCompany = loanCompany;
+//        this.creditLine = creditLine;
+//        this.rate = rate;
+//        this.primeRate = primeRate;
+//        this.period = period;
+//        this.loanLine = loanLine;
+//        this.tag = tag;
+//    }
+
+    public void addCartItem(CartItem cartItem){
+        this.cartItems.add(cartItem);
+        if(cartItem.getLoan()!=this){
+            cartItem.setLoan(this);
+        }
+    }
+
+    public void addFavoriteItem(FavoriteItem favoriteItem){
+        this.favoriteItems.add(favoriteItem);
+        if(favoriteItem.getLoan()!=this){
+            favoriteItem.setLoan(this);
+        }
     }
 }
