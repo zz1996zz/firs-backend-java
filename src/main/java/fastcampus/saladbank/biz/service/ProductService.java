@@ -20,10 +20,10 @@ public class ProductService {
 
     public List searchProduct(SearchProductForm form) {
         if (form.getProductType().equals("대출")) {
-            List<Loan> loanList = loanRepository.findAllByLoanNameOrLoanCompanyOrTag(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
+            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
             return loanList;
         } else {
-            List<Card> cardList = cardRepository.findAllByCardNameOrCardCompanyOrTag(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
+            List<Card> cardList = cardRepository.findAllByCardNameContainsOrCardCompanyContainsOrTagContains(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
             return cardList;
         }
     }

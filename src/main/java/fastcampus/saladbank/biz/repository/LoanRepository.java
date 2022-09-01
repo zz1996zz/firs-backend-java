@@ -4,8 +4,7 @@ import fastcampus.saladbank.biz.domain.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface LoanRepository extends JpaRepository<Loan, Long> {
-    List<Loan> findAllByLoanNameOrLoanCompanyOrTag(String keyword1, String keyword2, String keyword3);
+    List<Loan> findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(String keyword1, String keyword2, String keyword3);
 }
