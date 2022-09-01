@@ -40,8 +40,8 @@ public class CartController {
     @PostMapping("/loan")
     public Cart insertLoan(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
-        Cart cart = cartService.insertLoan(memberForm, map.get("loan_id"));
-        return cart;
+
+        return cartService.insertLoan(memberForm, map.get("loan_id"));
     }
 
     //장바구니 비우기(전체삭제)
