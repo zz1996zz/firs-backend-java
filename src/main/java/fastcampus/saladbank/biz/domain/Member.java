@@ -53,7 +53,7 @@ public class Member extends BaseTime {
 
     @OneToMany
     @JoinColumn(name = "ORDERS_ID")
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orderList = new ArrayList<>();
 
     @Builder
     public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, Boolean house) {
@@ -78,5 +78,9 @@ public class Member extends BaseTime {
         this.income = memberForm.getIncome();
         this.hobby = memberForm.getHobby();
         this.house = memberForm.getHouse();
+    }
+
+    public void addCard(Order order){
+        this.orderList.add(order);
     }
 }

@@ -28,6 +28,14 @@ public class Order extends BaseTime {
     @Column(name = "STATUS", nullable = false)
     private String status;
 
+    @OneToOne
+    @JoinColumn(name = "LOAN_ID")
+    private Loan loan;
+
+    @OneToOne
+    @JoinColumn(name = "CARD_ID")
+    private Card card;
+
     @Builder
     public Order(LocalDate applyDate, LocalDate expiryDate, String status) {
         this.applyDate = applyDate;
