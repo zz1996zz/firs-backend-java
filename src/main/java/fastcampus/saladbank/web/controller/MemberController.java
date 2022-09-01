@@ -1,6 +1,7 @@
 package fastcampus.saladbank.web.controller;
 
 import fastcampus.saladbank.biz.service.MemberService;
+import fastcampus.saladbank.biz.service.OrderService;
 import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/members")
@@ -16,10 +19,13 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     private final MemberService memberService;
+    private final OrderService orderService;
 
     @GetMapping("/my-page")
-    public void myPage() {
-        // 신청중인 상품과 신청 완료된 상품 가져오기
+    public ResponseEntity myPage(@Login MemberForm memberForm) {
+        List orderList = orderService.getOrderList(memberForm.getUsername());
+        log.info("orderList={}", orderList);
+        return new ResponseEntity(orderList, HttpStatus.OK);
     }
 
     @GetMapping("/edit")

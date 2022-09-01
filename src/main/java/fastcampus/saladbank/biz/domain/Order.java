@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -45,6 +48,7 @@ public class Order extends BaseTime {
         this.member = member;
         this.status = status;
     }
+
     public void addOrderLoan(Loan loan){
         this.loanList.add(loan);
     }
@@ -64,7 +68,7 @@ public class Order extends BaseTime {
         Calendar cal = Calendar.getInstance();
         Date dt = dtFormat.parse(strDate);
         cal.setTime(dt);
-        cal.add(Calendar.DATE,  day);
+        cal.add(Calendar.DATE, day);
         return dtFormat.format(cal.getTime());
     }
  }

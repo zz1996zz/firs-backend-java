@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -37,7 +35,7 @@ public class Member extends BaseTime {
     private String gender;
 
     @Column(name = "AGE")
-    private int age;
+    private String age;
 
     @Column(name = "JOB")
     private String job;
@@ -51,12 +49,8 @@ public class Member extends BaseTime {
     @Column(name = "house")
     private Boolean house;
 
-    @OneToMany
-    @JoinColumn(name = "ORDERS_ID")
-    private List<Order> orderList = new ArrayList<>();
-
     @Builder
-    public Member(String username, String password, String name, String gender, int age, String job, int income, String hobby, Boolean house) {
+    public Member(String username, String password, String name, String gender, String age, String job, int income, String hobby, Boolean house) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -78,9 +72,5 @@ public class Member extends BaseTime {
         this.income = memberForm.getIncome();
         this.hobby = memberForm.getHobby();
         this.house = memberForm.getHouse();
-    }
-
-    public void addCard(Order order){
-        this.orderList.add(order);
     }
 }

@@ -3,6 +3,8 @@ package fastcampus.saladbank.config.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
@@ -60,6 +62,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("username", principal.getMember().getUsername())
                 .sign(Algorithm.HMAC512(secret));
 
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("accessToken", JwtProperties.TOKEN_PREFIX + jwtToken);
+
+        response.getWriter().write(jsonObject.toString());
     }
 }

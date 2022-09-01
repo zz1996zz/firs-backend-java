@@ -10,7 +10,7 @@ public class MemberForm {
     private String password;
     private String name;
     private String gender;
-    private int age;
+    private String age;
     private String job;
     private int income;
     private String hobby;

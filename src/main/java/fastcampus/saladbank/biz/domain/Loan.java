@@ -48,10 +48,6 @@ public class Loan extends BaseTime {
     @Column(name = "IMG")
     private String img; // 이미지 주소 저장하는 곳
 
-    @ManyToOne
-    @JoinColumn(name = "CART_ID")
-    private Cart cart;
-
     @Builder
     public Loan(String productType, String loanName, String loanCompany, String creditLine, String rate, boolean primeRate, int period, String loanLine, String tag) {
         this.productType = productType;
@@ -65,4 +61,3 @@ public class Loan extends BaseTime {
         this.tag = tag;
     }
 }
-// 대출상품 : 대출한도, 금리, 대출 기간, 상품명, 상품유형, 가입요건
