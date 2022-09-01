@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/products")
@@ -40,7 +42,8 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public void searchProduct(@ModelAttribute SearchProductForm form) {
-
+    public ResponseEntity searchProduct(@ModelAttribute SearchProductForm form) {
+        List productList = productService.searchProduct(form);
+        return new ResponseEntity(productList, HttpStatus.OK);
     }
 }

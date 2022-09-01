@@ -18,11 +18,13 @@ public class ProductService {
     private final CardRepository cardRepository;
     private final LoanRepository loanRepository;
 
-    public void searchProduct(SearchProductForm form) {
+    public List searchProduct(SearchProductForm form) {
         if (form.getProductType().equals("대출")) {
-
+            List<Loan> loanList = loanRepository.findAllByLoanNameOrLoanCompanyOrTag(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
+            return loanList;
         } else {
-
+            List<Card> cardList = cardRepository.findAllByCardNameOrCardCompanyOrTag(form.getSearchKeyword(), form.getSearchKeyword(), form.getSearchKeyword());
+            return cardList;
         }
     }
 
