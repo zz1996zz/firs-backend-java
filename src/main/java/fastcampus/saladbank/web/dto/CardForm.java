@@ -18,11 +18,6 @@ public class CardForm {
     private String cafe;
     private String tag;
 
-    //카드 수정시 사용
-    public Card toEntity() {
-        return new Card(productType, cardName, cardCompany, annualFee, cardType, cardDescription, franchisee, shopping, oiling, insurance, cafe, tag);
-    }
-
     //카드 조회시 사용
     public CardForm(Card entity) {
         this.productType = entity.getProductType();

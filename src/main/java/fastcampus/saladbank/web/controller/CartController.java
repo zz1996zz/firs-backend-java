@@ -1,15 +1,10 @@
 package fastcampus.saladbank.web.controller;
 
-import fastcampus.saladbank.biz.domain.Cart;
-import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.service.CartService;
-import fastcampus.saladbank.config.auth.PrincipalDetails;
 import fastcampus.saladbank.web.argumentresolver.Login;
-import fastcampus.saladbank.web.dto.CardForm;
+import fastcampus.saladbank.web.dto.CardDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,23 +20,22 @@ public class CartController {
 
     //장바구니 조회
     @GetMapping
-    public Cart getCarts(@Login MemberForm memberForm ){
+    public List<CardDto.Response> getCarts(@Login MemberForm memberForm ){
         return cartService.getCarts(memberForm);
     }
     
     //장바구니 추가(카드)
     @PostMapping("/card")
-    public void insertCard(@Login MemberForm memberForm,
+    public void insertCartCard(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
-        cartService.insertCard(memberForm, map.get("card_id"));
+        cartService.insertCartCard(memberForm, map.get("card_id"));
     }
 
     //장바구니 추가(대출)
     @PostMapping("/loan")
-    public Cart insertLoan(@Login MemberForm memberForm,
+    public void insertCartLoan(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
-
-        return cartService.insertLoan(memberForm, map.get("loan_id"));
+         cartService.insertCartLoan(memberForm, map.get("loan_id"));
     }
 
     //장바구니 비우기(전체삭제)
