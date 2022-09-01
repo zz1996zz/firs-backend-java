@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -28,13 +30,13 @@ public class Order extends BaseTime {
     @Column(name = "STATUS", nullable = false)
     private String status;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "LOAN_ID")
-    private Loan loan;
+    private List<Loan> loanList = new LinkedList<>();
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "CARD_ID")
-    private Card card;
+    private List<Card> cardList = new LinkedList<>();
 
     @Builder
     public Order(LocalDate applyDate, LocalDate expiryDate, String status) {
