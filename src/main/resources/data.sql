@@ -16,10 +16,10 @@ INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, 
 VALUES ("카드", "Oil & Life카드(Oil)", "IBK기업은행", "5000", "신용", "GS칼텍스 리터당 120원 할인에 Prime 서비스 추가 시엔 다양한 무료쿠폰 또는 차량정비 서비스 제공", "1.2%", "20만원 당 7천 머니", "5만원 당 3천원", "7만원 당 4천 머니", "1000", "직장인 운동 50대", "https://cdn.banksalad.com/cards/ibk_cr0000000286.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
-VALUES ("카드", "BC 바로 클리어 플러스", "BC 바로카드", "5000", "체크", "점심/배달앱 7% 할인, 쿠팡 10% 할인", "0.4-2.0%", "10만원 당 5천 머니", "5만원 당 2천원", "7만원 당 2천 머니", "1000", "직장인 게임 60대", "https://cdn.banksalad.com/resources/images/cards/bc_clear.png");
+VALUES ("카드", "케이뱅크 X 네이버페이 체크카드2", "케이뱅크", "5000", "체크", "점심/배달앱 7% 할인, 쿠팡 10% 할인", "0.4-2.0%", "10만원 당 5천 머니", "5만원 당 2천원", "7만원 당 2천 머니", "1000", "직장인 게임 60대", "https://cdn.banksalad.com/entities/etc/1547605723910-3825.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
-VALUES ("카드", "LOCA LIKIT 1.2", "롯데카드", "10000", "체크", "모든 가맹점 1.2% 할인", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "주부 음악 감상 50대", "https://cdn.banksalad.com/resources/images/cards/lotte_loca_12.png");
+VALUES ("카드", "신세계 씨티카드 콰트로", "씨티카드", "10000", "체크", "모든 가맹점 1.2% 할인", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "주부 음악 감상 50대", "https://cdn.banksalad.com/entities/etc/1537258835918-3612.png");
 
 INSERT INTO card (PRODUCT_TYPE, CARD_NAME, CARD_COMPANY, ANNUAL_FEE, CARD_TYPE, CARD_DESCRIPTION, FRANCHISEE, SHOPPING, OILING, INSURANCE, CAFE, TAG, IMG)
 VALUES ("카드", "누리체크카드", "KB국민카드", "5000", "체크", "모든 가맹점에서 할인되는 체크카드", "0.3-1.0%", "10만원 당 5천 머니", "5만원 당 3천원", "2만원 당 1천 머니", "1000", "무직 음악감상 70대이상", "https://cdn.banksalad.com/cards/509.png");
