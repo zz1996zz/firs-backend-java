@@ -28,8 +28,8 @@ public class FavoriteService {
 
 
 
-    //관심상품 조회
-    public List<CardDto.Response> getFavoritesCard(MemberForm reqMember) {
+    //관심상품 조회(카드)
+    public List<CardDto.Response> getFavorites(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Member member = memberRepository.findByUsername(username).orElse(null);
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
@@ -39,7 +39,9 @@ public class FavoriteService {
                 .collect(Collectors.toList());
 
     }
-    
+
+
+
 
     //관심상품 추가 (카드)
     @Transactional
