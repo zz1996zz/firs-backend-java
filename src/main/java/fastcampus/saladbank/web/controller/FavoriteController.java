@@ -1,12 +1,14 @@
 package fastcampus.saladbank.web.controller;
 
-import fastcampus.saladbank.biz.domain.Favorite;
 import fastcampus.saladbank.biz.service.FavoriteService;
 import fastcampus.saladbank.web.argumentresolver.Login;
+import fastcampus.saladbank.web.dto.CardDto;
+import fastcampus.saladbank.web.dto.LoanDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -18,15 +20,15 @@ public class FavoriteController {
 
     //관심상품 등록(카드)
     @PostMapping("/card")
-    public Favorite insertFavoriteCard(@Login MemberForm reqMember,
-                                       @RequestBody Map<String,Long> map ){
+    public CardDto.Response insertFavoriteCard(@Login MemberForm reqMember,
+                                               @RequestBody Map<String,Long> map ){
         return favoriteService.insertFavoriteCard(reqMember, map.get("card_id"));
     }
 
     //관심상품 등록(카드)
     @PostMapping("/loan")
-    public Favorite insertFavoriteLoan(@Login MemberForm reqMember,
-                                       @RequestBody Map<String,Long> map ){
+    public LoanDto.Response insertFavoriteLoan(@Login MemberForm reqMember,
+                                               @RequestBody Map<String,Long> map ){
         return favoriteService.insertFavoriteLoan(reqMember, map.get("loan_id"));
     }
 
@@ -51,7 +53,7 @@ public class FavoriteController {
     }
     //관심상품 조회
     @GetMapping
-    public Favorite getFavorites(@Login MemberForm reqMember){
+    public List<CardDto.Response> getFavorites(@Login MemberForm reqMember){
         return favoriteService.getFavorites(reqMember);
     }
 
