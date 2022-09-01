@@ -33,7 +33,7 @@ public class CartService {
     //장바구니 조회
     public Cart getCarts(MemberForm reqMember) {
         String username = reqMember.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         return cartRepository.findByMember(member);
     }
 
@@ -42,7 +42,7 @@ public class CartService {
     public Cart insertLoan(MemberForm memberForm, long loanId) {
         //member 찾기
         String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
         //loan 찾기
@@ -57,7 +57,7 @@ public class CartService {
     public void insertCard(MemberForm memberForm, long cardId) {
         //member 찾기
         String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         //cart 찾기
         Cart cart = cartRepository.findByMember(member);
         //card 찾기
@@ -71,7 +71,7 @@ public class CartService {
     @Transactional
     public void deleteAllCart(MemberForm memberForm) {
         String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
         cart.getCardList().removeAll(cardRepository.findAll());
         cart.getLoanList().removeAll(loanRepository.findAll());
@@ -81,7 +81,7 @@ public class CartService {
     @Transactional
     public void deleteCartCard(MemberForm memberForm, long id) {
         String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
         Optional<Card> card = cardRepository.findById(id);
 
@@ -92,7 +92,7 @@ public class CartService {
     @Transactional
     public void deleteCartLoan(MemberForm memberForm, long id) {
         String username = memberForm.getUsername();
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
         Optional<Loan> loan = loanRepository.findById(id);
         loan.ifPresent(value -> cart.getLoanList().remove(value));

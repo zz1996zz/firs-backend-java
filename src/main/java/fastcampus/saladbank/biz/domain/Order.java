@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -21,8 +21,9 @@ public class Order extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
 
-    @Column(name = "APPLY_DATE", nullable = false)
-    private LocalDate applyDate;
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     @Column(name = "EXPIRY_DATE")
     private LocalDate expiryDate;
@@ -38,16 +39,32 @@ public class Order extends BaseTime {
     @JoinColumn(name = "CARD_ID")
     private List<Card> cardList = new LinkedList<>();
 
+
     @Builder
-    public Order(LocalDate applyDate, LocalDate expiryDate, String status) {
-        this.applyDate = applyDate;
-        this.expiryDate = expiryDate;
+    public Order(Member member, String status) {
+        this.member = member;
         this.status = status;
+    }
+    public void addOrderLoan(Loan loan){
+        this.loanList.add(loan);
     }
 
-    public void update(LocalDate applyDate, LocalDate expiryDate, String status) {
-        this.applyDate = applyDate;
-        this.expiryDate = expiryDate;
-        this.status = status;
+    public void addOrderCard(Card card){
+        this.cardList.add(card);
     }
-}
+
+    public void addExpiryDate(int period) throws Exception {
+        String date = String.valueOf(getCreatedDate());
+        String addDay = AddDate(date,  period);
+        this.expiryDate = LocalDate.parse(addDay);
+    }
+
+    private static String AddDate(String strDate, int day) throws Exception {
+        SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+        Date dt = dtFormat.parse(strDate);
+        cal.setTime(dt);
+        cal.add(Calendar.DATE,  day);
+        return dtFormat.format(cal.getTime());
+    }
+ }
