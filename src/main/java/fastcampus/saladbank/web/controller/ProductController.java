@@ -46,12 +46,11 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public String searchProduct(@ModelAttribute SearchProductForm form) {
+    public ResponseEntity searchProduct(@ModelAttribute SearchProductForm form) {
         List productList = productService.searchProduct(form);
-//        return new ResponseEntity(productList, HttpStatus.OK);
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
-        Gson gson = gsonBuilder.setPrettyPrinting().create();
-        return gson.toJson(productList);
+        Gson gson = new Gson();
+        String s = gson.toJson(productList);
+        log.info("s={}", s);
+        return new ResponseEntity(s, HttpStatus.OK);
     }
 }
