@@ -47,9 +47,8 @@ public class ProductController {
 
     @GetMapping("/search")
     public ResponseEntity searchProduct(@ModelAttribute SearchProductForm form) {
-        List productList = productService.searchProduct(form);
-        Gson gson = new Gson();
-        String s = gson.toJson(productList);
+        log.info("form={}", form.toString());
+        String s = productService.searchProduct(form);
         log.info("s={}", s);
         return new ResponseEntity(s, HttpStatus.OK);
     }

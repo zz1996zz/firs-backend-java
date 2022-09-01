@@ -39,8 +39,6 @@ public class MemberService {
 
         cartRepository.save(cart);
         favoriteRepository.save(favorite);
-
-
     }
 
     public MemberForm getMemberInfo(String username) {
