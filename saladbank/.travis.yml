@@ -1,6 +1,4 @@
 
-before_install:
-  - chmod +x ./gradlew
 
 language: java
 jdk:
@@ -16,9 +14,8 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
-script: 
-  - "chmod +x ./gradlew"
-  - "./gradlew clean build"
+before_script: "chmod +x ./gradlew"
+script: "./gradlew clean build"
 
 #before_deploy:
 #  - mkdir -p before-deploy # zip에 포함시킬 파일들을 담을 디렉토리 생성
