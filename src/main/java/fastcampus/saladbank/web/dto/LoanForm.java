@@ -16,7 +16,7 @@ public class LoanForm {
     private String loanLine;
     private String tag;
 
-    public Loan toEntity() {
-        return new Loan(productType, loanName, loanCompany, creditLine, rate, primeRate, period, loanLine, tag);
-    }
+//    public Loan toEntity() {
+//        return new Loan(productType, loanName, loanCompany, creditLine, rate, primeRate, period, loanLine, tag);
+//    }
 }
