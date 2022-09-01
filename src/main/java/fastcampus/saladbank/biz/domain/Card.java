@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "CARD")
@@ -18,8 +23,17 @@ public class Card extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cardId;
 
+
+    @OneToMany(mappedBy = "card",cascade = ALL)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "card",cascade = ALL)
+    private List<FavoriteItem> favoriteItems = new ArrayList<>();
+
+
     @Column(name = "PRODUCT_TYPE")
-    private String productType;
+    private String productType; //카드or대출
 
     @Column(name = "CARD_NAME")
     private String cardName; //카드이름
@@ -57,19 +71,34 @@ public class Card extends BaseTime {
     @Column(name = "IMG")
     private String img; // 이미지 주소 저장하는 곳
 
-    @Builder
-    public Card(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
-        this.productType = productType;
-        this.cardName = cardName;
-        this.cardCompany = cardCompany;
-        this.annualFee = annualFee;
-        this.cardType = cardType;
-        this.cardDescription = cardDescription;
-        this.franchisee = franchisee;
-        this.shopping = shopping;
-        this.oiling = oiling;
-        this.insurance = insurance;
-        this.cafe = cafe;
-        this.tag = tag;
+    public void addCartItem(CartItem cartItem){
+        this.cartItems.add(cartItem);
+        if(cartItem.getCard()!=this){
+            cartItem.setCard(this);
+        }
     }
+
+    public void addFavoriteItem(FavoriteItem favoriteItem){
+        this.favoriteItems.add(favoriteItem);
+        if(favoriteItem.getCard()!=this){
+            favoriteItem.setCard(this);
+        }
+    }
+
+
+//    @Builder
+//    public Card(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
+//        this.productType = productType;
+//        this.cardName = cardName;
+//        this.cardCompany = cardCompany;
+//        this.annualFee = annualFee;
+//        this.cardType = cardType;
+//        this.cardDescription = cardDescription;
+//        this.franchisee = franchisee;
+//        this.shopping = shopping;
+//        this.oiling = oiling;
+//        this.insurance = insurance;
+//        this.cafe = cafe;
+//        this.tag = tag;
+//    }
 }
