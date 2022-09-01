@@ -57,7 +57,7 @@ public class CartController {
         cartService.deleteCartCard(memberForm,id);
     }
 
-    //장바구니 삭제(카드)
+    //장바구니 삭제(대출)
     @DeleteMapping("/loan/{id}")
     public void deleteCartLoan(@Login MemberForm memberForm,
                                @PathVariable long id){
