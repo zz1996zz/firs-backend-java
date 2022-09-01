@@ -48,6 +48,7 @@ public class Order extends BaseTime {
         this.member = member;
         this.status = status;
     }
+
     public void addOrderLoan(Loan loan){
         this.loanList.add(loan);
     }

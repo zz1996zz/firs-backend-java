@@ -34,6 +34,9 @@ public class CartService {
     public Cart getCarts(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Member member = memberRepository.findByUsername(username).orElse(null);
+        log.info("member={}", member);
+        log.info("cart={}", cartRepository.findByMember(member).getCardList().size());
+        log.info("cart={}", cartRepository.findByMember(member).getLoanList().size());
         return cartRepository.findByMember(member);
     }
 
