@@ -5,17 +5,17 @@ import fastcampus.saladbank.biz.repository.CartRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.biz.repository.OrderRepository;
 import fastcampus.saladbank.web.dto.MemberForm;
-import fastcampus.saladbank.web.dto.OrderForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@org.springframework.transaction.annotation.Transactional(readOnly=true)
+@Transactional(readOnly = true)
 @Slf4j
 public class OrderService {
     private final OrderRepository orderRepository;
@@ -52,14 +52,9 @@ public class OrderService {
 
     }
 
-    // 주문 조회
-//    public OrderForm findById(Long id) {
-//        Order entity = orderRepository.findById(id).orElseThrow(() ->
-//                new IllegalArgumentException("해당 주문이 없습니다. id=" + id));
-//
-//        return new OrderForm(entity);
-//    }
-
-
-
+    //주문 전체 조회
+    public List getOrderList(String username) {
+        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 사용자가 없습니다."));
+        return orderRepository.findAllByMember(member);
+    }
 }
