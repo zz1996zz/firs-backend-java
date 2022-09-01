@@ -5,6 +5,7 @@ import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.service.CardService;
 import fastcampus.saladbank.biz.service.LoanService;
 import fastcampus.saladbank.biz.service.ProductService;
+import fastcampus.saladbank.web.dto.SearchProductForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public void searchProduct() {
+    public void searchProduct(@ModelAttribute SearchProductForm form) {
 
     }
 }

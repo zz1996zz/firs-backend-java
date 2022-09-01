@@ -5,6 +5,7 @@ import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.biz.repository.LoanRepository;
+import fastcampus.saladbank.web.dto.SearchProductForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,14 @@ public class ProductService {
 
     private final CardRepository cardRepository;
     private final LoanRepository loanRepository;
+
+    public void searchProduct(SearchProductForm form) {
+        if (form.getProductType().equals("대출")) {
+
+        } else {
+
+        }
+    }
 
     public String getProductList() {
         String cardList = getCardList();

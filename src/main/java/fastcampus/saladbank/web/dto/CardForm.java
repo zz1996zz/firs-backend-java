@@ -1,10 +1,7 @@
 package fastcampus.saladbank.web.dto;
 
 import fastcampus.saladbank.biz.domain.Card;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Data
 public class CardForm {

@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class SearchProductForm {
 
+    private String productType;
+    private String searchKeyword;
 }
