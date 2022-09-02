@@ -23,7 +23,7 @@ public class MemberController {
 
     @GetMapping("/my-page")
     public ResponseEntity myPage(@Login MemberForm memberForm) {
-        List orderList = orderService.getOrderList(memberForm.getUsername());
+        String orderList = orderService.getOrderList(memberForm.getUsername());
         log.info("orderList={}", orderList);
         return new ResponseEntity(orderList, HttpStatus.OK);
     }
