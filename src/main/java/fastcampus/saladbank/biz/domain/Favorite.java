@@ -27,27 +27,20 @@ public class Favorite extends BaseTime {
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
     @OneToOne
     private Member member;
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "LOAN_ID")
-    private List<Loan> loanList = new LinkedList<>();
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "CARD_ID")
-    private List<Card> cardList= new LinkedList<>();
+//
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "LOAN_ID")
+//    private List<Loan> loanList = new ArrayList<>();
+//
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "CARD_ID")
+//    private List<Card> cardList= new ArrayList<>();
 
     @Builder
     public Favorite(Member member){
         this.member=member;
     }
 
-    public void addCard(Card card){
-        this.cardList.add(card);
-    }
-
-    public void addLoan(Loan loan){
-        this.loanList.add(loan);
-    }
     public void addFavoriteItem(FavoriteItem favoriteItem){
         this.favoriteItems.add(favoriteItem);
         if(favoriteItem.getFavorite()!=this){
