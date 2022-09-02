@@ -45,7 +45,7 @@ public class RecommendationProduct {
         Gson gson = gsonBuilder.setPrettyPrinting().create();
         List<Loan> filterLoan = new ArrayList<>();
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
-        List<Loan> loanAll = loanRepository.findAll();
+        List<Loan> loanAll = loanRepository.findLoanAll();
         for (Loan loan : loanAll) {
             if (Integer.parseInt(loan.getCreditLine()) <= findMember.getIncome()) {
                 filterLoan.add(loan);
@@ -64,7 +64,7 @@ public class RecommendationProduct {
         Gson gson = gsonBuilder.setPrettyPrinting().create();
         List<Card> filterCard = new ArrayList<>();
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
-        List<Card> cardAll = cardRepository.findAll();
+        List<Card> cardAll = cardRepository.findCardAll();
         for (Card card : cardAll) {
             if (card.getTag().contains(findMember.getJob())) {
                 filterCard.add(card);
