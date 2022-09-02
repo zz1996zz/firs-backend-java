@@ -23,14 +23,12 @@ public class Card extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cardId;
 
-
     @OneToMany(mappedBy = "card",cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "card",cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
-
 
     @Column(name = "PRODUCT_TYPE")
     private String productType; //카드or대출
