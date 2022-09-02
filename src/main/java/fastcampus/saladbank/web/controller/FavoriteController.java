@@ -51,11 +51,16 @@ public class FavoriteController {
                                    @PathVariable long id){
         favoriteService.deleteCartLoan(memberForm,id);
     }
-    //관심상품 조회
-    @GetMapping
-    public List<CardDto.Response> getFavorites(@Login MemberForm reqMember){
-        return favoriteService.getFavorites(reqMember);
+    //관심상품 조회(카드)
+    @GetMapping("/card")
+    public List<CardDto.Response> getFavoritesCard(@Login MemberForm reqMember){
+        return favoriteService.getFavoritesCard(reqMember);
     }
 
+    //관심상품 조회(대출)
+    @GetMapping("/loan")
+    public List<LoanDto.Response> getFavoritesLoan(@Login MemberForm reqMember){
+        return favoriteService.getFavoritesLoan(reqMember);
+    }
 
 }
