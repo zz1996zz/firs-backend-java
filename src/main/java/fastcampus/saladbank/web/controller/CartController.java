@@ -38,7 +38,6 @@ public class CartController {
     public void insertCartCard(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
         cartService.insertCartCard(memberForm, map.get("card_id"));
-        log.info("cardId : {}",map.get("card_id"));
     }
 
     //장바구니 추가(대출)
