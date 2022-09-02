@@ -317,7 +317,7 @@ Temporary Items
 .apdisk
 
 # db properties
-application-db.yml
+# application-db.yml
 
 # secret Key
-application-auth.yml
+# application-auth.yml
