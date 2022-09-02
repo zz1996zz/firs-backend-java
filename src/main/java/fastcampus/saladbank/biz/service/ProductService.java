@@ -34,8 +34,8 @@ public class ProductService {
             List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
             return gson.toJson(loanList);
         } else {
-            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
-            return gson.toJson(loanList);
+            List<Card> cardList = cardRepository.findAllByCardNameContainsOrCardCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            return gson.toJson(cardList);
         }
     }
 
