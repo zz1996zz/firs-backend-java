@@ -26,8 +26,6 @@ public class FavoriteService {
     private final CardRepository cardRepository;
     private final LoanRepository loanRepository;
 
-
-
     //관심상품 조회(카드)
     public List<CardDto.Response> getFavoritesCard(MemberForm reqMember) {
         String username = reqMember.getUsername();
@@ -40,7 +38,6 @@ public class FavoriteService {
 
     }
 
-
     //관심상품 조회(대출)
     public List<LoanDto.Response> getFavoritesLoan(MemberForm reqMember) {
         String username = reqMember.getUsername();
@@ -52,8 +49,6 @@ public class FavoriteService {
                 .collect(Collectors.toList());
 
     }
-
-
 
     //관심상품 추가 (카드)
     @Transactional
@@ -110,6 +105,7 @@ public class FavoriteService {
         return LoanDto.Response.of(loan);
 
     }
+
     //관심상품 삭제(카드)
     @Transactional
     public void deleteCartCard(MemberForm memberForm, long id) {

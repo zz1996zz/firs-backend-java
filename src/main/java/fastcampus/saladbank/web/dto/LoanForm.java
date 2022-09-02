@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class LoanForm {
-
+    private long loanId;
     private String productType;
     private String loanName;
     private String loanCompany;
@@ -15,8 +15,19 @@ public class LoanForm {
     private int period;
     private String loanLine;
     private String tag;
+    private String img;
 
-//    public Loan toEntity() {
-//        return new Loan(productType, loanName, loanCompany, creditLine, rate, primeRate, period, loanLine, tag);
-//    }
+    public LoanForm(Loan loan) {
+        this.loanId = loan.getLoanId();
+        this.productType = loan.getProductType();
+        this.loanName = loan.getLoanName();
+        this.loanCompany = loan.getLoanCompany();
+        this.creditLine = loan.getCreditLine();
+        this.rate = loan.getRate();
+        this.primeRate = loan.getPrimeRate();
+        this.period = loan.getPeriod();
+        this.loanLine = loan.getLoanLine();
+        this.tag = loan.getTag();
+        this.img = loan.getImg();
+    }
 }

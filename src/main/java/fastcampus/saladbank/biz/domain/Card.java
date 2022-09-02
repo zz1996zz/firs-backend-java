@@ -1,12 +1,10 @@
 package fastcampus.saladbank.biz.domain;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,6 @@ public class Card extends BaseTime {
 
     @OneToMany(mappedBy = "card",cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
-
 
     @OneToMany(mappedBy = "card",cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
@@ -82,21 +79,4 @@ public class Card extends BaseTime {
             favoriteItem.setCard(this);
         }
     }
-
-
-//    @Builder
-//    public Card(String productType, String cardName, String cardCompany, String annualFee, String cardType, String cardDescription, String franchisee, String shopping, String oiling, String insurance, String cafe, String tag) {
-//        this.productType = productType;
-//        this.cardName = cardName;
-//        this.cardCompany = cardCompany;
-//        this.annualFee = annualFee;
-//        this.cardType = cardType;
-//        this.cardDescription = cardDescription;
-//        this.franchisee = franchisee;
-//        this.shopping = shopping;
-//        this.oiling = oiling;
-//        this.insurance = insurance;
-//        this.cafe = cafe;
-//        this.tag = tag;
-//    }
 }

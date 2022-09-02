@@ -1,5 +1,7 @@
 package fastcampus.saladbank.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +27,6 @@ public class Loan extends BaseTime {
 
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
-
 
     @Column(name = "PRODUCT_TYPE")
     private String productType; // 대출 or 카드
@@ -56,19 +57,6 @@ public class Loan extends BaseTime {
 
     @Column(name = "IMG")
     private String img; // 이미지 주소 저장하는 곳
-
-//    @Builder
-//    public Loan(String productType, String loanName, String loanCompany, String creditLine, String rate, boolean primeRate, int period, String loanLine, String tag) {
-//        this.productType = productType;
-//        this.loanName = loanName;
-//        this.loanCompany = loanCompany;
-//        this.creditLine = creditLine;
-//        this.rate = rate;
-//        this.primeRate = primeRate;
-//        this.period = period;
-//        this.loanLine = loanLine;
-//        this.tag = tag;
-//    }
 
     public void addCartItem(CartItem cartItem){
         this.cartItems.add(cartItem);

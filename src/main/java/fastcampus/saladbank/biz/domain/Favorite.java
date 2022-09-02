@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -25,6 +24,7 @@ public class Favorite extends BaseTime {
 
     @OneToMany(mappedBy = "favorite", cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
+
     @OneToOne
     private Member member;
 //

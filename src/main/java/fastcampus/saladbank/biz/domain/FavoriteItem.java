@@ -38,8 +38,6 @@ public class FavoriteItem {
         this.loan=loan;
     }
 
-
-
     public void setFavorite(Favorite favorite){
         if(this.favorite != null){
             this.favorite.getFavoriteItems().remove(this);

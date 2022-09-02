@@ -14,4 +14,6 @@ public interface CardRepository extends JpaRepository<Card,Long> {
 
     @Query(value = "SELECT CARD.card_id, CARD.createdDate, CARD.modifiedDate, CARD.PRODUCT_TYPE, CARD.CARD_NAME, CARD.CARD_COMPANY, CARD.ANNUAL_FEE, CARD.CARD_TYPE, CARD.CARD_DESCRIPTION, CARD.FRANCHISEE, CARD.SHOPPING, CARD.OILING, CARD.INSURANCE, CARD.CAFE, CARD.TAG, CARD.IMG FROM CARD", nativeQuery = true)
     List<Card> findCardAll();
+
+    List<Card> findAllByCardNameContainsOrCardCompanyContainsOrTagContains(String keyword1, String keyword2, String keyword3);
 }

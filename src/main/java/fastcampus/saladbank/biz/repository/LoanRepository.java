@@ -14,4 +14,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     @Query(value = "SELECT l.loan_id, l.createdDate, l.modifiedDate, l.product_type, l.loan_name, l.loan_company, l.credit_line, l.rate, l.prime_rate, l.period, l.loan_line, l.tag, l.img FROM LOAN l", nativeQuery = true)
     List<Loan> findLoanAll();
+
+    List<Loan> findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(String keyword1, String keyword2, String keyword3);
 }
