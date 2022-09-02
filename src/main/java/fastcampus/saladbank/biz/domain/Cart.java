@@ -61,6 +61,4 @@ public class Cart extends BaseTime {
         this.member=member;
     }
 
-    public void getCartItem() {
-    }
 }
