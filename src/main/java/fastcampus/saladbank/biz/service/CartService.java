@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -90,6 +91,7 @@ public class CartService {
         Cart cart = cartRepository.findByMember(member);
         //card 찾기
         Card card = cardRepository.findById(cardId).orElse(null);
+        log.info("card: {}", Objects.requireNonNull(card).getCardName());
         //카트에 추가
         CartItem cartItem = CartItem.builder()
                 .cart(cart)
