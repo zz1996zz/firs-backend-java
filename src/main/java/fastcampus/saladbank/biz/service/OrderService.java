@@ -1,60 +1,64 @@
 package fastcampus.saladbank.biz.service;
 
-import fastcampus.saladbank.biz.domain.*;
-import fastcampus.saladbank.biz.repository.CartRepository;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import fastcampus.saladbank.biz.domain.Card;
+import fastcampus.saladbank.biz.domain.Loan;
+import fastcampus.saladbank.biz.domain.Member;
+import fastcampus.saladbank.biz.repository.CardRepository;
+import fastcampus.saladbank.biz.repository.LoanRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
-import fastcampus.saladbank.biz.repository.OrderRepository;
-import fastcampus.saladbank.web.dto.MemberForm;
+import fastcampus.saladbank.config.LocalDateTimeSerializer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Slf4j
 public class OrderService {
-    private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
-    private final CartRepository cartRepository;
+    private final CardRepository cardRepository;
+    private final LoanRepository loanRepository;
 
-    // 주문 등록
-//    @Transactional
-//    public void insertOrder(MemberForm memberForm) throws Exception {
-//        //member 찾기
-//        String username = memberForm.getUsername();
-//        Member member = memberRepository.findByUsername(username).orElse(null);
-//        Optional<Cart> cart = Optional.ofNullable(cartRepository.findByMember(member));
-//        if(cart.isPresent()){
-//            if(!cart.get().getCardList().isEmpty()) {
-//                Order order = new Order(member,  "신청");
-//                for (int i=0; i < cart.get().getCardList().size(); i++) {
-//                    Card card = cart.get().getCardList().get(i);
-//                    order.addOrderCard(card);
-//                    orderRepository.save(order);
-//                }
-//            }
-//
-//            if (!cart.get().getLoanList().isEmpty()){
-//                Order order = new Order(member,"신청");
-//                for(int i=0; i<cart.get().getLoanList().size(); i++){
-//                    Loan loan = cart.get().getLoanList().get(i);
-//                    order.addOrderLoan(loan);
-//                    order.addExpiryDate(loan.getPeriod());
-//                    orderRepository.save(order);
-//                }
-//            }
-//        }
-//
-//    }
+    public String getOrderList(String username) {
+        StringBuilder sb = new StringBuilder();
+        String cardList = getCardList();
+        String loanList = getLoanList();
 
-    //주문 전체 조회
-    public List getOrderList(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 사용자가 없습니다."));
-        return orderRepository.findAllByMember(member);
+
+        sb.append("{\n\"userInfo\" : " + "\"" + member.getName() + "\"" + ",\n");
+        sb.append("\"true\" : " + cardList + ",\n");
+        sb.append("\"false\" : " + loanList + "\n}");
+
+        return sb.toString();
+    }
+
+    public String getCardList() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+        List<Card> cardList = new ArrayList<>();
+        cardList.add(cardRepository.findById(1L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        cardList.add(cardRepository.findById(7L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        cardList.add(cardRepository.findById(9L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        return gson.toJson(cardList);
+    }
+
+    public String getLoanList() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+        List<Loan> loanList = new ArrayList<>();
+        loanList.add(loanRepository.findById(3L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        loanList.add(loanRepository.findById(5L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        return gson.toJson(loanList);
     }
 }

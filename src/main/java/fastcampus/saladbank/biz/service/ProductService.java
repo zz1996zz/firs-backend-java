@@ -24,27 +24,19 @@ public class ProductService {
     private final LoanRepository loanRepository;
 
     public String searchProduct(SearchProductForm form) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        String searchKeyword = form.getSearchKeyword();
+
         if (form.getProductType().equals("대출")) {
-            return searchLoan(form.getSearchKeyword());
+            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            return gson.toJson(loanList);
         } else {
-            return searchCard(form.getSearchKeyword());
+            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            return gson.toJson(loanList);
         }
-    }
-
-    public String searchCard(String searchKeyword) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
-        Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
-        return gson.toJson(loanList);
-    }
-
-    public String searchLoan(String searchKeyword) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
-        Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Card> cardList = cardRepository.findAllByCardNameContainsOrCardCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
-        return gson.toJson(cardList);
     }
 
     public String getProductList() {
