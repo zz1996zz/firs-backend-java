@@ -91,12 +91,13 @@ public class CartService {
         Cart cart = cartRepository.findByMember(member);
         //card 찾기
         Card card = cardRepository.findById(cardId).orElse(null);
-        log.info("card: {}", Objects.requireNonNull(card).getCardName());
         //카트에 추가
         CartItem cartItem = CartItem.builder()
                 .cart(cart)
                 .card(card)
                 .build();
+
+        System.out.println(cartItem.getCart().getCartId());
 //        cart.getCartItems().forEach(cartItem1 -> {
 //            if(cartItem1.getCard().equals(card)){
 //                throw new RuntimeException("이미 추가된 상품입니다");
