@@ -95,11 +95,11 @@ public class CartService {
                 .cart(cart)
                 .card(card)
                 .build();
-        cart.getCartItems().forEach(cartItem1 -> {
-            if(cartItem1.getCard().equals(card)){
-                throw new RuntimeException("이미 추가된 상품입니다");
-            }
-        });
+//        cart.getCartItems().forEach(cartItem1 -> {
+//            if(cartItem1.getCard().equals(card)){
+//                throw new RuntimeException("이미 추가된 상품입니다");
+//            }
+//        });
 
         cart.addCartItem(cartItem);
         card.addCartItem(cartItem);
