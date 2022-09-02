@@ -6,6 +6,7 @@ import fastcampus.saladbank.web.dto.CardDto;
 import fastcampus.saladbank.web.dto.LoanDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/carts")
+@Slf4j
 public class CartController {
 
 
@@ -36,6 +38,7 @@ public class CartController {
     public void insertCartCard(@Login MemberForm memberForm,
                            @RequestBody Map<String,Long> map){
         cartService.insertCartCard(memberForm, map.get("card_id"));
+        log.info("cardId : {}",map.get("card_id"));
     }
 
     //장바구니 추가(대출)
