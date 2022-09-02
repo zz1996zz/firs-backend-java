@@ -1,11 +1,7 @@
 package fastcampus.saladbank.web.dto;
 
-import fastcampus.saladbank.biz.domain.Order;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import net.bytebuddy.asm.Advice;
 
 import java.time.LocalDate;
 
@@ -22,20 +18,5 @@ public class OrderForm {
         this.expiryDate = expiryDate;
         this.status = status;
     }
-
-//    public Order toEntity() {
-//        return Order.builder()
-//                .applyDate(applyDate)
-//                .expiryDate(expiryDate)
-//                .status(status)
-//                .build();
-//    }
-//
-//    // 주문 조회시 사용
-//    public OrderForm(Order entity) {
-//        this.applyDate = entity.getApplyDate();
-//        this.expiryDate = entity.getExpiryDate();
-//        this.status = entity.getStatus();
-//    }
 
 }
