@@ -29,7 +29,7 @@ public class ProductService {
         Gson gson = gsonBuilder.setPrettyPrinting().create();
 
         String searchKeyword = form.getSearchKeyword();
-        
+
         if (form.getProductType().equals("대출")) {
             List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
             return gson.toJson(loanList);
