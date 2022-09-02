@@ -28,14 +28,26 @@ public class CartService {
     private final LoanRepository loanRepository;
     private final CartItemRepository cartItemRepository;
 
-    //장바구니 조회
-    public List<CardDto.Response> getCarts(MemberForm reqMember) {
+    //장바구니 조회(카드)
+    public List<CardDto.Response> getCartsCard(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
         return cartItemRepository.findAllByCart(cart)
                 .stream()
                 .map(cartItem -> CardDto.Response.of(cartItem.getCard()))
+                .collect(Collectors.toList());
+
+    }
+
+    //장바구니 조회
+    public List<LoanDto.Response> getCartsLoan(MemberForm reqMember) {
+        String username = reqMember.getUsername();
+        Member member = memberRepository.findByUsername(username).orElse(null);
+        Cart cart = cartRepository.findByMember(member);
+        return cartItemRepository.findAllByCart(cart)
+                .stream()
+                .map(cartItem -> LoanDto.Response.of(cartItem.getLoan()))
                 .collect(Collectors.toList());
 
     }

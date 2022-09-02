@@ -29,7 +29,7 @@ public class FavoriteService {
 
 
     //관심상품 조회(카드)
-    public List<CardDto.Response> getFavorites(MemberForm reqMember) {
+    public List<CardDto.Response> getFavoritesCard(MemberForm reqMember) {
         String username = reqMember.getUsername();
         Member member = memberRepository.findByUsername(username).orElse(null);
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
@@ -40,6 +40,18 @@ public class FavoriteService {
 
     }
 
+
+    //관심상품 조회(대출)
+    public List<LoanDto.Response> getFavoritesLoan(MemberForm reqMember) {
+        String username = reqMember.getUsername();
+        Member member = memberRepository.findByUsername(username).orElse(null);
+        Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
+        return favoriteItemRepository.findAllByFavorite(favorite)
+                .stream()
+                .map(favoriteItem -> LoanDto.Response.of(favoriteItem.getLoan()))
+                .collect(Collectors.toList());
+
+    }
 
 
 

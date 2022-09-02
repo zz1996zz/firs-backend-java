@@ -3,6 +3,7 @@ package fastcampus.saladbank.web.controller;
 import fastcampus.saladbank.biz.service.CartService;
 import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.CardDto;
+import fastcampus.saladbank.web.dto.LoanDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,16 @@ public class CartController {
 
     private final CartService cartService;
 
-    //장바구니 조회
-    @GetMapping
-    public List<CardDto.Response> getCarts(@Login MemberForm memberForm ){
-        return cartService.getCarts(memberForm);
+    //장바구니 조회(카드)
+    @GetMapping("/card")
+    public List<CardDto.Response> getCartsCard(@Login MemberForm memberForm ){
+        return cartService.getCartsCard(memberForm);
+    }
+
+    //장바구니 조회(대출)
+    @GetMapping("/loan")
+    public List<LoanDto.Response> getCartsLoan(@Login MemberForm memberForm ){
+        return cartService.getCartsLoan(memberForm);
     }
     
     //장바구니 추가(카드)
