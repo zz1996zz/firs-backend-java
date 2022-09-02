@@ -28,7 +28,7 @@ public class RecommendationProduct {
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
         StringBuilder sb = new StringBuilder();
         int income = findMember.getIncome();
-        sb.append(income + " ");
+        sb.append(income).append(" ");
         if (findMember.getHouse()) {
             double v = ((income * 1.32) / 1000) + 2;
             sb.append(v);
