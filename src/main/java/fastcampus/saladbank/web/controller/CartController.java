@@ -20,13 +20,13 @@ public class CartController {
     private final CartService cartService;
 
     //장바구니 조회(카드)
-    @GetMapping
+    @GetMapping("/card")
     public List<CardDto.Response> getCartsCard(@Login MemberForm memberForm ){
         return cartService.getCartsCard(memberForm);
     }
 
     //장바구니 조회(대출)
-    @GetMapping
+    @GetMapping("/loan")
     public List<LoanDto.Response> getCartsLoan(@Login MemberForm memberForm ){
         return cartService.getCartsLoan(memberForm);
     }
