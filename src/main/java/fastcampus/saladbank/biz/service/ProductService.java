@@ -31,10 +31,10 @@ public class ProductService {
         String searchKeyword = form.getSearchKeyword();
 
         if (form.getProductType().equals("대출")) {
-            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            List<Loan> loanList = loanRepository.findAllByLoanInfo(searchKeyword);
             return gson.toJson(loanList);
         } else {
-            List<Card> cardList = cardRepository.findAllByCardNameContainsOrCardCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            List<Card> cardList = cardRepository.findAllByCardInfo(searchKeyword);
             return gson.toJson(cardList);
         }
     }
@@ -54,7 +54,7 @@ public class ProductService {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Card> cardAll = cardRepository.findAll();
+        List<Card> cardAll = cardRepository.findCardAll();
         return gson.toJson(cardAll);
     }
 
@@ -62,7 +62,7 @@ public class ProductService {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Loan> loanAll = loanRepository.findAll();
+        List<Loan> loanAll = loanRepository.findLoanAll();
         return gson.toJson(loanAll);
     }
 }
