@@ -36,6 +36,7 @@ public class Cart extends BaseTime {
 //    private List<Card> cardList = new ArrayList<>();
 
     @OneToMany(mappedBy = "cart", cascade = ALL)
+    @Builder.Default
     private final List<CartItem> cartItems = new ArrayList<>();
 
     public void setMember(Member member){this.member = member;}
