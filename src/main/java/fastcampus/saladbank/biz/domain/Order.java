@@ -34,13 +34,13 @@ public class Order extends BaseTime {
     @Column(name = "STATUS", nullable = false)
     private String status;
 
-    @OneToMany
-    @JoinColumn(name = "LOAN_ID")
-    private List<Loan> loanList = new LinkedList<>();
-
-    @OneToMany
-    @JoinColumn(name = "CARD_ID")
-    private List<Card> cardList = new LinkedList<>();
+//    @OneToMany
+//    @JoinColumn(name = "LOAN_ID")
+//    private List<Loan> loanList = new LinkedList<>();
+//
+//    @OneToMany
+//    @JoinColumn(name = "CARD_ID")
+//    private List<Card> cardList = new LinkedList<>();
 
 
     @Builder
@@ -49,13 +49,13 @@ public class Order extends BaseTime {
         this.status = status;
     }
 
-    public void addOrderLoan(Loan loan){
-        this.loanList.add(loan);
-    }
-
-    public void addOrderCard(Card card){
-        this.cardList.add(card);
-    }
+//    public void addOrderLoan(Loan loan){
+//        this.loanList.add(loan);
+//    }
+//
+//    public void addOrderCard(Card card){
+//        this.cardList.add(card);
+//    }
 
     public void addExpiryDate(int period) throws Exception {
         String date = String.valueOf(getCreatedDate());

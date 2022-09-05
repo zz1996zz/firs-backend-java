@@ -2,10 +2,12 @@ package fastcampus.saladbank.biz.service;
 
 import fastcampus.saladbank.biz.domain.Card;
 import fastcampus.saladbank.biz.repository.CardRepository;
+import fastcampus.saladbank.web.dto.CardForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,7 +19,13 @@ public class CardService {
     private final CardRepository cardRepository;
 
     public List getCardList() {
-        return cardRepository.findCardAll();
+        List<CardForm> cardForms = new ArrayList<>();
+        List<Card> cardList = cardRepository.findAll();
+        for (Card card : cardList) {
+            CardForm cardForm = new CardForm(card);
+            cardForms.add(cardForm);
+        }
+        return cardForms;
     }
 
     public Card getCard(long cardId) {

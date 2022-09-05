@@ -7,12 +7,15 @@ import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.biz.repository.LoanRepository;
 import fastcampus.saladbank.config.LocalDateTimeSerializer;
+import fastcampus.saladbank.web.dto.CardForm;
+import fastcampus.saladbank.web.dto.LoanForm;
 import fastcampus.saladbank.web.dto.SearchProductForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,11 +34,21 @@ public class ProductService {
         String searchKeyword = form.getSearchKeyword();
 
         if (form.getProductType().equals("대출")) {
-            List<Loan> loanList = loanRepository.findAllByLoanInfo(searchKeyword);
-            return gson.toJson(loanList);
+            List<LoanForm> loanForms = new ArrayList<>();
+            List<Loan> loanList = loanRepository.findAllByLoanNameContainsOrLoanCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            for (Loan loan : loanList) {
+                LoanForm loanForm = new LoanForm(loan);
+                loanForms.add(loanForm);
+            }
+            return gson.toJson(loanForms);
         } else {
-            List<Card> cardList = cardRepository.findAllByCardInfo(searchKeyword);
-            return gson.toJson(cardList);
+            List<CardForm> cardForms = new ArrayList<>();
+            List<Card> cardList = cardRepository.findAllByCardNameContainsOrCardCompanyContainsOrTagContains(searchKeyword, searchKeyword, searchKeyword);
+            for (Card card : cardList) {
+                CardForm cardForm = new CardForm(card);
+                cardForms.add(cardForm);
+            }
+            return gson.toJson(cardForms);
         }
     }
 
@@ -54,15 +67,33 @@ public class ProductService {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Card> cardAll = cardRepository.findCardAll();
-        return gson.toJson(cardAll);
+
+        List<CardForm> cardForms = new ArrayList<>();
+
+        List<Card> cardAll = cardRepository.findAll();
+
+        for (Card card : cardAll) {
+            CardForm cardForm = new CardForm(card);
+            cardForms.add(cardForm);
+        }
+
+        return gson.toJson(cardForms);
     }
 
     public String getLoanList() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Loan> loanAll = loanRepository.findLoanAll();
-        return gson.toJson(loanAll);
+
+        List<LoanForm> loanForms = new ArrayList<>();
+
+        List<Loan> loanAll = loanRepository.findAll();
+
+        for (Loan loan : loanAll) {
+            LoanForm loanForm = new LoanForm(loan);
+            loanForms.add(loanForm);
+        }
+
+        return gson.toJson(loanForms);
     }
 }

@@ -41,9 +41,7 @@ public class ProductController {
 
     @GetMapping("/search")
     public ResponseEntity searchProduct(@ModelAttribute SearchProductForm form) {
-        log.info("form={}", form.toString());
         String s = productService.searchProduct(form);
-        log.info("s={}", s);
         return new ResponseEntity(s, HttpStatus.OK);
     }
 }

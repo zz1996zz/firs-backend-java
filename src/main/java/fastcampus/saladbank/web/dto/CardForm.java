@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class CardForm {
+    private long cardId;
     private String productType;
     private String cardName;
     private String cardCompany;
@@ -17,20 +18,23 @@ public class CardForm {
     private String insurance;
     private String cafe;
     private String tag;
+    private String img;
 
     //카드 조회시 사용
-    public CardForm(Card entity) {
-        this.productType = entity.getProductType();
-        this.cardName = entity.getCardName();
-        this.cardCompany = entity.getCardCompany();
-        this.annualFee = entity.getAnnualFee();
-        this.cardType = entity.getCardType();
-        this.cardDescription = entity.getCardDescription();
-        this.franchisee = entity.getFranchisee();
-        this.shopping = entity.getShopping();
-        this.oiling = entity.getOiling();
-        this.insurance = entity.getInsurance();
-        this.cafe = entity.getCafe();
-        this.tag = entity.getTag();
+    public CardForm(Card card) {
+        this.cardId = card.getCardId();
+        this.productType = card.getProductType();
+        this.cardName = card.getCardName();
+        this.cardCompany = card.getCardCompany();
+        this.annualFee = card.getAnnualFee();
+        this.cardType = card.getCardType();
+        this.cardDescription = card.getCardDescription();
+        this.franchisee = card.getFranchisee();
+        this.shopping = card.getShopping();
+        this.oiling = card.getOiling();
+        this.insurance = card.getInsurance();
+        this.cafe = card.getCafe();
+        this.tag = card.getTag();
+        this.img = card.getImg();
     }
 }

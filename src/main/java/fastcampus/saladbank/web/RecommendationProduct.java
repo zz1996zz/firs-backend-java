@@ -9,6 +9,8 @@ import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.biz.repository.LoanRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.config.LocalDateTimeSerializer;
+import fastcampus.saladbank.web.dto.CardForm;
+import fastcampus.saladbank.web.dto.LoanForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +30,7 @@ public class RecommendationProduct {
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
         StringBuilder sb = new StringBuilder();
         int income = findMember.getIncome();
-        sb.append(income + " ");
+        sb.append(income).append(" ");
         if (findMember.getHouse()) {
             double v = ((income * 1.32) / 1000) + 2;
             sb.append(v);
@@ -43,12 +45,13 @@ public class RecommendationProduct {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Loan> filterLoan = new ArrayList<>();
+        List<LoanForm> filterLoan = new ArrayList<>();
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
-        List<Loan> loanAll = loanRepository.findLoanAll();
+        List<Loan> loanAll = loanRepository.findAll();
         for (Loan loan : loanAll) {
             if (Integer.parseInt(loan.getCreditLine()) <= findMember.getIncome()) {
-                filterLoan.add(loan);
+                LoanForm loanForm = new LoanForm(loan);
+                filterLoan.add(loanForm);
             }
         }
         if (!filterLoan.isEmpty()) {
@@ -62,12 +65,13 @@ public class RecommendationProduct {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Card> filterCard = new ArrayList<>();
+        List<CardForm> filterCard = new ArrayList<>();
         Member findMember = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
-        List<Card> cardAll = cardRepository.findCardAll();
+        List<Card> cardAll = cardRepository.findAll();
         for (Card card : cardAll) {
             if (card.getTag().contains(findMember.getJob())) {
-                filterCard.add(card);
+                CardForm cardForm = new CardForm(card);
+                filterCard.add(cardForm);
             }
         }
         if (!filterCard.isEmpty()) {
