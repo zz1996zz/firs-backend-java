@@ -25,15 +25,18 @@
 ## 📜 요구사항 명세서
 - https://mango-tower-9f1.notion.site/7670e6d5a49d489f806ea2fb271d4fcb
 
+
+## 🏋️‍♀️ 프로젝트 기간
+- 22/08/24 ~ 22/09/06 (10일)
+
 ## 🔙 백엔드 팀원 및 담당 역할
 ### 🧑🏻‍💻 팀장 이정수(@zz1996zz)
-- 로그인/회원가입 기능
-- 금융상품 정보 (대출 등) 를 검색/리스팅하는 기능 (검색 시 기간 / 내용 등으로 필터링 기능)
+- JWT와 시큐리티를 사용한 로그인/회원가입 기능 구현
+- 조건에 따른 금융상품 검색결과 조회 기능 구현
 ### 👩🏻‍💻 팀원 위준우(@wijoonwu)
-- (회원 별) 특정 금융상품을 관심 상품으로 등록/해제하는 기능
-- (회원 별) 관심 상품으로 등록해놓은 금융상품만 모아서 보는 기능
-- (회원 별) 특정 금융상품을 장바구니에 담는 기능
-- AWS 배포
+- 회원별 관심상품 등록,삭제,조회 기능 구현
+- 회원별 장바구니 등록,삭제, 조회 기능 구현
+- AWS를 이용한 EC2 서버 배포
 
 ## 💻 개발 환경
 - IDE : intelliJ IDEA
@@ -41,8 +44,8 @@
 - Project : Gradle 7.5
 - Spring Boot : 2.7.3
 - DataBase : MySQL 8.0.30
-
-## ☁️ Delpoyment
+- EC2 Instance free tier
+- Amazon Linux2 kerner 5.10
 
 ## 🌱 Dependency
 - Spring Web
@@ -53,7 +56,6 @@
 - Swagger
 - JWT
 
-## 🗺 Server Deployment Structure
 
 ## 💾 DB 다이어그램
 <img src="https://media.discordapp.net/attachments/1009428199341555772/1016325137580167199/unknown.png?width=695&height=637">
@@ -70,3 +72,33 @@
 
 ## 📡 API 명세서
 - http://3.34.229.74/swagger-ui/index.html#/loan-controller
+### ✅ 로그인/회원가입
+- `GET` /duplicate
+- `POST` /register
+- `POST`  /login
+- `GET` /do-logout
+### 🧺 장바구니
+- `DELETE` /carts
+- `DELETE` /carts/card/{id}
+- `DELETE` /carts/loan/{id}
+- `POST` /carts/card
+- `POST` /carts/loan
+- `GET` /carts/card
+- `GET` /carts/loan
+### ⭐️ 관심상품
+- `DELETE` /favorites
+- `DELETE` /favorites/card/{id}
+- `DELETE` /favorites/loan/{id}
+- `POST` /favorites/card
+- `POST` /favorites/loan
+- `GET` /favorites/card
+- `GET` /favorites/loan
+### 👩🏻‍🦱 회원관리
+- `GET` /members/my-page
+- `GET` /members/recommendation
+- `GET` /members/edit
+- `PUT` /members/edit
+### 🎁 상품관리
+- `GET` /products
+- `GET` /products/{id}
+- `GET` /products/search
