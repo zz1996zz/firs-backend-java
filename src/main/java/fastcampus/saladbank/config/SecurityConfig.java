@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(jwtAuthenticationFilter)
                 .addFilter(jwtAuthorizationFilter)
                 .authorizeRequests().requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .antMatchers("/", "/register", "/duplicate", "/products/**", "/cards", "/loans", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
+                .antMatchers("/", "/login", "/register", "/duplicate", "/products/**", "/cards", "/loans", "/swagger-resources/**", "/swagger-ui/**", "/v3/**").permitAll()
                 .anyRequest().access("hasRole('ROLE_USER')")
                 .and()
                 .logout()
