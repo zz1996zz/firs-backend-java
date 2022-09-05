@@ -63,7 +63,7 @@
 ## 🕋 패키지 구조 
 - main
     - biz
-        - domain : Entity, Enum 클래스
+        - domain : Entity
         - repository
         - service
     - web
