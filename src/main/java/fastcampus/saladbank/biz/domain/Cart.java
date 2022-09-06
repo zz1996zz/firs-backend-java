@@ -1,5 +1,6 @@
 package fastcampus.saladbank.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,6 +36,7 @@ public class Cart extends BaseTime {
 //    private List<Card> cardList = new ArrayList<>();
 
     @OneToMany(mappedBy = "cart", cascade = ALL)
+    @JsonManagedReference
     private final List<CartItem> cartItems = new ArrayList<>();
 
     public void setMember(Member member){this.member = member;}
