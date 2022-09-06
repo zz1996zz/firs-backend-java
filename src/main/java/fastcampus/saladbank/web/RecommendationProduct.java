@@ -33,10 +33,12 @@ public class RecommendationProduct {
         sb.append(income).append(" ");
         if (findMember.getHouse()) {
             double v = ((income * 1.32) / 1000) + 2;
-            sb.append(v);
+            String format = String.format("%.2f", v);
+            sb.append(format);
         } else {
             double v = ((income * 1.32) / 1000);
-            sb.append(v);
+            String format = String.format("%.2f", v);
+            sb.append(format);
         }
         return sb.toString();
     }
