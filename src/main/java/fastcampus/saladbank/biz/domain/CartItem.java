@@ -1,5 +1,6 @@
 package fastcampus.saladbank.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class CartItem {
     private Long cartItemId;
 
     @ManyToOne(fetch = LAZY)
+    @JsonBackReference
     @JoinColumn(name="CART_ID")
     private Cart cart;
 
