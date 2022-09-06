@@ -104,3 +104,5 @@
 - `GET` /products
 - `GET` /products/{id}
 - `GET` /products/search
+- `GET` /cards
+- `GET` /loans
