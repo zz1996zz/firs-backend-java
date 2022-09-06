@@ -125,7 +125,7 @@ public class CartService {
         Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
         Card card = cardRepository.findById(id).orElse(null);
-        CartItem cartItem = cartItemRepository.findByCard(card);
+        CartItem cartItem = cartItemRepository.findByCardAndCart(card,cart);
         cartItemRepository.delete(cartItem);
 
 
@@ -137,7 +137,8 @@ public class CartService {
         String username = memberForm.getUsername();
         Member member = memberRepository.findByUsername(username).orElse(null);
         Cart cart = cartRepository.findByMember(member);
-        Optional<Loan> loan = loanRepository.findById(id);
-        loan.ifPresent(value -> cart.getCartItems().remove(value));
+        Loan loan = loanRepository.findById(id).orElse(null);
+        CartItem cartItem = cartItemRepository.findByLoanAndCart(loan,cart);
+        cartItemRepository.delete(cartItem);
     }
 }

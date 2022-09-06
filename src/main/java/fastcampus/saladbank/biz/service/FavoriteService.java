@@ -113,7 +113,7 @@ public class FavoriteService {
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
         Card card = cardRepository.findById(id).orElse(null);
-        FavoriteItem favoriteItem = favoriteItemRepository.findByCard(card);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByCardAndFavorite(card,favorite);
         favoriteItemRepository.delete(favoriteItem);
 
     }
@@ -125,7 +125,7 @@ public class FavoriteService {
         Optional<Member> member = memberRepository.findByUsername(username);
         Favorite favorite = favoriteRepository.findByMember(member);
         Loan loan = loanRepository.findById(id).orElse(null);
-        FavoriteItem favoriteItem = favoriteItemRepository.findByLoan(loan);
+        FavoriteItem favoriteItem = favoriteItemRepository.findByLoanAndFavorite(loan,favorite);
         favoriteItemRepository.delete(favoriteItem);
     }
 

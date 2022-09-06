@@ -17,4 +17,8 @@ public interface FavoriteItemRepository extends JpaRepository<FavoriteItem,Long>
     FavoriteItem findByLoan(Loan loan);
 
     void deleteAllByFavorite(Favorite favorite);
+
+    FavoriteItem findByLoanAndFavorite(Loan loan, Favorite favorite);
+
+    FavoriteItem findByCardAndFavorite(Card card, Favorite favorite);
 }
