@@ -27,14 +27,6 @@ public class Cart extends BaseTime {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "LOAN_ID")
-//    private List<Loan> loanList= new ArrayList<>();
-//
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "CARD_ID")
-//    private List<Card> cardList = new ArrayList<>();
-
     @OneToMany(mappedBy = "cart", cascade = ALL)
     @JsonManagedReference
     private final List<CartItem> cartItems = new ArrayList<>();
@@ -47,15 +39,6 @@ public class Cart extends BaseTime {
             cartItem.setCart(this);
         }
     }
-
-
-//    public void addCartLoan(Loan loan){
-//        this.loanList.add(loan);
-//    }
-//
-//    public void addCartCard(Card card){
-//        this.cardList.add(card);
-//    }
 
     @Builder
     public Cart(Member member) {

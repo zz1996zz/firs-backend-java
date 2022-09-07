@@ -6,7 +6,6 @@ import fastcampus.saladbank.web.dto.CardDto;
 import fastcampus.saladbank.web.dto.LoanDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/carts")
-@Slf4j
 public class CartController {
 
 

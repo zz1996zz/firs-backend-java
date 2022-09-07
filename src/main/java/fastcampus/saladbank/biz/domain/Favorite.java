@@ -27,14 +27,6 @@ public class Favorite extends BaseTime {
 
     @OneToOne
     private Member member;
-//
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "LOAN_ID")
-//    private List<Loan> loanList = new ArrayList<>();
-//
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "CARD_ID")
-//    private List<Card> cardList= new ArrayList<>();
 
     @Builder
     public Favorite(Member member){

@@ -12,10 +12,6 @@ import java.util.List;
 public interface FavoriteItemRepository extends JpaRepository<FavoriteItem,Long> {
     List<FavoriteItem> findAllByFavorite(Favorite favorite);
 
-    FavoriteItem findByCard(Card card);
-
-    FavoriteItem findByLoan(Loan loan);
-
     void deleteAllByFavorite(Favorite favorite);
 
     FavoriteItem findByLoanAndFavorite(Loan loan, Favorite favorite);

@@ -7,19 +7,16 @@ import fastcampus.saladbank.web.dto.CardDto;
 import fastcampus.saladbank.web.dto.LoanDto;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly=true)
-@Slf4j
 public class CartService {
 
     private final CartRepository cartRepository;

@@ -9,12 +9,10 @@ import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.web.RecommendationProduct;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -51,10 +49,6 @@ public class MemberService {
     public void editMemberInfo(MemberForm memberForm) {
         Member findMember = memberRepository.findByUsername(memberForm.getUsername()).orElseThrow(() -> new RuntimeException("멤버를 찾지 못했습니다."));
         findMember.updateMember(memberForm);
-        log.info("findMember={}", findMember.getAge());
-        log.info("findMember={}", findMember.getGender());
-        log.info("findMember={}", findMember.getHobby());
-        log.info("findMember={}", findMember.getIncome());
     }
 
     public String makeJson(String username) {

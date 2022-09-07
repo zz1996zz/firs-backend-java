@@ -5,14 +5,10 @@ import fastcampus.saladbank.biz.service.OrderService;
 import fastcampus.saladbank.web.argumentresolver.Login;
 import fastcampus.saladbank.web.dto.MemberForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@Slf4j
 @RestController
 @RequestMapping("/members")
 @RequiredArgsConstructor
@@ -24,7 +20,6 @@ public class MemberController {
     @GetMapping("/my-page")
     public ResponseEntity myPage(@Login MemberForm memberForm) {
         String orderList = orderService.getOrderList(memberForm.getUsername());
-        log.info("orderList={}", orderList);
         return new ResponseEntity(orderList, HttpStatus.OK);
     }
 

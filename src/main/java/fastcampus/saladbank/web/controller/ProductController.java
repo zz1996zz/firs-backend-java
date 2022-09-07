@@ -7,12 +7,10 @@ import fastcampus.saladbank.biz.service.LoanService;
 import fastcampus.saladbank.biz.service.ProductService;
 import fastcampus.saladbank.web.dto.SearchProductForm;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
