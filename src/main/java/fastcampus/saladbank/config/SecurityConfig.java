@@ -37,14 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.addAllowedOrigin("http://127.0.0.1:5173");
-        configuration.addAllowedOrigin("http://127.0.0.1:5174");
-        configuration.addAllowedOrigin("http://127.0.0.1:5175");
-        configuration.addAllowedOrigin("https://glowing-bubblegum-467ed0.netlify.app/");
-        configuration.addAllowedOrigin("https://sadaribankapp.netlify.app/");
-        configuration.addAllowedOrigin("https://saladbanklink.netlify.app/");
-        configuration.addAllowedOrigin("https://team4-mini-project-ivory.vercel.app/");
-        configuration.addAllowedOrigin("https://team4-mini-project.vercel.app/ ");
+        configuration.addAllowedOriginPattern("http://127.0.0.1:5173");
+        configuration.addAllowedOriginPattern("http://127.0.0.1:5174");
+        configuration.addAllowedOriginPattern("http://127.0.0.1:5175");
+        configuration.addAllowedOriginPattern("https://glowing-bubblegum-467ed0.netlify.app/");
+        configuration.addAllowedOriginPattern("https://sadaribankapp.netlify.app/");
+        configuration.addAllowedOriginPattern("https://saladbanklink.netlify.app/");
+        configuration.addAllowedOriginPattern("https://team4-mini-project-ivory.vercel.app/");
+        configuration.addAllowedOriginPattern("https://team4-mini-project.vercel.app/ ");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.addExposedHeader("Authorization");
