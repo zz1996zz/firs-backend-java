@@ -42,6 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addAllowedOrigin("http://127.0.0.1:5175");
         configuration.addAllowedOrigin("https://glowing-bubblegum-467ed0.netlify.app/");
         configuration.addAllowedOrigin("https://sadaribankapp.netlify.app/");
+        configuration.addAllowedOrigin("https://saladbanklink.netlify.app/");
+        configuration.addAllowedOrigin("https://team4-mini-project-ivory.vercel.app/");
+        configuration.addAllowedOrigin("https://team4-mini-project.vercel.app/ ");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.addExposedHeader("Authorization");
