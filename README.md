@@ -22,7 +22,16 @@
 
 <br>
 
+
+
 ## 💁 프로젝트 정보
+
+### 👉 미리보기 이미지 및 요청 URL  
+- Cleint : https://saladbanklink.netlify.app/
+- Server : https://saladbank.link/
+<br><br>
+<img src="https://velog.velcdn.com/images/wijoonwu/post/11440b84-6663-4f14-bc4f-452441f32ca0/image.png">
+
 ### 📜 요구사항 명세서
 - https://mango-tower-9f1.notion.site/7670e6d5a49d489f806ea2fb271d4fcb
 ### 🏋️‍♀️ 프로젝트 기간
