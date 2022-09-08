@@ -2,13 +2,13 @@ package fastcampus.saladbank.biz.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import fastcampus.saladbank.biz.domain.Card;
-import fastcampus.saladbank.biz.domain.Loan;
 import fastcampus.saladbank.biz.domain.Member;
 import fastcampus.saladbank.biz.repository.CardRepository;
 import fastcampus.saladbank.biz.repository.LoanRepository;
 import fastcampus.saladbank.biz.repository.MemberRepository;
 import fastcampus.saladbank.config.LocalDateTimeSerializer;
+import fastcampus.saladbank.web.dto.CardForm;
+import fastcampus.saladbank.web.dto.LoanForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,14 +39,16 @@ public class OrderService {
         return sb.toString();
     }
 
+    // 마이페이지 오더리스트 기능 미구현(고정값 리턴)
     public String getCardList() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Card> cardList = new ArrayList<>();
-        cardList.add(cardRepository.findById(1L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
-        cardList.add(cardRepository.findById(7L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
-        cardList.add(cardRepository.findById(9L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        List<CardForm> cardList = new ArrayList<>();
+        for (long i = 1; i <= 3; i++) {
+            CardForm cardForm = new CardForm(cardRepository.findById((2*i)-1).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+            cardList.add(cardForm);
+        }
         return gson.toJson(cardList);
     }
 
@@ -54,9 +56,11 @@ public class OrderService {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        List<Loan> loanList = new ArrayList<>();
-        loanList.add(loanRepository.findById(3L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
-        loanList.add(loanRepository.findById(5L).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+        List<LoanForm> loanList = new ArrayList<>();
+        for (long i = 1; i <= 3; i++) {
+            LoanForm loanForm = new LoanForm(loanRepository.findById((2*i)-1).orElseThrow(() -> new RuntimeException("해당 상품이 없습니다.")));
+            loanList.add(loanForm);
+        }
         return gson.toJson(loanList);
     }
 }
