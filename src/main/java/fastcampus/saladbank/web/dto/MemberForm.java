@@ -23,7 +23,7 @@ public class MemberForm {
     public void toMemberForm(Member member) {
         this.username = member.getUsername();
         this.password = member.getPassword();
-        this.name = member.getName();
+        this.name = member.getName(); 
         this.gender = member.getGender();
         this.age = member.getAge();
         this.job = member.getJob();
