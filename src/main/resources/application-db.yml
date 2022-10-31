@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql:///saladbank?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://saladbank.cqxkiuofnh47.ap-northeast-2.rds.amazonaws.com:3306/saladbank?serverTimezone=UTC&characterEncoding=UTF-8
     username: admin
     password: 1q2w3e4r
