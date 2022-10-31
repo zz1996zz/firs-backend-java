@@ -179,7 +179,7 @@ hs_err_pid*
 replay_pid*
 
 # DB properties
-application-db.yml
+# application-db.yml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java
 ### Java template
